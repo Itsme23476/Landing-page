@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
 // Initialize Supabase client
@@ -8,77 +8,65 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 type PageState = 'loading' | 'invalid' | 'form' | 'success';
 
+// Check if URL has reset tokens
+function hasResetTokens(): boolean {
+  const hash = window.location.hash;
+  return hash.includes('access_token');
+}
+
 export const SecretResetPassword: React.FC = () => {
   const [pageState, setPageState] = useState<PageState>('loading');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const sessionEstablished = useRef(false);
+  const [message, setMessage] = useState<{ text: string; type: 'error' | 'success' } | null>(null);
 
   useEffect(() => {
-    // Listen for auth state changes (this catches the recovery token from URL hash)
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      console.log('Auth event:', event, session);
-      
-      if (event === 'PASSWORD_RECOVERY') {
-        // User clicked the recovery link - show the form
-        sessionEstablished.current = true;
-        setPageState('form');
-      } else if (event === 'SIGNED_IN' && session) {
-        // Session established from recovery link
-        sessionEstablished.current = true;
-        setPageState('form');
-      }
-    });
-
-    // Also check session after a small delay to let SDK process URL hash
-    const checkSession = async () => {
-      // Small delay to let SDK process URL hash tokens
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      if (session) {
-        sessionEstablished.current = true;
-        setPageState('form');
-      } else if (!sessionEstablished.current) {
-        // No session and no recovery event - show error
-        setPageState('invalid');
-      }
-    };
-
-    checkSession();
-
-    return () => {
-      subscription.unsubscribe();
-    };
+    // Check for reset tokens in URL on page load
+    if (hasResetTokens()) {
+      // Tokens exist - show the password form
+      setPageState('form');
+    } else {
+      // No tokens - show error
+      setPageState('invalid');
+    }
   }, []);
+
+  const showMessage = (text: string, type: 'error' | 'success') => {
+    setMessage({ text, type });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
+    setMessage(null);
 
-    // Validation
+    // Validate password length
     if (password.length < 6) {
-      setError('Password must be at least 6 characters');
+      showMessage('Password must be at least 6 characters', 'error');
       return;
     }
 
+    // Validate passwords match
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      showMessage('Passwords do not match', 'error');
       return;
     }
 
     setLoading(true);
 
     try {
-      const { error } = await supabase.auth.updateUser({ password });
-      
+      // THIS LINE SENDS THE NEW PASSWORD TO SUPABASE
+      const { data, error } = await supabase.auth.updateUser({
+        password: password
+      });
+
       if (error) throw error;
+
+      // Success - show success message
       setPageState('success');
-    } catch (err: any) {
-      setError(err.message || 'Failed to update password. Please try again.');
+    } catch (error: any) {
+      console.error('Error:', error);
+      showMessage(error.message || 'Failed to update password. The link may have expired.', 'error');
     } finally {
       setLoading(false);
     }
@@ -124,7 +112,7 @@ export const SecretResetPassword: React.FC = () => {
               animation: 'spin 1s linear infinite',
               margin: '0 auto 16px',
             }} />
-            <p style={{ color: '#9CA3AF', fontSize: '14px' }}>Verifying reset link...</p>
+            <p style={{ color: '#9CA3AF', fontSize: '14px' }}>Loading...</p>
           </div>
         )}
 
@@ -191,10 +179,11 @@ export const SecretResetPassword: React.FC = () => {
               }}>Enter your new password below</p>
             </div>
 
-            {error && (
+            {/* Message Display */}
+            {message && (
               <div style={{
-                backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                border: '1px solid rgba(239, 68, 68, 0.3)',
+                backgroundColor: message.type === 'error' ? 'rgba(239, 68, 68, 0.1)' : 'rgba(34, 197, 94, 0.1)',
+                border: `1px solid ${message.type === 'error' ? 'rgba(239, 68, 68, 0.3)' : 'rgba(34, 197, 94, 0.3)'}`,
                 borderRadius: '10px',
                 padding: '14px 16px',
                 marginBottom: '24px',
@@ -202,8 +191,11 @@ export const SecretResetPassword: React.FC = () => {
                 alignItems: 'flex-start',
                 gap: '12px',
               }}>
-                <span style={{ fontSize: '16px' }}>⚠️</span>
-                <span style={{ color: '#F87171', fontSize: '14px' }}>{error}</span>
+                <span style={{ fontSize: '16px' }}>{message.type === 'error' ? '⚠️' : '✓'}</span>
+                <span style={{ 
+                  color: message.type === 'error' ? '#F87171' : '#4ADE80', 
+                  fontSize: '14px' 
+                }}>{message.text}</span>
               </div>
             )}
 
@@ -221,6 +213,7 @@ export const SecretResetPassword: React.FC = () => {
                   New Password
                 </label>
                 <input
+                  id="password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -263,6 +256,7 @@ export const SecretResetPassword: React.FC = () => {
                   Confirm Password
                 </label>
                 <input
+                  id="confirmPassword"
                   type="password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
@@ -292,6 +286,7 @@ export const SecretResetPassword: React.FC = () => {
               </div>
 
               <button
+                id="submitBtn"
                 type="submit"
                 disabled={loading}
                 style={{
