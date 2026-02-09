@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { LandingPage } from './components/LandingPage';
 import { SecretResetPassword } from './components/SecretResetPassword';
@@ -13,19 +13,25 @@ type Route = 'home' | 'reset-password' | 'signup-success';
 
 const App: React.FC = () => {
   const [route, setRoute] = useState<Route>('home');
+  const routeLocked = useRef(false); // Prevent route changes after initial detection
 
   useEffect(() => {
-    // Check current path and hash on mount and changes
+    // Check current path and hash on mount
     const checkRoute = () => {
+      // If route is already locked, don't change it
+      if (routeLocked.current) return;
+
       const path = window.location.pathname;
       const hash = window.location.hash;
       
       // Route to reset password page
       if (path === '/reset-password' || hash.includes('reset-password') || hash.includes('type=recovery')) {
+        routeLocked.current = true;
         setRoute('reset-password');
       }
       // Route to signup success page
       else if (path === '/signup-success' || path === '/confirm-signup' || hash.includes('signup-success') || hash.includes('type=signup')) {
+        routeLocked.current = true;
         setRoute('signup-success');
       }
       // Default to home
@@ -34,26 +40,23 @@ const App: React.FC = () => {
       }
     };
 
-    window.addEventListener('hashchange', checkRoute);
-    window.addEventListener('popstate', checkRoute);
-    checkRoute(); // Initial check
+    // Initial check - capture the URL before Supabase processes it
+    checkRoute();
 
     // Listen for Supabase specific Auth events
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      console.log('Auth event:', event);
+      
       if (event === 'PASSWORD_RECOVERY') {
+        routeLocked.current = true;
         setRoute('reset-password');
       } else if (event === 'SIGNED_IN') {
-        // Check if this is from email confirmation
-        const hash = window.location.hash;
-        if (hash.includes('type=signup')) {
-          setRoute('signup-success');
-        }
+        // If we detected signup earlier, keep showing that page
+        // This handles the case where the hash gets cleared after processing
       }
     });
 
     return () => {
-      window.removeEventListener('hashchange', checkRoute);
-      window.removeEventListener('popstate', checkRoute);
       subscription.unsubscribe();
     };
   }, []);
