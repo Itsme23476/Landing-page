@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
 // Initialize Supabase client
@@ -14,24 +14,46 @@ export const SecretResetPassword: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const sessionEstablished = useRef(false);
 
   useEffect(() => {
-    checkSession();
-  }, []);
+    // Listen for auth state changes (this catches the recovery token from URL hash)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log('Auth event:', event, session);
+      
+      if (event === 'PASSWORD_RECOVERY') {
+        // User clicked the recovery link - show the form
+        sessionEstablished.current = true;
+        setPageState('form');
+      } else if (event === 'SIGNED_IN' && session) {
+        // Session established from recovery link
+        sessionEstablished.current = true;
+        setPageState('form');
+      }
+    });
 
-  const checkSession = async () => {
-    try {
+    // Also check session after a small delay to let SDK process URL hash
+    const checkSession = async () => {
+      // Small delay to let SDK process URL hash tokens
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
       const { data: { session } } = await supabase.auth.getSession();
       
       if (session) {
+        sessionEstablished.current = true;
         setPageState('form');
-      } else {
+      } else if (!sessionEstablished.current) {
+        // No session and no recovery event - show error
         setPageState('invalid');
       }
-    } catch (err) {
-      setPageState('invalid');
-    }
-  };
+    };
+
+    checkSession();
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -102,7 +124,7 @@ export const SecretResetPassword: React.FC = () => {
               animation: 'spin 1s linear infinite',
               margin: '0 auto 16px',
             }} />
-            <p style={{ color: '#9CA3AF', fontSize: '14px' }}>Loading...</p>
+            <p style={{ color: '#9CA3AF', fontSize: '14px' }}>Verifying reset link...</p>
           </div>
         )}
 
