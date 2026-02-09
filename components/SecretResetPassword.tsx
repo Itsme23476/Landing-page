@@ -56,7 +56,7 @@ export const SecretResetPassword: React.FC = () => {
 
     try {
       // THIS LINE SENDS THE NEW PASSWORD TO SUPABASE
-      const { data, error } = await supabase.auth.updateUser({
+      const { error } = await supabase.auth.updateUser({
         password: password
       });
 
