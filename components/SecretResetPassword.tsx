@@ -8,12 +8,6 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 type PageState = 'loading' | 'invalid' | 'form' | 'success';
 
-// Check if URL has reset tokens
-function hasResetTokens(): boolean {
-  const hash = window.location.hash;
-  return hash.includes('access_token');
-}
-
 export const SecretResetPassword: React.FC = () => {
   const [pageState, setPageState] = useState<PageState>('loading');
   const [password, setPassword] = useState('');
@@ -22,14 +16,66 @@ export const SecretResetPassword: React.FC = () => {
   const [message, setMessage] = useState<{ text: string; type: 'error' | 'success' } | null>(null);
 
   useEffect(() => {
-    // Check for reset tokens in URL on page load
-    if (hasResetTokens()) {
-      // Tokens exist - show the password form
-      setPageState('form');
-    } else {
-      // No tokens - show error
-      setPageState('invalid');
-    }
+    let mounted = true;
+
+    // Listen for auth state changes - this catches when Supabase processes the URL tokens
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log('Auth event:', event, 'Session:', !!session);
+      
+      if (!mounted) return;
+
+      if (event === 'PASSWORD_RECOVERY') {
+        // Supabase detected recovery tokens - show form
+        setPageState('form');
+      } else if (event === 'SIGNED_IN' && session) {
+        // Session established from recovery link
+        setPageState('form');
+      } else if (event === 'TOKEN_REFRESHED' && session) {
+        setPageState('form');
+      }
+    });
+
+    // Also check session after giving Supabase time to process URL hash
+    const checkSession = async () => {
+      // Give Supabase SDK time to process the URL hash tokens
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      if (!mounted) return;
+
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (session) {
+        setPageState('form');
+        return;
+      }
+
+      // Check if URL has tokens but session failed to establish
+      const hash = window.location.hash;
+      if (hash.includes('access_token') || hash.includes('type=recovery')) {
+        // Tokens exist - wait a bit more and retry
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        if (!mounted) return;
+
+        const { data: { session: retrySession } } = await supabase.auth.getSession();
+        if (retrySession) {
+          setPageState('form');
+        } else {
+          // Still no session - tokens may have expired
+          setPageState('invalid');
+        }
+      } else {
+        // No tokens in URL
+        setPageState('invalid');
+      }
+    };
+
+    checkSession();
+
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   const showMessage = (text: string, type: 'error' | 'success') => {
@@ -55,7 +101,7 @@ export const SecretResetPassword: React.FC = () => {
     setLoading(true);
 
     try {
-      // THIS LINE SENDS THE NEW PASSWORD TO SUPABASE
+      // Send the new password to Supabase
       const { error } = await supabase.auth.updateUser({
         password: password
       });
@@ -112,7 +158,7 @@ export const SecretResetPassword: React.FC = () => {
               animation: 'spin 1s linear infinite',
               margin: '0 auto 16px',
             }} />
-            <p style={{ color: '#9CA3AF', fontSize: '14px' }}>Loading...</p>
+            <p style={{ color: '#9CA3AF', fontSize: '14px' }}>Verifying your reset link...</p>
           </div>
         )}
 
