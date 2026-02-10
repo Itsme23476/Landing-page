@@ -3,13 +3,14 @@ import { createClient } from '@supabase/supabase-js';
 import { LandingPage } from './components/LandingPage';
 import { SecretResetPassword } from './components/SecretResetPassword';
 import { SignUpSuccess } from './components/SignUpSuccess';
+import { PaymentSuccess } from './components/PaymentSuccess';
 
 // Initialize Supabase to listen for recovery events
 const SUPABASE_URL = 'https://gsvccxhdgcshiwgjvgfi.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdzdmNjeGhkZ2NzaGl3Z2p2Z2ZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjczOTY2NTIsImV4cCI6MjA4Mjk3MjY1Mn0.Sbb6YJjlQ_ig2LCcs9zz_Be1kU-iIHBx4Vu4nzCPyTM';
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-type Route = 'home' | 'reset-password' | 'signup-success';
+type Route = 'home' | 'reset-password' | 'signup-success' | 'payment-success';
 
 const App: React.FC = () => {
   const [route, setRoute] = useState<Route>('home');
@@ -33,6 +34,11 @@ const App: React.FC = () => {
       else if (path === '/signup-success' || path === '/confirm-signup' || hash.includes('signup-success') || hash.includes('type=signup')) {
         routeLocked.current = true;
         setRoute('signup-success');
+      }
+      // Route to payment success page
+      else if (path === '/payment-success' || hash.includes('payment-success')) {
+        routeLocked.current = true;
+        setRoute('payment-success');
       }
       // Default to home
       else {
@@ -67,6 +73,10 @@ const App: React.FC = () => {
 
   if (route === 'signup-success') {
     return <SignUpSuccess />;
+  }
+
+  if (route === 'payment-success') {
+    return <PaymentSuccess />;
   }
 
   return <LandingPage />;
