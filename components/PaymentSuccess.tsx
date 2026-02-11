@@ -9,8 +9,9 @@ export const PaymentSuccess: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleGoHome = () => {
-    window.location.href = '/';
+  const handleClose = () => {
+    window.close();
+    // Fallback message if window.close() doesn't work (browser security)
   };
 
   return (
@@ -144,7 +145,7 @@ export const PaymentSuccess: React.FC = () => {
           marginBottom: '32px',
         }}>
           Your payment has been processed successfully. 
-          You now have full access to all premium features of Lumina.
+          You can now close this tab and return to the Lumina app to enjoy all premium features.
         </p>
 
         {/* Order confirmation box */}
@@ -188,7 +189,7 @@ export const PaymentSuccess: React.FC = () => {
 
         {/* CTA Button */}
         <button
-          onClick={handleGoHome}
+          onClick={handleClose}
           style={{
             width: '100%',
             padding: '16px 24px',
@@ -211,14 +212,24 @@ export const PaymentSuccess: React.FC = () => {
             e.currentTarget.style.boxShadow = '0 4px 20px rgba(124, 77, 255, 0.35)';
           }}
         >
-          Go to Home
+          Close & Open the App
         </button>
+
+        {/* Instruction text */}
+        <p style={{
+          color: '#9CA3AF',
+          fontSize: '14px',
+          marginTop: '20px',
+          lineHeight: '1.6',
+        }}>
+          Your subscription is now active in the app.
+        </p>
 
         {/* Footer text */}
         <p style={{
           color: '#6B7280',
           fontSize: '13px',
-          marginTop: '20px',
+          marginTop: '12px',
         }}>
           Questions? Contact us at <span style={{ color: '#A78BFA' }}>support@lumina.ai</span>
         </p>
