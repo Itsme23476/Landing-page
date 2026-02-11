@@ -120,10 +120,7 @@ export const SecretResetPassword: React.FC = () => {
 
   const handleClose = () => {
     window.close();
-    // Fallback if window.close() doesn't work
-    setTimeout(() => {
-      window.location.href = '/';
-    }, 100);
+    // Browser may block window.close() for security - that's okay, user can manually close
   };
 
   return (
@@ -404,7 +401,7 @@ export const SecretResetPassword: React.FC = () => {
               marginBottom: '28px',
             }}>
               Your password has been successfully changed.<br />
-              You can now sign in with your new password.
+              You can now close this tab and sign in with your new password in the app.
             </p>
             <button
               onClick={handleClose}
@@ -424,7 +421,7 @@ export const SecretResetPassword: React.FC = () => {
               onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-1px)'}
               onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
             >
-              Close This Page
+              Close & Open the App
             </button>
           </div>
         )}
