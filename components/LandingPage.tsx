@@ -41,7 +41,7 @@ export const LandingPage: React.FC = () => {
               <Button 
                 variant="primary" 
                 icon={<Download size={20} />}
-                href="https://github.com/Itsme23476/App-interface/releases/download/final/AI-File-Organizer-Setup.exe"
+                href="https://github.com/Itsme23476/App-interface/actions/runs/21888940446/artifacts/5458757970"
                 target="_blank"
                 rel="noopener noreferrer"
               >
