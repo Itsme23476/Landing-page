@@ -41,7 +41,7 @@ export const LandingPage: React.FC = () => {
               <Button 
                 variant="primary" 
                 icon={<Download size={20} />}
-                href="https://github.com/Itsme23476/App-interface/actions/runs/21888940446/artifacts/5458757970"
+                href="https://github.com/Itsme23476/App-interface/releases/download/V.2.4/Lumina-Setup-v2.4.exe"
                 target="_blank"
                 rel="noopener noreferrer"
               >

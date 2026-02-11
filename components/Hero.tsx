@@ -55,7 +55,7 @@ export const Hero: React.FC = () => {
           <Button 
             icon={<Monitor size={18} />} 
             variant="primary"
-            href="https://github.com/Itsme23476/App-interface/actions/runs/21888940446/artifacts/5458757970"
+            href="https://github.com/Itsme23476/App-interface/releases/download/V.2.4/Lumina-Setup-v2.4.exe"
             target="_blank"
             rel="noopener noreferrer"
           >
