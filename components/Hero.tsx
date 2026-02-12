@@ -3,30 +3,18 @@ import { motion } from 'framer-motion';
 import { Monitor } from 'lucide-react';
 import { Button } from './Button';
 
-// Floating orb component
-const FloatingOrb: React.FC<{
-  size: number;
-  color: string;
-  initialX: string;
-  initialY: string;
+// Floating gradient blob
+const FloatingBlob: React.FC<{
+  className: string;
   duration: number;
-  delay: number;
-}> = ({ size, color, initialX, initialY, duration, delay }) => (
+  delay?: number;
+}> = ({ className, duration, delay = 0 }) => (
   <motion.div
-    className="absolute rounded-full pointer-events-none"
-    style={{
-      width: size,
-      height: size,
-      left: initialX,
-      top: initialY,
-      background: color,
-      filter: 'blur(40px)',
-    }}
+    className={`absolute rounded-full pointer-events-none ${className}`}
     animate={{
-      y: [0, -30, 0, 30, 0],
-      x: [0, 20, 0, -20, 0],
-      scale: [1, 1.1, 1, 0.9, 1],
-      opacity: [0.3, 0.5, 0.3, 0.5, 0.3],
+      y: [0, -50, 0, 50, 0],
+      x: [0, 30, 0, -30, 0],
+      scale: [1, 1.2, 1, 0.8, 1],
     }}
     transition={{
       duration,
@@ -37,144 +25,187 @@ const FloatingOrb: React.FC<{
   />
 );
 
-// Subtle grid pattern
-const GridPattern: React.FC = () => (
-  <div 
-    className="absolute inset-0 pointer-events-none opacity-[0.02]"
-    style={{
-      backgroundImage: `
-        linear-gradient(rgba(124, 77, 255, 0.5) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(124, 77, 255, 0.5) 1px, transparent 1px)
-      `,
-      backgroundSize: '60px 60px',
-    }}
-  />
-);
-
-// Animated gradient line
-const GlowLine: React.FC<{ top: string; delay: number }> = ({ top, delay }) => (
+// Animated ring
+const AnimatedRing: React.FC<{
+  size: number;
+  top: string;
+  left: string;
+  duration: number;
+  delay?: number;
+}> = ({ size, top, left, duration, delay = 0 }) => (
   <motion.div
-    className="absolute left-0 right-0 h-[1px] pointer-events-none"
-    style={{ top }}
-    initial={{ opacity: 0, scaleX: 0 }}
-    animate={{ 
-      opacity: [0, 0.3, 0],
-      scaleX: [0, 1, 0],
+    className="absolute border border-lumina-500/20 rounded-full pointer-events-none"
+    style={{ width: size, height: size, top, left }}
+    animate={{
+      scale: [1, 1.3, 1],
+      opacity: [0.2, 0.4, 0.2],
+      rotate: [0, 180, 360],
     }}
     transition={{
-      duration: 4,
+      duration,
       delay,
       repeat: Infinity,
       ease: "easeInOut",
     }}
-  >
-    <div className="w-full h-full bg-gradient-to-r from-transparent via-lumina-500/50 to-transparent" />
-  </motion.div>
+  />
 );
 
-// Small floating particles
-const Particle: React.FC<{ index: number }> = ({ index }) => {
-  const randomX = `${10 + (index * 17) % 80}%`;
-  const randomY = `${10 + (index * 23) % 80}%`;
-  const randomDuration = 15 + (index % 10);
-  const randomDelay = index * 0.5;
-  const randomSize = 2 + (index % 3);
+// Rising particle
+const RisingParticle: React.FC<{ index: number }> = ({ index }) => {
+  const positions = [5, 15, 25, 35, 45, 55, 65, 75, 85, 95];
+  const left = `${positions[index % positions.length]}%`;
+  const duration = 8 + (index % 5) * 2;
+  const delay = index * 0.8;
+  const size = 3 + (index % 3);
 
   return (
     <motion.div
       className="absolute rounded-full bg-lumina-400 pointer-events-none"
       style={{
-        width: randomSize,
-        height: randomSize,
-        left: randomX,
-        top: randomY,
+        width: size,
+        height: size,
+        left,
+        bottom: '-10px',
       }}
       animate={{
-        y: [0, -100, 0],
-        opacity: [0, 0.6, 0],
+        y: [0, -800],
+        opacity: [0, 0.8, 0.8, 0],
+        scale: [0.5, 1, 1, 0.5],
       }}
       transition={{
-        duration: randomDuration,
-        delay: randomDelay,
+        duration,
+        delay,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "linear",
       }}
     />
   );
 };
 
+// Glowing orb that pulses
+const PulsingOrb: React.FC<{
+  size: number;
+  top: string;
+  left: string;
+  color: string;
+  duration: number;
+}> = ({ size, top, left, color, duration }) => (
+  <motion.div
+    className="absolute rounded-full pointer-events-none"
+    style={{
+      width: size,
+      height: size,
+      top,
+      left,
+      background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
+    }}
+    animate={{
+      scale: [1, 1.5, 1],
+      opacity: [0.3, 0.6, 0.3],
+    }}
+    transition={{
+      duration,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+);
+
 export const Hero: React.FC = () => {
   return (
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-      {/* Animated Background Elements */}
+      {/* Animated Background */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        {/* Base gradient */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-lumina-900/20 blur-[120px] rounded-full opacity-60" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[400px] bg-lumina-600/10 blur-[100px] rounded-full" />
-        
-        {/* Grid pattern */}
-        <GridPattern />
-        
-        {/* Floating orbs */}
-        <FloatingOrb 
-          size={300} 
-          color="rgba(124, 77, 255, 0.08)" 
-          initialX="10%" 
-          initialY="20%" 
-          duration={20} 
-          delay={0} 
+        {/* Main gradient blobs */}
+        <FloatingBlob 
+          className="w-[500px] h-[500px] bg-lumina-600/20 blur-[100px] top-[-100px] left-[-100px]"
+          duration={20}
         />
-        <FloatingOrb 
+        <FloatingBlob 
+          className="w-[400px] h-[400px] bg-purple-600/15 blur-[80px] top-[100px] right-[-50px]"
+          duration={25}
+          delay={2}
+        />
+        <FloatingBlob 
+          className="w-[300px] h-[300px] bg-indigo-600/15 blur-[60px] bottom-[50px] left-[20%]"
+          duration={18}
+          delay={4}
+        />
+
+        {/* Pulsing orbs */}
+        <PulsingOrb 
           size={200} 
-          color="rgba(139, 92, 246, 0.06)" 
-          initialX="70%" 
-          initialY="10%" 
-          duration={25} 
-          delay={2} 
+          top="20%" 
+          left="10%" 
+          color="rgba(124, 77, 255, 0.3)" 
+          duration={4} 
         />
-        <FloatingOrb 
+        <PulsingOrb 
           size={150} 
-          color="rgba(167, 139, 250, 0.05)" 
-          initialX="80%" 
-          initialY="60%" 
-          duration={18} 
-          delay={4} 
+          top="60%" 
+          left="80%" 
+          color="rgba(139, 92, 246, 0.25)" 
+          duration={5} 
         />
-        <FloatingOrb 
-          size={180} 
-          color="rgba(124, 77, 255, 0.04)" 
-          initialX="5%" 
-          initialY="70%" 
-          duration={22} 
-          delay={1} 
+        <PulsingOrb 
+          size={100} 
+          top="40%" 
+          left="60%" 
+          color="rgba(167, 139, 250, 0.2)" 
+          duration={6} 
         />
 
-        {/* Animated glow lines */}
-        <GlowLine top="30%" delay={0} />
-        <GlowLine top="70%" delay={2} />
+        {/* Animated rings */}
+        <AnimatedRing size={200} top="10%" left="5%" duration={15} />
+        <AnimatedRing size={150} top="60%" left="85%" duration={20} delay={3} />
+        <AnimatedRing size={100} top="70%" left="15%" duration={12} delay={5} />
 
-        {/* Floating particles */}
-        {[...Array(12)].map((_, i) => (
-          <Particle key={i} index={i} />
+        {/* Rising particles */}
+        {[...Array(15)].map((_, i) => (
+          <RisingParticle key={i} index={i} />
         ))}
 
-        {/* Corner accents */}
+        {/* Gradient line accents */}
         <motion.div
-          className="absolute top-20 left-10 w-32 h-32 border border-lumina-500/10 rounded-full"
-          animate={{ 
-            scale: [1, 1.1, 1],
-            opacity: [0.1, 0.2, 0.1],
+          className="absolute top-[30%] left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-lumina-500/40 to-transparent"
+          animate={{
+            opacity: [0, 0.5, 0],
+            scaleX: [0.5, 1, 0.5],
           }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
         />
         <motion.div
-          className="absolute bottom-20 right-10 w-24 h-24 border border-lumina-500/10 rounded-full"
-          animate={{ 
-            scale: [1, 1.15, 1],
-            opacity: [0.1, 0.15, 0.1],
+          className="absolute top-[70%] left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"
+          animate={{
+            opacity: [0, 0.4, 0],
+            scaleX: [0.5, 1, 0.5],
           }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          transition={{
+            duration: 5,
+            delay: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
         />
+
+        {/* Subtle grid overlay */}
+        <div 
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(124, 77, 255, 1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(124, 77, 255, 1) 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px',
+          }}
+        />
+
+        {/* Vignette effect */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#030014]/50" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
