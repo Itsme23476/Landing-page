@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Monitor } from 'lucide-react';
+import { Monitor, Apple } from 'lucide-react';
 import { Button } from './Button';
 
 // Floating gradient blob
@@ -258,6 +258,15 @@ export const Hero: React.FC = () => {
             rel="noopener noreferrer"
           >
             Download for Windows
+          </Button>
+          <Button 
+            icon={<Apple size={18} />} 
+            variant="outline"
+            href="https://github.com/Itsme23476/Mac-version/releases/download/V.2.8/Lumina-2.8-mac.dmg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download for Mac
           </Button>
         </motion.div>
       </div>

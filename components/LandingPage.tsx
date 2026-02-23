@@ -7,7 +7,7 @@ import { HowItWorks } from './HowItWorks';
 import { Future } from './Future';
 import { Footer } from './Footer';
 import { Button } from './Button';
-import { Download } from 'lucide-react';
+import { Download, Apple } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const LandingPage: React.FC = () => {
@@ -46,6 +46,15 @@ export const LandingPage: React.FC = () => {
                 rel="noopener noreferrer"
               >
                 Download for Windows
+              </Button>
+              <Button 
+                variant="outline" 
+                icon={<Apple size={20} />}
+                href="https://github.com/Itsme23476/Mac-version/releases/download/V.2.8/Lumina-2.8-mac.dmg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download for Mac
               </Button>
             </div>
           </motion.div>
