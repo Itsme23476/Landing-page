@@ -50,7 +50,7 @@ export const LandingPage: React.FC = () => {
               <Button 
                 variant="outline" 
                 icon={<Apple size={20} />}
-                href="https://github.com/Itsme23476/Mac-version/releases/download/V.2.8/Lumina-2.8-mac.dmg"
+                href="https://github.com/Itsme23476/Mac-version/actions/runs/22673839873/artifacts/5761440339"
                 target="_blank"
                 rel="noopener noreferrer"
               >
