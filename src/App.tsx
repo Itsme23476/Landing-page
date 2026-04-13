@@ -2,6 +2,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import ProductMockup from './components/ProductMockup';
 import Features from './components/Features';
+import HowItWorks from './components/HowItWorks';
 import CtaSection from './components/CtaSection';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Hero />
           <ProductMockup />
           <Features />
+          <HowItWorks />
         </main>
       </div>
 

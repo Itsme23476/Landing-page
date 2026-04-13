@@ -16,13 +16,13 @@ const Hero: React.FC = () => {
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.3 }}
         style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}
       >
         <div>
           <span className="badge">
             <span style={{ marginRight: '6px' }}>✨</span>
-            72.4 NOW AVAILABLE
+            V1 NOW AVAILABLE
           </span>
         </div>
         
@@ -45,9 +45,59 @@ const Hero: React.FC = () => {
           Search your entire computer using natural language. No folders. No guessing. Just results.
         </p>
         
-        <div style={{ display: 'flex', gap: '16px', marginTop: '16px' }}>
-          <button className="button-primary">Download for Windows</button>
-          <button className="button-secondary">Download for Mac</button>
+        <div style={{ display: 'flex', gap: '16px', marginTop: '16px', flexWrap: 'nowrap' }}>
+          <motion.a
+            href="https://github.com/Itsme23476/App-interface/releases/download/V.3.3/Lumina-Setup-v3.3.exe"
+            whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(176,102,255,0.6)' }}
+            whileTap={{ scale: 0.97 }}
+            style={{
+              display: 'inline-block',
+              background: 'linear-gradient(135deg, #b066ff 0%, #7c3aed 100%)',
+              color: '#ffffff',
+              border: 'none',
+              borderRadius: '8px',
+              padding: '16px 32px',
+              fontSize: '1rem',
+              fontWeight: 600,
+              fontFamily: "'Inter', sans-serif",
+              cursor: 'pointer',
+              letterSpacing: '0.01em',
+              boxShadow: '0 0 24px rgba(176,102,255,0.4)',
+              transition: 'box-shadow 0.2s ease',
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+              textAlign: 'center'
+            }}
+          >
+            Download for Windows
+          </motion.a>
+
+          <motion.a
+            href="https://github.com/Itsme23476/Mac-version/actions/runs/22673839873/artifacts/5761440339"
+            whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(255,255,255,0.2)' }}
+            whileTap={{ scale: 0.97 }}
+            style={{
+              display: 'inline-block',
+              background: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(10px)',
+              color: '#ffffff',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '8px',
+              padding: '16px 32px',
+              fontSize: '1rem',
+              fontWeight: 600,
+              fontFamily: "'Inter', sans-serif",
+              cursor: 'pointer',
+              letterSpacing: '0.01em',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+              transition: 'all 0.2s ease',
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+              textAlign: 'center'
+            }}
+          >
+            Download for Mac
+          </motion.a>
         </div>
       </motion.div>
 
@@ -55,7 +105,7 @@ const Hero: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
+        transition={{ duration: 0.3 }}
         style={{ position: 'relative', width: '100%' }}
       >
         {/* Ambient purple glow */}
