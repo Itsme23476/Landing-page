@@ -9,6 +9,7 @@ import PaymentSuccess from './components/PaymentSuccess';
 import SignUpSuccess from './components/SignUpSuccess';
 import ResetPassword from './components/ResetPassword';
 import SecretResetPassword from './components/SecretResetPassword';
+import BlogIndex from './components/BlogIndex';
 
 function Home() {
   return (
@@ -43,6 +44,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<BlogIndex />} />
         <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/signup-success" element={<SignUpSuccess />} />
         <Route path="/reset-password" element={<ResetPassword />} />

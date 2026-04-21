@@ -10,7 +10,7 @@ const Header: React.FC = () => {
       position: 'relative',
       zIndex: 10
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', color: 'inherit' }}>
         <div style={{ 
           width: '24px', 
           height: '24px', 
@@ -19,12 +19,13 @@ const Header: React.FC = () => {
           boxShadow: '0 0 15px rgba(178, 139, 255, 0.5)'
         }}></div>
         <span style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Filect</span>
-      </div>
+      </a>
 
       <nav style={{ display: 'flex', gap: '32px', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-        <a href="#features" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Features</a>
-        <a href="#how-it-works" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>How it works</a>
-        <a href="#download" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Download</a>
+        <a href="/#features" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Features</a>
+        <a href="/#how-it-works" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>How it works</a>
+        <a href="/blog" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Blog</a>
+        <a href="/#download" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Download</a>
       </nav>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
