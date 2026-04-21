@@ -10,9 +10,6 @@ import SignUpSuccess from './components/SignUpSuccess';
 import ResetPassword from './components/ResetPassword';
 import SecretResetPassword from './components/SecretResetPassword';
 import BlogIndex from './components/BlogIndex';
-import BlogOrganizeFiles from './components/BlogOrganizeFiles';
-import BlogTraditionalSearch from './components/BlogTraditionalSearch';
-import BlogLocalAI from './components/BlogLocalAI';
 
 function Home() {
   return (
@@ -48,9 +45,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<BlogIndex />} />
-        <Route path="/blog/how-to-organize-files-with-ai" element={<BlogOrganizeFiles />} />
-        <Route path="/blog/why-traditional-file-search-is-broken" element={<BlogTraditionalSearch />} />
-        <Route path="/blog/future-of-local-ai" element={<BlogLocalAI />} />
         <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/signup-success" element={<SignUpSuccess />} />
         <Route path="/reset-password" element={<ResetPassword />} />

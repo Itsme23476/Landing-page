@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import Header from './Header';
 
 const ARTICLES = [
@@ -80,8 +79,8 @@ const BlogIndex: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Link
-                  to={`/blog/${article.id}`}
+                <a
+                  href={`/blog/${article.id}/`}
                   style={{
                     display: 'block',
                     padding: '32px',
@@ -148,7 +147,7 @@ const BlogIndex: React.FC = () => {
                     <span>{article.date}</span>
                     <span>{article.readTime}</span>
                   </div>
-                </Link>
+                </a>
               </motion.div>
             ))}
           </div>
