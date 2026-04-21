@@ -5,7 +5,7 @@ const Features: React.FC = () => {
   const cards = [
     {
       title: "Natural Language",
-      description: "Don't remember the filename? Just describe what's inside. Lumina understands context.",
+      description: "Don't remember the filename? Just describe what's inside. filect understands context.",
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="11" cy="11" r="8"></circle>
@@ -36,7 +36,7 @@ const Features: React.FC = () => {
     },
     {
       title: "Keyboard First",
-      description: "Summon Lumina with a simple shortcut. Navigate entirely without your mouse.",
+      description: "Summon filect with a simple shortcut. Navigate entirely without your mouse.",
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
@@ -89,7 +89,7 @@ const Features: React.FC = () => {
           Designed for flow.
         </h2>
         <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
-          Traditional file explorers are broken. Lumina fixes them by letting you search the way you think.
+          Traditional file explorers are broken. filect fixes them by letting you search the way you think.
         </p>
       </motion.div>
 

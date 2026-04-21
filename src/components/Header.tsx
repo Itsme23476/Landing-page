@@ -18,7 +18,7 @@ const Header: React.FC = () => {
           borderRadius: '6px',
           boxShadow: '0 0 15px rgba(178, 139, 255, 0.5)'
         }}></div>
-        <span style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Lumina</span>
+        <span style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em' }}>filect</span>
       </div>
 
       <nav style={{ display: 'flex', gap: '32px', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>

@@ -5,7 +5,7 @@ const HowItWorks: React.FC = () => {
   const steps = [
     {
       number: "1",
-      title: "Install Lumina",
+      title: "Install filect",
       description: "Download the lightweight client for Windows."
     },
     {

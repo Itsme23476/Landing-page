@@ -32,7 +32,7 @@ function Home() {
       <CtaSection />
 
       <footer style={{ marginTop: '100px', borderTop: '1px solid var(--border-light)', padding: '40px 0', textAlign: 'center', color: 'var(--text-secondary)' }}>
-        <p>&copy; {new Date().getFullYear()} Lumina. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} filect. All rights reserved.</p>
       </footer>
     </div>
   );
