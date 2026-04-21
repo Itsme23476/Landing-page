@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
         
         <div style={{ display: 'flex', gap: '16px', marginTop: '16px', flexWrap: 'nowrap' }}>
           <motion.a
-            href="https://github.com/Itsme23476/App-interface/releases/download/V.9/Lumina.exe"
+            href="https://github.com/Itsme23476/App-interface/releases/download/V.10/Filect.exe"
             whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(176,102,255,0.6)' }}
             whileTap={{ scale: 0.97 }}
             style={{
@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
           </motion.a>
 
           <motion.a
-            href="https://github.com/Itsme23476/Mac-version/releases/download/V.10/Lumina-10-mac.dmg"
+            href="https://github.com/Itsme23476/Mac-version/releases/download/V.11/Filect-11-mac.dmg"
             whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(255,255,255,0.2)' }}
             whileTap={{ scale: 0.97 }}
             style={{
