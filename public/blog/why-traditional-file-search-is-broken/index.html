@@ -145,12 +145,12 @@
       <p><strong>1. Index actual file content, not just names.</strong> The full text of PDFs, documents, spreadsheets, and notes should be searchable through semantic understanding — not just keyword matching.</p>
       <p><strong>2. Support natural language queries.</strong> A user should be able to type "the Q3 revenue report from last year" and get the right answer, even if the file is named "Report_Q3_2025_v7_SEND.xlsx."</p>
       <p><strong>3. Return results in under one second.</strong> Search that takes three seconds feels broken. Speed is a core requirement, not a nice-to-have.</p>
-      <p><strong>4. Keep data private.</strong> File contents are personal. An AI search tool that uploads documents to a cloud server trades privacy for functionality. Local processing is the correct architecture.</p>
+      <p><strong>4. Keep data private.</strong> File contents are personal. Filect addresses this by using OpenAI's enterprise API, where your data is never used to train public models and is never accessible to Filect or any other third party.</p>
       <p><strong>5. Stay up to date automatically.</strong> The index should update in real-time as files are created, moved, or deleted — not on a fixed schedule that lags by hours.</p>
 
       <div class="cta-box">
         <p>Filect meets every one of these requirements.</p>
-        <p>Semantic search over your entire drive, powered by local AI. No internet required. No data leaves your machine.</p>
+        <p>Semantic search over your entire drive, powered by OpenAI's enterprise API. Your data is never stored by Filect and never used to train AI models.</p>
         <a class="cta-btn" href="/#download">Download Filect Free →</a>
       </div>
 
@@ -170,13 +170,13 @@
         <strong>AI file search</strong> works fundamentally differently. Instead of matching character strings in file names, it builds a semantic understanding of what each file contains and matches your query against that understanding.
       </p>
       <p>
-        Transformer-based embedding models (much smaller versions of what powers ChatGPT, optimized for local hardware) convert your document contents into vectors — numerical representations of meaning. When you search, your query is converted to the same vector space and the system finds files whose content is closest in meaning to what you're looking for.
+        Transformer-based embedding models (the same family of technology that powers ChatGPT, accessed via OpenAI's secure enterprise API) convert your document contents into vectors — numerical representations of meaning. When you search, your query is converted to the same vector space and the system finds files whose content is closest in meaning to what you're looking for.
       </p>
       <p>
         The result: a file named "jdnwjek293.pdf" containing a vendor contract is found when you search for "vendor agreement." A screenshot named "Screen Shot 2025-08-03 at 2.04.38 PM.png" showing an error message is found when you search for "the error from the deployment last August."
       </p>
       <p>
-        For a deeper explanation of how local AI makes this possible without cloud uploads, read: <a href="/blog/future-of-local-ai/">The Future of Local AI on Your Machine</a>.
+        For a deeper understanding of how AI file search works and how to get started, read: <a href="/blog/how-to-organize-files-with-ai/">How to Organize Files with AI in 2026</a>.
       </p>
 
       <h2 id="comparison">Windows Search vs Spotlight vs AI Search Tools: A Comparison</h2>
@@ -198,7 +198,7 @@
             <tr><td>Handles bad filenames</td><td>✗ No</td><td>✗ No</td><td>✓ Yes</td></tr>
             <tr><td>External drive support</td><td>⚡ Manual config</td><td>⚡ Limited</td><td>✓ Yes</td></tr>
             <tr><td>Real-time index updates</td><td>⚡ Delayed</td><td>⚡ Delayed</td><td>✓ Real-time</td></tr>
-            <tr><td>Private / local only</td><td>✓ Yes</td><td>✓ Yes</td><td>✓ Yes</td></tr>
+            <tr><td>Private</td><td>✓ Yes</td><td>✓ Yes</td><td>✓ Yes (via OpenAI API)</td></tr>
             <tr><td>Speed on large drives</td><td>⚡ Slow</td><td>⚡ Moderate</td><td>✓ Sub-second</td></tr>
           </tbody>
         </table>
