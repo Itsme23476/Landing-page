@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — Filect | AI File Search & Organization</title>
+  <meta name="description" content="Simple, transparent pricing for Filect. Start with a free 10-day trial, then $15/month for unlimited AI-powered file search and organization." />
+  <meta property="og:title" content="Filect Pricing — $15/month with Free Trial" />
+  <meta property="og:description" content="Try Filect free for 10 days. Then $15/month for unlimited AI file search, natural language queries, and automated tagging." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://filect.io/pricing.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #08080e; --surface: #111118; --border: rgba(255,255,255,0.07);
+      --text: #d4d4dc; --muted: #8888a0; --white: #ffffff;
+      --purple: #b066ff; --purple-dark: #7c3aed; --font: 'Inter', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+    /* ── Header ── */
+    .site-header { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .site-header .inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--white); font-weight: 700; font-size: 1rem; }
+    .logo-mark { width: 22px; height: 22px; background: linear-gradient(135deg, #b066ff, #7c3aed); border-radius: 5px; }
+    .header-nav { display: flex; gap: 24px; align-items: center; }
+    .header-nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.15s; }
+    .header-nav a:hover { color: var(--white); }
+    .btn-download { background: linear-gradient(135deg, var(--purple), var(--purple-dark)); color: var(--white) !important; padding: 8px 18px; border-radius: 6px; font-weight: 600; font-size: 0.85rem !important; }
+
+    /* ── Hero ── */
+    .pricing-hero {
+      text-align: center;
+      padding: 80px 24px 20px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .pricing-hero h1 {
+      color: var(--white);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .pricing-hero p {
+      color: var(--muted);
+      font-size: 1.15rem;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── Card ── */
+    .pricing-grid {
+      max-width: 900px;
+      margin: 60px auto 0;
+      padding: 0 24px 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .pricing-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px 36px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card.featured {
+      border-color: rgba(176,102,255,0.35);
+      box-shadow: 0 0 40px rgba(176,102,255,0.08);
+    }
+    .pricing-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 70%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--purple), transparent);
+    }
+    .card-badge {
+      display: inline-block;
+      background: rgba(176,102,255,0.12);
+      color: var(--purple);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+    .card-title {
+      color: var(--white);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 28px;
+      min-height: 44px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 28px;
+    }
+    .price-amount {
+      color: var(--white);
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .price-period {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .cta-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: opacity 0.15s;
+    }
+    .cta-btn:hover { opacity: 0.88; text-decoration: none; }
+    .cta-btn.primary {
+      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+      color: var(--white);
+      box-shadow: 0 0 24px rgba(176,102,255,0.3);
+    }
+    .cta-btn.secondary {
+      background: rgba(255,255,255,0.05);
+      color: var(--white);
+      border: 1px solid var(--border);
+    }
+
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 14px; flex-grow: 1; }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .check {
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      margin-top: 2px;
+    }
+
+    /* ── FAQ ── */
+    .faq-section {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 0 24px 100px;
+    }
+    .faq-title {
+      color: var(--white);
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item h3 { color: var(--white); font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+    .faq-item p { color: var(--muted); font-size: 0.92rem; margin: 0; }
+
+    /* ── Footer ── */
+    .site-footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { color: var(--muted); font-size: 0.85rem; }
+
+    @media (max-width: 700px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+      .header-nav .hide-mob { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="inner">
+      <a class="logo" href="/"><div class="logo-mark"></div>Filect</a>
+      <nav class="header-nav">
+        <a class="hide-mob" href="/#features">Features</a>
+        <a class="hide-mob" href="/#how-it-works">How it works</a>
+        <a class="hide-mob" href="/blog">Blog</a>
+        <a class="hide-mob" href="/pricing.html" style="color: var(--white);">Pricing</a>
+        <a class="btn-download" href="/#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="pricing-hero">
+      <h1>Simple, transparent pricing.</h1>
+      <p>Try Filect free for 10 days. No credit card required. Cancel anytime after.</p>
+    </section>
+
+    <section class="pricing-grid">
+
+      <!-- Free Trial Card -->
+      <div class="pricing-card">
+        <span class="card-badge">Free Trial</span>
+        <h2 class="card-title">Starter</h2>
+        <p class="card-desc">Full access to every feature for 10 days — no strings attached.</p>
+        <div class="price-row">
+          <span class="price-amount">$0</span>
+          <span class="price-period">for 10 days</span>
+        </div>
+        <a class="cta-btn secondary" href="/#download">Start Free Trial</a>
+        <ul class="feature-list">
+          <li>
+            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Unlimited semantic file search
+          </li>
+          <li>
+            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Natural language queries
+          </li>
+          <li>
+            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            AI file tagging
+          </li>
+          <li>
+            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Windows & Mac support
+          </li>
+          <li>
+            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            No credit card required
+          </li>
+        </ul>
+      </div>
+
+      <!-- Pro Card -->
+      <div class="pricing-card featured">
+        <span class="card-badge">Most Popular</span>
+        <h2 class="card-title">Pro</h2>
+        <p class="card-desc">Everything in the free trial — forever. Keep your files organized.</p>
+        <div class="price-row">
+          <span class="price-amount">$15</span>
+          <span class="price-period">/ month</span>
+        </div>
+        <a class="cta-btn primary" href="/#download">Get Started</a>
+        <ul class="feature-list">
+          <li>
+            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Unlimited semantic file search
+          </li>
+          <li>
+            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Natural language queries
+          </li>
+          <li>
+            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Automated AI file tagging
+          </li>
+          <li>
+            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Secure OpenAI processing
+          </li>
+          <li>
+            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Windows & Mac support
+          </li>
+          <li>
+            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Cancel anytime
+          </li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+      <h2 class="faq-title">Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <h3>What happens after the 10-day free trial?</h3>
+        <p>After 10 days, you can subscribe to the Pro plan for $15/month to continue using Filect. If you choose not to subscribe, the app simply stops processing new files — nothing is deleted.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Is a credit card required to start the free trial?</h3>
+        <p>No. You can download Filect and start your 10-day trial immediately without entering any payment information.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I cancel anytime?</h3>
+        <p>Yes. There are no contracts or commitments. You can cancel your subscription at any point and it will remain active until the end of your billing period.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What payment methods do you accept?</h3>
+        <p>We accept all major credit and debit cards. Payments are processed securely through our payment provider.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Is my data safe?</h3>
+        <p>Yes. File processing is handled securely via OpenAI's enterprise API. Your data is never stored by Filect and is never used to train public AI models. Read our full <a href="/privacy.html">Privacy Policy</a> for details.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/blog">Blog</a>
+      <a href="/#features">Features</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Filect. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

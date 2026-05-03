@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import ProductMockup from './components/ProductMockup';
 import Features from './components/Features';
 import HowItWorks from './components/HowItWorks';
-import Pricing from './components/Pricing';
 import CtaSection from './components/CtaSection';
 import PaymentSuccess from './components/PaymentSuccess';
 import SignUpSuccess from './components/SignUpSuccess';
@@ -28,7 +27,6 @@ function Home() {
           <ProductMockup />
           <Features />
           <HowItWorks />
-          <Pricing />
         </main>
       </div>
 
@@ -38,7 +36,7 @@ function Home() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
           <div style={{ display: 'flex', gap: '24px' }}>
             <a href="/privacy.html" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Privacy Policy</a>
-            <a href="/#pricing" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Pricing</a>
+            <a href="/pricing.html" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Pricing</a>
           </div>
           <p style={{ fontSize: '0.9rem' }}>&copy; {new Date().getFullYear()} Filect. All rights reserved.</p>
         </div>
