@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Filect</title>
+  <meta name="description" content="Privacy Policy for Filect. We value your privacy and security." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #08080e; --surface: #111118; --border: rgba(255,255,255,0.07);
+      --text: #e2e8f0; --muted: #8888a0; --white: #ffffff;
+      --purple: #b066ff; --purple-dark: #7c3aed; --font: 'Inter', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .site-header { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .site-header .inner { max-width: 860px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--white); font-weight: 700; font-size: 1rem; }
+    .logo-mark { width: 22px; height: 22px; background: linear-gradient(135deg, #b066ff, #7c3aed); border-radius: 5px; }
+    .header-nav { display: flex; gap: 24px; align-items: center; }
+    .header-nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.15s; }
+    .header-nav a:hover { color: var(--white); }
+    .btn-download { background: linear-gradient(135deg, var(--purple), var(--purple-dark)); color: var(--white) !important; padding: 8px 18px; border-radius: 6px; font-weight: 600; font-size: 0.85rem !important; }
+    .article-wrap { max-width: 720px; margin: 0 auto; padding: 60px 24px 100px; }
+    h1 { color: var(--white); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .meta { color: var(--muted); font-size: 0.85rem; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+    p { margin-bottom: 1.4em; }
+    h2 { color: var(--white); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-top: 48px; margin-bottom: 16px; }
+    strong { color: var(--white); font-weight: 600; }
+    a { color: var(--purple); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { margin-bottom: 1.4em; padding-left: 20px; }
+    li { margin-bottom: 8px; }
+    .site-footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="inner">
+      <a class="logo" href="/"><div class="logo-mark"></div>Filect</a>
+      <nav class="header-nav">
+        <a href="/#features">Features</a>
+        <a href="/#how-it-works">How it works</a>
+        <a href="/blog">Blog</a>
+        <a href="/#pricing">Pricing</a>
+        <a class="btn-download" href="/#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="article-wrap">
+      <h1>Privacy Policy</h1>
+      <div class="meta">
+        <span>Last updated: May 4, 2026</span>
+      </div>
+
+      <p>
+        At Filect, we understand that your files are deeply personal and highly confidential. This Privacy Policy explains exactly how we handle your data, what is sent over the internet, and what remains private to you.
+      </p>
+
+      <h2>1. How File Processing Works</h2>
+      <p>
+        Filect is an AI-powered file search and organization application. In order to understand and categorize your files with high accuracy, Filect processes file metadata and contents.
+      </p>
+      <ul>
+        <li><strong>OpenAI Processing:</strong> The semantic processing of your files is conducted using <strong>OpenAI's enterprise API</strong>. When Filect scans a file, the necessary data is securely transmitted to OpenAI for analysis (to generate tags, summaries, and search vectors).</li>
+        <li><strong>No Third-Party Access:</strong> The data transmitted to OpenAI is governed by OpenAI's API privacy policies, which stipulate that API data is <strong>not</strong> used to train their public models. Only you and the secure automated API have access to this data.</li>
+        <li><strong>No Filect Storage:</strong> Filect (the company) does <strong>not</strong> intercept, store, or save your files or file contents on our own servers. The transmission happens directly between your desktop application and OpenAI.</li>
+      </ul>
+
+      <h2>2. Data Collection and Usage</h2>
+      <p>
+        <strong>Personal Information:</strong> We collect your email address and payment information when you sign up for the 10-day free trial and the monthly subscription. Payment processing is handled securely via our payment provider (e.g., Stripe). We do not store full credit card numbers on our servers.
+      </p>
+      <p>
+        <strong>App Analytics:</strong> We may collect anonymized usage data (e.g., how often the search function is used, crash reports) to improve the stability and performance of the desktop application. This telemetry data does not include any file contents, filenames, or search queries.
+      </p>
+
+      <h2>3. Data Security</h2>
+      <p>
+        We take security seriously. All communication between the Filect desktop application and external APIs (such as OpenAI and our payment provider) is encrypted in transit using industry-standard TLS.
+      </p>
+
+      <h2>4. Your Rights and Control</h2>
+      <p>
+        You have complete control over what Filect scans. You can explicitly exclude specific folders, drives, or file types from being processed via the application settings. If you uninstall the application, any local cache or index built by Filect is deleted from your machine.
+      </p>
+
+      <h2>5. Changes to This Policy</h2>
+      <p>
+        We may update this privacy policy from time to time to reflect changes in our practices or legal obligations. We will notify active subscribers of any material changes via email or an in-app notification.
+      </p>
+
+      <h2>6. Contact Us</h2>
+      <p>
+        If you have any questions about this Privacy Policy or how your data is handled, please reach out to our support team.
+      </p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Filect. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
