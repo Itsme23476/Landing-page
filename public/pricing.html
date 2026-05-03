@@ -14,28 +14,99 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #08080e; --surface: #111118; --border: rgba(255,255,255,0.07);
-      --text: #d4d4dc; --muted: #8888a0; --white: #ffffff;
-      --purple: #b066ff; --purple-dark: #7c3aed; --font: 'Inter', system-ui, sans-serif;
+      --bg-dark: #050508;
+      --bg-surface: #12121A;
+      --purple-light: #B28BFF;
+      --purple-primary: #8B5CF6;
+      --purple-dark: #6D28D9;
+      --border-light: rgba(255, 255, 255, 0.08);
+      --text-primary: #FFFFFF;
+      --text-secondary: #A1A1B5;
+      --font-sans: 'Inter', sans-serif;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      font-size: 17px;
+      line-height: 1.7;
+    }
 
-    /* ── Header ── */
-    .site-header { border-bottom: 1px solid var(--border); padding: 18px 0; }
-    .site-header .inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
-    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--white); font-weight: 700; font-size: 1rem; }
-    .logo-mark { width: 22px; height: 22px; background: linear-gradient(135deg, #b066ff, #7c3aed); border-radius: 5px; }
-    .header-nav { display: flex; gap: 24px; align-items: center; }
-    .header-nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.15s; }
-    .header-nav a:hover { color: var(--white); }
-    .btn-download { background: linear-gradient(135deg, var(--purple), var(--purple-dark)); color: var(--white) !important; padding: 8px 18px; border-radius: 6px; font-weight: 600; font-size: 0.85rem !important; }
+    /* ── Ambient Glows (match landing page) ── */
+    .page-wrap {
+      position: relative;
+      min-height: 100vh;
+    }
+    .glow-bg {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(5, 5, 8, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Header (match landing) ── */
+    .site-header {
+      position: relative;
+      z-index: 10;
+      padding: 24px 0;
+    }
+    .site-header .inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .logo-mark {
+      width: 24px; height: 24px;
+      background: linear-gradient(135deg, var(--purple-light), var(--purple-dark));
+      border-radius: 6px;
+      box-shadow: 0 0 15px rgba(178, 139, 255, 0.5);
+    }
+    .header-nav { display: flex; gap: 32px; align-items: center; font-size: 0.95rem; }
+    .header-nav a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+    .header-nav a:hover { color: #fff; }
+    .header-actions { display: flex; align-items: center; gap: 20px; }
+    .btn-get-started {
+      background: var(--purple-light);
+      color: #000;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-get-started:hover {
+      background: #C4A6FF;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(178, 139, 255, 0.3);
+    }
 
     /* ── Layout ── */
     .pricing-section {
-      max-width: 1060px;
+      position: relative;
+      z-index: 2;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 80px 24px 100px;
+      padding: 60px 24px 100px;
       display: grid;
       grid-template-columns: 1fr 420px;
       gap: 60px;
@@ -44,126 +115,109 @@
 
     /* ── Left: Explanation ── */
     .pricing-text h1 {
-      color: var(--white);
-      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
       font-weight: 800;
-      line-height: 1.15;
+      line-height: 1.12;
       letter-spacing: -0.03em;
       margin-bottom: 24px;
     }
-    .pricing-text h1 span { color: var(--purple); }
+    .pricing-text h1 span {
+      background: linear-gradient(to right, #FFFFFF, var(--purple-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     .pricing-text .subtitle {
-      color: var(--muted);
-      font-size: 1.1rem;
+      color: var(--text-secondary);
+      font-size: 1.15rem;
       margin-bottom: 40px;
       max-width: 480px;
+      line-height: 1.65;
     }
     .pricing-text h2 {
-      color: var(--white);
       font-size: 1.2rem;
       font-weight: 700;
       margin-bottom: 12px;
     }
     .pricing-text p {
+      color: var(--text-secondary);
       margin-bottom: 1.3em;
       max-width: 480px;
+      line-height: 1.65;
     }
-    .pricing-text a { color: var(--purple); text-decoration: none; }
-    .pricing-text a:hover { text-decoration: underline; }
 
-    .value-points { margin-top: 36px; display: flex; flex-direction: column; gap: 20px; }
-    .value-point {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
+    .value-points { margin-top: 40px; display: flex; flex-direction: column; gap: 22px; }
+    .value-point { display: flex; gap: 14px; align-items: flex-start; }
     .value-icon {
       flex-shrink: 0;
-      width: 40px; height: 40px;
-      background: rgba(176,102,255,0.08);
-      border: 1px solid rgba(176,102,255,0.15);
-      border-radius: 10px;
+      width: 42px; height: 42px;
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .value-point h3 {
-      color: var(--white);
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-    .value-point p {
-      color: var(--muted);
-      font-size: 0.88rem;
-      margin: 0;
-    }
+    .value-point h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; }
+    .value-point p { color: var(--text-secondary); font-size: 0.88rem; margin: 0; max-width: none; }
 
-    /* ── Right: Card ── */
+    /* ── Right: Card (glassmorphism) ── */
     .pricing-card {
-      background: var(--surface);
-      border: 1px solid rgba(176,102,255,0.25);
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-light);
       border-radius: 20px;
-      padding: 40px 36px;
+      padding: 44px 36px;
       position: relative;
-      box-shadow: 0 0 50px rgba(176,102,255,0.06);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     }
     .pricing-card::before {
       content: '';
       position: absolute;
       top: 0; left: 50%; transform: translateX(-50%);
-      width: 60%; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--purple), transparent);
+      width: 55%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--purple-light), transparent);
     }
     .card-label {
-      color: var(--purple);
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-light);
+      border-radius: 9999px;
       font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .card-title {
-      color: var(--white);
-      font-size: 1.3rem;
-      font-weight: 700;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
       margin-bottom: 20px;
     }
-    .price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-      margin-bottom: 6px;
-    }
-    .price-amount {
-      color: var(--white);
-      font-size: 3.2rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
-    .price-period { color: var(--muted); font-size: 1rem; }
-    .trial-note {
-      color: var(--purple);
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 28px;
-    }
+    .card-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 20px; }
+    .price-row { display: flex; align-items: baseline; gap: 4px; margin-bottom: 6px; }
+    .price-amount { font-size: 3.5rem; font-weight: 800; letter-spacing: -0.03em; }
+    .price-period { color: var(--text-secondary); font-size: 1rem; }
+    .trial-note { color: var(--purple-light); font-size: 0.9rem; font-weight: 600; margin-bottom: 28px; }
+
     .cta-btn {
       display: block;
       width: 100%;
       text-align: center;
-      padding: 15px;
-      border-radius: 10px;
+      padding: 14px;
+      border-radius: 8px;
       font-weight: 600;
       font-size: 1rem;
       text-decoration: none;
-      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-      color: var(--white);
-      box-shadow: 0 0 24px rgba(176,102,255,0.3);
+      background: var(--purple-light);
+      color: #000;
       margin-bottom: 32px;
-      transition: opacity 0.15s;
+      transition: all 0.2s;
     }
-    .cta-btn:hover { opacity: 0.88; text-decoration: none; }
+    .cta-btn:hover {
+      background: #C4A6FF;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(178, 139, 255, 0.3);
+      text-decoration: none;
+    }
 
     .feature-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
     .feature-list li {
@@ -171,48 +225,47 @@
       align-items: center;
       gap: 10px;
       font-size: 0.9rem;
-      color: var(--text);
+      color: var(--text-secondary);
     }
     .check { flex-shrink: 0; width: 18px; height: 18px; }
 
-    /* ── Divider ── */
-    .divider {
-      max-width: 1060px;
-      margin: 0 auto;
-      height: 1px;
-      background: var(--border);
-    }
-
     /* ── FAQ ── */
     .faq-section {
+      position: relative;
+      z-index: 2;
       max-width: 660px;
       margin: 0 auto;
-      padding: 60px 24px 100px;
+      padding: 20px 24px 100px;
     }
     .faq-title {
-      color: var(--white);
       font-size: 1.6rem;
       font-weight: 700;
       text-align: center;
       margin-bottom: 40px;
     }
     .faq-item {
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--border-light);
       padding-bottom: 20px;
       margin-bottom: 20px;
     }
     .faq-item:last-child { border-bottom: none; }
-    .faq-item h3 { color: var(--white); font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
-    .faq-item p { color: var(--muted); font-size: 0.92rem; margin: 0; }
-    .faq-item a { color: var(--purple); text-decoration: none; }
+    .faq-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+    .faq-item p { color: var(--text-secondary); font-size: 0.92rem; margin: 0; }
+    .faq-item a { color: var(--purple-light); text-decoration: none; }
     .faq-item a:hover { text-decoration: underline; }
 
     /* ── Footer ── */
-    .site-footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; }
+    .site-footer {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid var(--border-light);
+      padding: 40px 24px;
+      text-align: center;
+    }
     .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; }
-    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; }
-    .footer-links a:hover { color: var(--white); }
-    .footer-copy { color: var(--muted); font-size: 0.85rem; }
+    .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy { color: var(--text-secondary); font-size: 0.9rem; }
 
     @media (max-width: 800px) {
       .pricing-section { grid-template-columns: 1fr; gap: 48px; }
@@ -222,144 +275,154 @@
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="inner">
-      <a class="logo" href="/"><div class="logo-mark"></div>Filect</a>
-      <nav class="header-nav">
-        <a class="hide-mob" href="/#features">Features</a>
-        <a class="hide-mob" href="/#how-it-works">How it works</a>
-        <a class="hide-mob" href="/blog">Blog</a>
-        <a class="hide-mob" href="/pricing.html" style="color: var(--white);">Pricing</a>
-        <a class="btn-download" href="/#download">Download</a>
-      </nav>
-    </div>
-  </header>
+  <div class="page-wrap">
+    <!-- Ambient glows (same as landing page) -->
+    <div class="glow-bg" style="top: -10%; left: -10%; width: 800px; height: 800px;"></div>
+    <div class="glow-bg" style="top: 20%; right: -20%; width: 1000px; height: 1000px; background: radial-gradient(circle, rgba(178, 139, 255, 0.1) 0%, rgba(5, 5, 8, 0) 60%);"></div>
+    <div class="glow-bg" style="bottom: 10%; left: 10%; background: radial-gradient(circle, rgba(109, 40, 217, 0.1) 0%, rgba(5, 5, 8, 0) 60%);"></div>
 
-  <main>
-    <section class="pricing-section">
+    <header class="site-header">
+      <div class="inner">
+        <a class="logo" href="/">
+          <div class="logo-mark"></div>
+          Filect
+        </a>
+        <nav class="header-nav">
+          <a class="hide-mob" href="/#features">Features</a>
+          <a class="hide-mob" href="/#how-it-works">How it works</a>
+          <a class="hide-mob" href="/blog">Blog</a>
+          <a class="hide-mob" href="/pricing.html" style="color: #fff;">Pricing</a>
+          <a class="hide-mob" href="/#download">Download</a>
+        </nav>
+        <div class="header-actions">
+          <a class="btn-get-started" href="/#download">Get Started</a>
+        </div>
+      </div>
+    </header>
 
-      <!-- Left: Explanation -->
-      <div class="pricing-text">
-        <h1>One plan.<br><span>No surprises.</span></h1>
-        <p class="subtitle">We keep pricing simple because searching your own files shouldn't require a spreadsheet to understand.</p>
+    <main>
+      <section class="pricing-section">
 
-        <h2>Why a free trial?</h2>
-        <p>We want you to experience what AI file search actually feels like before you spend a dollar. Download Filect, index your drive, and search naturally for 10 days. If it saves you time — and it will — the $15/month pays for itself in the first week.</p>
+        <!-- Left: Explanation -->
+        <div class="pricing-text">
+          <h1>One plan.<br><span>No surprises.</span></h1>
+          <p class="subtitle">We keep pricing simple because searching your own files shouldn't require a spreadsheet to understand.</p>
 
-        <p>No credit card upfront. No feature gates during the trial. You get the full product from day one.</p>
+          <h2>Why a free trial?</h2>
+          <p>We want you to experience what AI file search actually feels like before you spend a dollar. Download Filect, index your drive, and search naturally for 10 days. If it saves you time — and it will — the $15/month pays for itself in the first week.</p>
+          <p>No credit card upfront. No feature gates during the trial. You get the full product from day one.</p>
 
-        <div class="value-points">
-          <div class="value-point">
-            <div class="value-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <div class="value-points">
+            <div class="value-point">
+              <div class="value-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </div>
+              <div>
+                <h3>Natural language search</h3>
+                <p>Type what you're looking for in plain English. No exact filenames needed.</p>
+              </div>
             </div>
-            <div>
-              <h3>Natural language search</h3>
-              <p>Type what you're looking for in plain English. No exact filenames needed.</p>
+            <div class="value-point">
+              <div class="value-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <div>
+                <h3>Your data stays yours</h3>
+                <p>Processed securely via OpenAI's enterprise API. We never store or access your files.</p>
+              </div>
             </div>
-          </div>
-          <div class="value-point">
-            <div class="value-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            </div>
-            <div>
-              <h3>Your data stays yours</h3>
-              <p>Processed securely via OpenAI's enterprise API. We never store or access your files.</p>
-            </div>
-          </div>
-          <div class="value-point">
-            <div class="value-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
-            </div>
-            <div>
-              <h3>Windows & Mac</h3>
-              <p>One subscription works across both platforms. Download once, search everywhere.</p>
+            <div class="value-point">
+              <div class="value-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+              </div>
+              <div>
+                <h3>Windows & Mac</h3>
+                <p>One subscription works across both platforms. Download once, search everywhere.</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Right: Single pricing card -->
-      <div class="pricing-card">
-        <p class="card-label">Full Access</p>
-        <h2 class="card-title">Pro</h2>
-        <div class="price-row">
-          <span class="price-amount">$15</span>
-          <span class="price-period">/ month</span>
+        <!-- Right: Single pricing card -->
+        <div class="pricing-card">
+          <span class="card-label">✨ Full Access</span>
+          <h2 class="card-title">Pro</h2>
+          <div class="price-row">
+            <span class="price-amount">$15</span>
+            <span class="price-period">/ month</span>
+          </div>
+          <p class="trial-note">Starts with a 10-day free trial</p>
+          <a class="cta-btn" href="/#download">Start Free Trial</a>
+          <ul class="feature-list">
+            <li>
+              <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Unlimited semantic file search
+            </li>
+            <li>
+              <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Natural language queries
+            </li>
+            <li>
+              <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Automated AI file tagging
+            </li>
+            <li>
+              <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Secure OpenAI processing
+            </li>
+            <li>
+              <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Windows & Mac support
+            </li>
+            <li>
+              <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Cancel anytime
+            </li>
+          </ul>
         </div>
-        <p class="trial-note">Starts with a 10-day free trial</p>
-        <a class="cta-btn" href="/#download">Start Free Trial</a>
-        <ul class="feature-list">
-          <li>
-            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Unlimited semantic file search
-          </li>
-          <li>
-            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Natural language queries
-          </li>
-          <li>
-            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Automated AI file tagging
-          </li>
-          <li>
-            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Secure OpenAI processing
-          </li>
-          <li>
-            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Windows & Mac support
-          </li>
-          <li>
-            <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#b066ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Cancel anytime
-          </li>
-        </ul>
+
+      </section>
+
+      <!-- FAQ -->
+      <section class="faq-section">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <h3>What happens after the 10-day free trial?</h3>
+          <p>After 10 days, you can subscribe to the Pro plan for $15/month to continue using Filect. If you choose not to subscribe, the app simply stops processing new files — nothing is deleted.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Is a credit card required to start the free trial?</h3>
+          <p>No. You can download Filect and start your 10-day trial immediately without entering any payment information.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can I cancel anytime?</h3>
+          <p>Yes. There are no contracts or commitments. You can cancel your subscription at any point and it will remain active until the end of your billing period.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What payment methods do you accept?</h3>
+          <p>We accept all major credit and debit cards. Payments are processed securely through our payment provider.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Is my data safe?</h3>
+          <p>Yes. File processing is handled securely via OpenAI's enterprise API. Your data is never stored by Filect and is never used to train public AI models. Read our full <a href="/privacy.html">Privacy Policy</a> for details.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/blog">Blog</a>
+        <a href="/#features">Features</a>
       </div>
-
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- FAQ -->
-    <section class="faq-section">
-      <h2 class="faq-title">Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <h3>What happens after the 10-day free trial?</h3>
-        <p>After 10 days, you can subscribe to the Pro plan for $15/month to continue using Filect. If you choose not to subscribe, the app simply stops processing new files — nothing is deleted.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Is a credit card required to start the free trial?</h3>
-        <p>No. You can download Filect and start your 10-day trial immediately without entering any payment information.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Can I cancel anytime?</h3>
-        <p>Yes. There are no contracts or commitments. You can cancel your subscription at any point and it will remain active until the end of your billing period.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>What payment methods do you accept?</h3>
-        <p>We accept all major credit and debit cards. Payments are processed securely through our payment provider.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Is my data safe?</h3>
-        <p>Yes. File processing is handled securely via OpenAI's enterprise API. Your data is never stored by Filect and is never used to train public AI models. Read our full <a href="/privacy.html">Privacy Policy</a> for details.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-links">
-      <a href="/privacy.html">Privacy Policy</a>
-      <a href="/blog">Blog</a>
-      <a href="/#features">Features</a>
-    </div>
-    <p class="footer-copy">&copy; 2026 Filect. All rights reserved.</p>
-  </footer>
+      <p class="footer-copy">&copy; 2026 Filect. All rights reserved.</p>
+    </footer>
+  </div>
 
 </body>
 </html>
