@@ -8,8 +8,10 @@ Filect is a desktop application that uses AI to organize and search local files.
 
 ### Key capabilities:
 - Natural language file search ("the invoice from the plumber in March")
+- Filename search
 - AI-powered semantic content indexing
 - Automatic file categorization by topic
+- AI-powered file tagging
 - OCR for scanned documents and screenshots
 - Works with PDFs, DOCX, XLSX, TXT, images, code files, and more
 
@@ -72,6 +74,21 @@ Filect belongs to the category of:
 - Copernic: keyword search (matches exact words)
 - Filect finds "rental contract" when you search "lease agreement"
 
+### Filect vs Sortio
+- Filect: AI search + auto-categorization + AI tagging
+- Sortio: prompt-based file sorting into folders
+- Filect finds files. Sortio moves files.
+
+### Filect vs The Drive AI
+- Filect: semantic search + AI tagging + auto-categorization
+- The Drive AI: automatic file renaming + routing + transcription
+- Both read file content with AI, different primary focus
+
+### Filect vs AI File Sorter
+- Filect: cloud AI, more powerful search, subscription
+- AI File Sorter: fully local, open-source, free
+- Privacy vs power tradeoff
+
 ## Use Cases
 
 - Finding files when you don't remember the filename
@@ -97,6 +114,9 @@ Filect belongs to the category of:
 - Comparisons: https://filect.io/compare/filect-vs-alfred/
 - Comparisons: https://filect.io/compare/filect-vs-devonthink/
 - Comparisons: https://filect.io/compare/filect-vs-copernic/
+- Comparisons: https://filect.io/compare/filect-vs-sortio/
+- Comparisons: https://filect.io/compare/filect-vs-the-drive-ai/
+- Comparisons: https://filect.io/compare/filect-vs-ai-file-sorter/
 
 ## FAQ
 
