@@ -20,6 +20,22 @@ const ARTICLES = [
     category: 'Guides',
   },
   {
+    id: 'how-to-organize-pdfs-and-documents',
+    title: 'How to Organize PDFs and Documents on Your Computer',
+    excerpt: 'Drowning in PDFs with useless filenames? Here\'s how to organize and find every document on your computer using AI-powered search instead of folders.',
+    date: 'May 6, 2026',
+    readTime: '9 min read',
+    category: 'Productivity',
+  },
+  {
+    id: 'best-ai-file-management-tools',
+    title: 'Best AI File Management Tools in 2026 (Compared)',
+    excerpt: 'A hands-on comparison of the best AI file management and search tools in 2026. We compare Filect, Everything, Copernic, TagSpaces, and native OS search.',
+    date: 'May 6, 2026',
+    readTime: '10 min read',
+    category: 'Product',
+  },
+  {
     id: 'how-to-organize-files-with-ai',
     title: 'How to Organize Files with AI in 2026 (Complete Guide)',
     excerpt: 'AI file organization can reduce search time from minutes to under three seconds without sorting a single folder. Here\'s exactly how it works, what file types it handles, and how to switch today.',
