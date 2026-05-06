@@ -267,6 +267,47 @@
       .header-nav .hide-mob { display: none; }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does automatic file organization actually move my files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Tools like Filect don't relocate your files. They build a searchable index on top of your existing file structure. Your files stay exactly where they are. You just gain the ability to find them instantly by describing what you're looking for."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What file types can AI search read?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most AI file managers handle PDFs, Word documents, plain text files, spreadsheets, code files, and markdown. Some also support images via visual analysis and scanned PDFs via OCR. Encrypted or password-protected files generally can't be indexed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my data safe if an AI tool is reading my files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It depends on the tool. Filect processes file content through OpenAI's enterprise API, which has a strict no-training policy. Your data is never used to improve public AI models, and Filect itself doesn't store or access your files."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from Windows Search or Spotlight?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Windows Search and Spotlight index filenames and basic metadata. They don't understand what a file is about. AI-powered search reads the actual content and matches by meaning, so a file called scan_003.pdf can still be found by searching for apartment lease."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 

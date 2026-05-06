@@ -74,6 +74,55 @@
     .site-footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; color: var(--muted); font-size: 0.85rem; }
     @media (max-width: 600px) { body { font-size: 16px; } .header-nav .hide-mob { display: none; } }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I use multiple file management tools together?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Many people use Everything for fast filename lookups and Filect for content-based search. They don't conflict with each other. Use whichever is faster for the task at hand."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do any of these tools move or delete my files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. All tools listed here are read-only when it comes to your files. They build search indexes on top of your existing folder structure. Nothing gets moved, renamed, or deleted."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is AI file search safe for sensitive documents?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It depends on the tool. Filect uses OpenAI's enterprise API, which has a strict no-training policy. Your files are not stored or used to improve AI models. Other tools that don't use cloud processing keep everything local but also lack semantic capabilities."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does AI file management cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Filect offers a 10-day free trial, then $15/month. Everything and TagSpaces basic are free. Copernic ranges from free to $59/year. For most professionals, $15/month pays for itself if it saves even 30 minutes per month of searching for files."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What about Dropbox AI or OneDrive Copilot?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both are developing AI search features for files stored in their cloud platforms. They don't search local files. If your documents live on your hard drive, you need a tool like Filect that runs locally and indexes your actual drives."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
