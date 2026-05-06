@@ -11,13 +11,15 @@ const Header: React.FC = () => {
       zIndex: 10
     }}>
       <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', color: 'inherit' }}>
-        <div style={{ 
-          width: '24px', 
-          height: '24px', 
-          background: 'linear-gradient(135deg, var(--purple-light), var(--purple-dark))',
-          borderRadius: '6px',
-          boxShadow: '0 0 15px rgba(178, 139, 255, 0.5)'
-        }}></div>
+        <img 
+          src="/logo.png" 
+          alt="Filect" 
+          style={{ 
+            width: '30px', 
+            height: '30px', 
+            borderRadius: '7px',
+          }} 
+        />
         <span style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Filect</span>
       </a>
 
