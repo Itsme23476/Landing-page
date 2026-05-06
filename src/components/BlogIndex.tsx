@@ -311,6 +311,107 @@ const BlogIndex: React.FC = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Comparisons Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            style={{ marginTop: '80px', marginBottom: '40px', textAlign: 'center' }}
+          >
+            <h2 style={{ 
+              fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', 
+              fontWeight: 800, 
+              lineHeight: 1.1,
+              letterSpacing: '-0.03em',
+              marginBottom: '16px'
+            }}>
+              Filect vs <span className="text-gradient">Alternatives</span>
+            </h2>
+            <p style={{ 
+              fontSize: '1.1rem', 
+              color: 'var(--text-secondary)',
+              lineHeight: 1.6,
+              maxWidth: '500px',
+              margin: '0 auto'
+            }}>
+              See how Filect compares to other file search and organization tools.
+            </p>
+          </motion.div>
+
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
+            gap: '20px' 
+          }}>
+            {[
+              { slug: 'filect-vs-fabric', name: 'Fabric', desc: 'AI second brain for research' },
+              { slug: 'filect-vs-sortio', name: 'Sortio', desc: 'AI file sorting by rules' },
+              { slug: 'filect-vs-sparkle', name: 'Sparkle', desc: 'Mac auto folder cleanup' },
+              { slug: 'filect-vs-dropbox-dash', name: 'Dropbox Dash', desc: 'Cloud app search' },
+              { slug: 'filect-vs-everything-search', name: 'Everything Search', desc: 'Instant filename search' },
+              { slug: 'filect-vs-alfred', name: 'Alfred', desc: 'Mac launcher & productivity' },
+              { slug: 'filect-vs-devonthink', name: 'DEVONthink', desc: 'Mac document management' },
+              { slug: 'filect-vs-copernic', name: 'Copernic', desc: 'Keyword content search' },
+              { slug: 'filect-vs-the-drive-ai', name: 'The Drive AI', desc: 'AI file renaming & routing' },
+              { slug: 'filect-vs-ai-file-sorter', name: 'AI File Sorter', desc: 'Open-source local AI' },
+            ].map((comp, index) => (
+              <motion.div
+                key={comp.slug}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.05 * index }}
+              >
+                <a
+                  href={`/compare/${comp.slug}/`}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '16px',
+                    padding: '20px 24px',
+                    background: 'rgba(255, 255, 255, 0.02)',
+                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    transition: 'all 0.3s ease',
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(176,102,255,0.4)';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.05)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <div style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '10px',
+                    background: 'rgba(176,102,255,0.1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    color: '#b066ff',
+                    flexShrink: 0,
+                  }}>
+                    VS
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: 600, fontSize: '1rem', marginBottom: '2px' }}>
+                      Filect vs {comp.name}
+                    </div>
+                    <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                      {comp.desc}
+                    </div>
+                  </div>
+                </a>
+              </motion.div>
+            ))}
+          </div>
         </main>
 
         <footer style={{ marginTop: 'auto', borderTop: '1px solid var(--border-light)', padding: '40px 0', textAlign: 'center', color: 'var(--text-secondary)' }}>
