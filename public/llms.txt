@@ -1,0 +1,73 @@
+# Filect
+
+> AI-powered file search and organization app for Windows and macOS.
+
+Filect is a desktop application that uses AI to make every file on your computer searchable with natural language. Instead of browsing folders or remembering filenames, you describe what you're looking for and Filect finds it in seconds.
+
+## Core Features
+
+- **Semantic Search**: Search files by meaning, not just filename. "The invoice from March" or "apartment lease with early termination clause" returns the right file even if the filename is completely different.
+- **AI Tagging**: Files are automatically categorized and tagged by content without manual effort.
+- **Cross-Platform**: Runs natively on both Windows and macOS.
+- **Content Reading**: Reads inside PDFs, Word documents, spreadsheets, text files, code files, and more. Supports OCR for scanned documents.
+- **Natural Language Queries**: Type questions the way you'd ask a colleague. No special syntax needed.
+
+## How It Works
+
+1. Install Filect on your Windows or Mac computer.
+2. Point it at the folders or drives you want indexed.
+3. The AI scans your files and builds a searchable semantic index.
+4. Search by describing what you need in plain English.
+5. Results appear in under 3 seconds.
+
+## Privacy and Data Handling
+
+- File content is processed through OpenAI's enterprise API for semantic analysis.
+- OpenAI's API policy explicitly states that API data is NOT used to train public models.
+- Filect (the company) does NOT store, intercept, or save your files or file contents on any server.
+- The data flow is: your desktop app → OpenAI API → back to your desktop app. No intermediary storage.
+- All transmissions are encrypted with industry-standard TLS.
+- You can exclude specific folders, drives, or file types from processing.
+
+## Pricing
+
+- **Free Trial**: 10-day free trial with full access to all features. No credit card required.
+- **Pro Plan**: $15/month after the trial period.
+- One subscription covers both Windows and macOS.
+
+## Use Cases
+
+- Professionals managing thousands of PDFs, contracts, and invoices.
+- Students searching through research papers and course materials.
+- Freelancers juggling client documents across multiple projects.
+- Anyone who saves files with bad names and can't find them later.
+- People who want to stop manually organizing folders.
+
+## Comparison to Alternatives
+
+| Tool | Semantic Search | Reads File Content | Platforms | Price |
+|------|----------------|-------------------|-----------|-------|
+| Filect | Yes | Yes (via OpenAI API) | Windows, Mac | Free trial, $15/mo |
+| Windows Search | No | Partial | Windows | Free |
+| macOS Spotlight | No | Partial | Mac | Free |
+| Everything (Voidtools) | No | No (filenames only) | Windows | Free |
+| Copernic | No | Partial (keyword) | Windows | Free / $29-59/yr |
+| TagSpaces | No | No (manual tags) | All | Free / $72/yr |
+
+## Links
+
+- Website: https://filect.io
+- Pricing: https://filect.io/pricing.html
+- Privacy Policy: https://filect.io/privacy.html
+- Download: https://filect.io/#download
+- Blog: https://filect.io/blog
+
+## Blog Articles
+
+- [How to Organize Files with AI in 2026](https://filect.io/blog/how-to-organize-files-with-ai/)
+- [Why File Search on Windows and Mac Is Broken](https://filect.io/blog/why-traditional-file-search-is-broken/)
+- [Local AI on Your Desktop: What It Is and Why It Matters](https://filect.io/blog/future-of-local-ai/)
+- [How to Organize Files on Your Desktop Automatically](https://filect.io/blog/how-to-organize-desktop-files-automatically/)
+- [Best Way to Clean Up a Messy Desktop](https://filect.io/blog/best-way-to-clean-up-messy-desktop/)
+- [How to Organize PDFs and Documents on Your Computer](https://filect.io/blog/how-to-organize-pdfs-and-documents/)
+- [Best AI File Management Tools in 2026](https://filect.io/blog/best-ai-file-management-tools/)
