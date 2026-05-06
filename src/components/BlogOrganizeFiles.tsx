@@ -67,7 +67,7 @@ const BlogOrganizeFiles: React.FC = () => {
     >
       {/* ── Intro with keyword stuffing at the top ── */}
       <p>
-        Learning <strong style={{ color: '#fff' }}>how to organize files with AI</strong> is one of the highest-leverage productivity improvements you can make in 2026. If you're dealing with thousands of downloaded PDFs, screenshots, and documents scattered across your hard drive, AI file organization tools can reduce the time you spend searching for files from minutes per search down to under three seconds — without you manually sorting a single folder.
+        Learning <strong style={{ color: '#fff' }}>how to organize files with AI</strong> is one of the highest-leverage productivity improvements you can make in 2026. If you're dealing with thousands of downloaded PDFs, screenshots, and documents scattered across your hard drive, AI file organization tools can reduce the time you spend searching for files from minutes per search down to under three seconds - without you manually sorting a single folder.
       </p>
       <p>
         This guide walks you through exactly how AI file management works, which types of files it handles best, and what to look for in an <strong style={{ color: '#fff' }}>AI file organizer for Windows and Mac</strong>. Whether you're a freelancer drowning in client documents or a student buried in research PDFs, the approach below works at any scale.
@@ -103,16 +103,16 @@ const BlogOrganizeFiles: React.FC = () => {
         The core problem is that folders are a single-dimensional system. A PDF of your apartment lease could logically live in "Documents/Legal," "Documents/Housing," "Documents/2026," or "Finance/Ongoing Expenses." Every time you save it, you make a decision. And every time you search for it later, you have to remember which decision you made six months ago.
       </p>
       <p>
-        When you multiply this across thousands of files — with different file types, different projects, different time periods — the cognitive overhead becomes exhausting. Most people end up with a folder system that made sense when they built it and is completely impenetrable eight months later.
+        When you multiply this across thousands of files - with different file types, different projects, different time periods - the cognitive overhead becomes exhausting. Most people end up with a folder system that made sense when they built it and is completely impenetrable eight months later.
       </p>
       <p>
-        The deeper issue is that the OS search tools designed to compensate for this problem only index file names and metadata — not the actual content of your files. So if you saved your lease as "lease_final_v4_REAL.pdf" and you search for "apartment agreement," your computer doesn't understand that these things are related.
+        The deeper issue is that the OS search tools designed to compensate for this problem only index file names and metadata - not the actual content of your files. So if you saved your lease as "lease_final_v4_REAL.pdf" and you search for "apartment agreement," your computer doesn't understand that these things are related.
       </p>
 
       {/* ── Section 2 ── */}
       <h2 style={h2Style}>How AI File Organization Works Under the Hood</h2>
       <p>
-        Modern <strong style={{ color: '#fff' }}>AI file organization software</strong> works by reading and indexing the actual content of your files — not just their names. This process is called semantic indexing, and it's the same core technology that powers search engines like Google.
+        Modern <strong style={{ color: '#fff' }}>AI file organization software</strong> works by reading and indexing the actual content of your files - not just their names. This process is called semantic indexing, and it's the same core technology that powers search engines like Google.
       </p>
       <p>
         Here's what happens when an AI file manager scans your drive:
@@ -123,16 +123,16 @@ const BlogOrganizeFiles: React.FC = () => {
       </p>
       <h3 style={h3Style}>2. Semantic Embedding</h3>
       <p>
-        Each file's content is converted into a vector — a mathematical representation of its meaning. Files about similar topics end up with vectors that are close together in this high-dimensional space. A rental agreement and a lease document will be near each other. A tax form and a bank statement will cluster together. This is what makes natural language search possible.
+        Each file's content is converted into a vector - a mathematical representation of its meaning. Files about similar topics end up with vectors that are close together in this high-dimensional space. A rental agreement and a lease document will be near each other. A tax form and a bank statement will cluster together. This is what makes natural language search possible.
       </p>
       <h3 style={h3Style}>3. Query Matching</h3>
       <p>
-        When you type "the document with the early termination clause," the AI converts that query into a vector too and finds the files whose content is closest to your intent — not files whose name contains those exact words. The result is search that works the way human memory works: by meaning, not by syntax.
+        When you type "the document with the early termination clause," the AI converts that query into a vector too and finds the files whose content is closest to your intent - not files whose name contains those exact words. The result is search that works the way human memory works: by meaning, not by syntax.
       </p>
 
       <div style={ctaBoxStyle}>
         <p style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
-          Filect uses this exact approach — and it runs entirely on your device.
+          Filect uses this exact approach - and it runs entirely on your device.
         </p>
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', margin: '10px 0 0' }}>
           No cloud uploads. No subscriptions. Your files stay on your machine while AI makes them fully searchable in seconds.
@@ -145,7 +145,7 @@ const BlogOrganizeFiles: React.FC = () => {
       {/* ── Section 3 ── */}
       <h2 style={h2Style}>How to Organize Files with AI: A Step-by-Step Approach</h2>
       <p>
-        Here's a practical framework for anyone starting from scratch — or inheriting the chaos of years of unstructured file saving.
+        Here's a practical framework for anyone starting from scratch - or inheriting the chaos of years of unstructured file saving.
       </p>
       <h3 style={h3Style}>Step 1: Stop organizing proactively</h3>
       <p>
@@ -153,7 +153,7 @@ const BlogOrganizeFiles: React.FC = () => {
       </p>
       <h3 style={h3Style}>Step 2: Establish a single landing zone</h3>
       <p>
-        Pick one folder — call it "Inbox" or "Unsorted" — where everything lands first. Downloads go here. Export anything here. This isn't a permanent home; it's just a staging area. The AI will make it searchable regardless.
+        Pick one folder - call it "Inbox" or "Unsorted" - where everything lands first. Downloads go here. Export anything here. This isn't a permanent home; it's just a staging area. The AI will make it searchable regardless.
       </p>
       <h3 style={h3Style}>Step 3: Keep sensible top-level categories (just a few)</h3>
       <p>
@@ -161,7 +161,7 @@ const BlogOrganizeFiles: React.FC = () => {
       </p>
       <h3 style={h3Style}>Step 4: Use descriptive filenames when it costs nothing</h3>
       <p>
-        If you're exporting something you'll reference again — a report, a contract, an invoice — take five seconds to give it a meaningful name. "q1-2026-report-final.pdf" is better than "Export-03-15-2026.pdf." Not mandatory, but it helps when you're skimming results.
+        If you're exporting something you'll reference again - a report, a contract, an invoice - take five seconds to give it a meaningful name. "q1-2026-report-final.pdf" is better than "Export-03-15-2026.pdf." Not mandatory, but it helps when you're skimming results.
       </p>
       <h3 style={h3Style}>Step 5: Let AI search replace folder navigation</h3>
       <p>
@@ -175,16 +175,16 @@ const BlogOrganizeFiles: React.FC = () => {
       </p>
       <p><strong style={{ color: '#fff' }}>Excellent:</strong> PDFs with selectable text, Word documents (.docx), plain text and markdown files, code files, spreadsheets, email exports, RTF files.</p>
       <p><strong style={{ color: '#fff' }}>Good:</strong> Scanned PDFs (via OCR, though accuracy varies), PowerPoint presentations, EPUB and ebook files.</p>
-      <p><strong style={{ color: '#fff' }}>Improving:</strong> Images (via vision models — works well for screenshots with text, less well for abstract photos), audio and video (transcript-based).</p>
+      <p><strong style={{ color: '#fff' }}>Improving:</strong> Images (via vision models - works well for screenshots with text, less well for abstract photos), audio and video (transcript-based).</p>
       <p><strong style={{ color: '#fff' }}>Limited:</strong> Encrypted files, proprietary formats without extractors, very old file formats.</p>
       <p>
-        For most productivity use cases — the PDFs, documents, notes, and spreadsheets that make up the bulk of a working person's file system — current AI file managers handle things very well.
+        For most productivity use cases - the PDFs, documents, notes, and spreadsheets that make up the bulk of a working person's file system - current AI file managers handle things very well.
       </p>
 
       {/* ── Section 5 ── */}
       <h2 style={h2Style}>AI File Organization vs. Manual Sorting: A Practical Comparison</h2>
       <p>
-        Let's be direct about trade-offs. AI file management isn't a universal solution — but for most people, the comparison tilts heavily in its favor.
+        Let's be direct about trade-offs. AI file management isn't a universal solution - but for most people, the comparison tilts heavily in its favor.
       </p>
       <div style={{ overflowX: 'auto', marginBottom: '32px' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}>
@@ -217,7 +217,7 @@ const BlogOrganizeFiles: React.FC = () => {
       {/* ── Section 6 ── */}
       <h2 style={h2Style}>How to Search Files Using Natural Language</h2>
       <p>
-        The most immediate benefit of AI file management is <strong style={{ color: '#fff' }}>natural language file search</strong> — the ability to describe a document the way you'd describe it to a colleague, and have your computer find it.
+        The most immediate benefit of AI file management is <strong style={{ color: '#fff' }}>natural language file search</strong> - the ability to describe a document the way you'd describe it to a colleague, and have your computer find it.
       </p>
       <p>
         Instead of remembering: <em>"I think it was in Downloads, or maybe Documents/2025/Q3, and it had some number in the filename..."</em>
@@ -226,7 +226,7 @@ const BlogOrganizeFiles: React.FC = () => {
         You just type: <em>"the invoice from the Barcelona supplier in March"</em> or <em>"the document with the cancellation policy"</em> or <em>"the photo of the whiteboard from the product meeting."</em>
       </p>
       <p>
-        This works because the AI has indexed the content of your files and understands semantic relationships — not just exact keyword matches. You don't need to remember how a file was named. You just need to remember roughly what it was about.
+        This works because the AI has indexed the content of your files and understands semantic relationships - not just exact keyword matches. You don't need to remember how a file was named. You just need to remember roughly what it was about.
       </p>
       <p>
         If you want to learn more about why the old way breaks down technically, read our deeper breakdown: <a href="/blog/why-traditional-file-search-is-broken" style={{ color: '#b066ff', textDecoration: 'none' }}>Why Traditional File Search is Broken</a>.
@@ -238,7 +238,7 @@ const BlogOrganizeFiles: React.FC = () => {
       <p><strong style={{ color: '#fff' }}>Using version numbers in filenames.</strong> "Report_v2_final_FINAL.pdf" is a maintenance nightmare. Use dates instead. "Report_2026-04-15.pdf" tells you exactly which version it is without ambiguity.</p>
       <p><strong style={{ color: '#fff' }}>Duplicating files across multiple locations.</strong> One copy of a file, one location. If you need it somewhere else, symlink it or just search for it. Duplicates create confusion about which version is current.</p>
       <p><strong style={{ color: '#fff' }}>Treating your Desktop as a real storage location.</strong> The Desktop is a workspace, not an archive. Files that "live" there tend to pile up and never get touched again.</p>
-      <p><strong style={{ color: '#fff' }}>Waiting for a "big cleanup."</strong> The mythical weekend where you'll finally sort everything out never comes. The only realistic solution is a system that doesn't require ongoing maintenance — which is exactly what AI search provides.</p>
+      <p><strong style={{ color: '#fff' }}>Waiting for a "big cleanup."</strong> The mythical weekend where you'll finally sort everything out never comes. The only realistic solution is a system that doesn't require ongoing maintenance - which is exactly what AI search provides.</p>
 
       <div style={ctaBoxStyle}>
         <p style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
@@ -256,7 +256,7 @@ const BlogOrganizeFiles: React.FC = () => {
       <h2 style={h2Style}>FAQs: Organizing Files with AI</h2>
       <div style={faqItemStyle}>
         <h3 style={{ ...h3Style, marginTop: 0 }}>Does AI file organization require internet?</h3>
-        <p>Not necessarily. Tools like Filect run entirely on your local device — no internet connection required for indexing or searching. This means your files never leave your machine.</p>
+        <p>Not necessarily. Tools like Filect run entirely on your local device - no internet connection required for indexing or searching. This means your files never leave your machine.</p>
       </div>
       <div style={faqItemStyle}>
         <h3 style={{ ...h3Style, marginTop: 0 }}>How long does it take to index files with an AI file manager?</h3>

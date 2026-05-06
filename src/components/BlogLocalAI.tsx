@@ -67,10 +67,10 @@ const BlogLocalAI: React.FC = () => {
     >
       {/* ── Keyword-rich intro ── */}
       <p>
-        <strong style={{ color: '#fff' }}>Local AI</strong> — artificial intelligence that runs entirely on your own device, without sending data to the cloud — is one of the most significant shifts happening in consumer software right now. Unlike the AI tools most people are familiar with (ChatGPT, Claude, Gemini), <strong style={{ color: '#fff' }}>local AI software for desktop</strong> processes everything on your machine's own CPU or GPU. No server. No subscription. No privacy tradeoff.
+        <strong style={{ color: '#fff' }}>Local AI</strong> - artificial intelligence that runs entirely on your own device, without sending data to the cloud - is one of the most significant shifts happening in consumer software right now. Unlike the AI tools most people are familiar with (ChatGPT, Claude, Gemini), <strong style={{ color: '#fff' }}>local AI software for desktop</strong> processes everything on your machine's own CPU or GPU. No server. No subscription. No privacy tradeoff.
       </p>
       <p>
-        In 2026, local AI has become practical for everyday users for the first time. Hardware has caught up. Models have been optimized dramatically. And the use cases that benefit most from local processing — personal file search, document analysis, private note organization — are exactly the kind of tasks that shouldn't be routed through someone else's cloud in the first place.
+        In 2026, local AI has become practical for everyday users for the first time. Hardware has caught up. Models have been optimized dramatically. And the use cases that benefit most from local processing - personal file search, document analysis, private note organization - are exactly the kind of tasks that shouldn't be routed through someone else's cloud in the first place.
       </p>
       <p>
         This guide covers what local AI actually means technically, how it compares to cloud AI in practical terms, what hardware you need to run it, and the specific applications where it's already beating the cloud alternatives.
@@ -111,7 +111,7 @@ const BlogLocalAI: React.FC = () => {
       </p>
       <h3 style={h3Style}>What kinds of models run locally?</h3>
       <p>
-        Frontier models like GPT-4 or Gemini Ultra have hundreds of billions of parameters and require data center-grade hardware to run. These will likely remain cloud-only for years. But a wide range of highly capable smaller models — in the 1 to 13 billion parameter range — can run efficiently on consumer hardware in 2026. These models are more than capable enough for practical tasks like document understanding, file classification, and semantic search.
+        Frontier models like GPT-4 or Gemini Ultra have hundreds of billions of parameters and require data center-grade hardware to run. These will likely remain cloud-only for years. But a wide range of highly capable smaller models - in the 1 to 13 billion parameter range - can run efficiently on consumer hardware in 2026. These models are more than capable enough for practical tasks like document understanding, file classification, and semantic search.
       </p>
 
       {/* ── Section 2 ── */}
@@ -125,7 +125,7 @@ const BlogLocalAI: React.FC = () => {
       </p>
       <h3 style={h3Style}>2. Quantization made models tiny without destroying quality</h3>
       <p>
-        Early AI models required 32-bit floating point precision, which made them massive. Research into quantization — reducing model weights to 4-bit or 8-bit integers — has produced models that are 4x to 8x smaller with only marginal quality loss on practical tasks. A model that required 48GB of VRAM in 2023 can now run in 6GB. That's the difference between requiring an A100 GPU and running on a MacBook Pro.
+        Early AI models required 32-bit floating point precision, which made them massive. Research into quantization - reducing model weights to 4-bit or 8-bit integers - has produced models that are 4x to 8x smaller with only marginal quality loss on practical tasks. A model that required 48GB of VRAM in 2023 can now run in 6GB. That's the difference between requiring an A100 GPU and running on a MacBook Pro.
       </p>
       <h3 style={h3Style}>3. The open-source ecosystem matured</h3>
       <p>
@@ -147,7 +147,7 @@ const BlogLocalAI: React.FC = () => {
         <strong style={{ color: '#fff' }}>For running larger models (13B–34B parameters):</strong> 24GB+ VRAM NVIDIA GPU, or high-memory Apple Silicon (M2 Pro/Max/Ultra or later). This is enthusiast territory and not required for most practical use cases.
       </p>
       <p>
-        <strong style={{ color: '#fff' }}>The baseline summary:</strong> For the most common local AI use cases in 2026 — file search, document summarization, private note organization — a standard laptop or desktop from the last three years is sufficient. You don't need to buy anything new.
+        <strong style={{ color: '#fff' }}>The baseline summary:</strong> For the most common local AI use cases in 2026 - file search, document summarization, private note organization - a standard laptop or desktop from the last three years is sufficient. You don't need to buy anything new.
       </p>
 
       {/* ── Section 4 ── */}
@@ -184,15 +184,15 @@ const BlogLocalAI: React.FC = () => {
       {/* ── Section 5 ── */}
       <h2 style={h2Style}>The Best Use Cases for Local AI on a Personal Computer</h2>
       <p>
-        Local AI isn't the right tool for every task. But for a specific category of applications — ones that touch your most personal data, require low latency, or need to work offline — it's clearly superior to cloud alternatives.
+        Local AI isn't the right tool for every task. But for a specific category of applications - ones that touch your most personal data, require low latency, or need to work offline - it's clearly superior to cloud alternatives.
       </p>
       <h3 style={h3Style}>1. AI-powered file search and organization</h3>
       <p>
-        This is arguably the strongest use case for local AI today. Your files are deeply personal — medical records, financial documents, private correspondence. Indexing them locally and making them searchable with natural language is something that should never require uploading your data to another company's server. Local AI embedding models do this task excellently with modest hardware requirements. This is exactly what Filect does — and why we built it local-first. Learn more about <a href="/blog/how-to-organize-files-with-ai" style={{ color: '#b066ff', textDecoration: 'none' }}>how to organize files with AI</a>.
+        This is arguably the strongest use case for local AI today. Your files are deeply personal - medical records, financial documents, private correspondence. Indexing them locally and making them searchable with natural language is something that should never require uploading your data to another company's server. Local AI embedding models do this task excellently with modest hardware requirements. This is exactly what Filect does - and why we built it local-first. Learn more about <a href="/blog/how-to-organize-files-with-ai" style={{ color: '#b066ff', textDecoration: 'none' }}>how to organize files with AI</a>.
       </p>
       <h3 style={h3Style}>2. Private document analysis</h3>
       <p>
-        Legal documents, contracts, financial reports, medical records — anything you'd hesitate before pasting into ChatGPT. Local AI lets you query these documents intelligently without any exposure risk.
+        Legal documents, contracts, financial reports, medical records - anything you'd hesitate before pasting into ChatGPT. Local AI lets you query these documents intelligently without any exposure risk.
       </p>
       <h3 style={h3Style}>3. Code assistance for proprietary codebases</h3>
       <p>
@@ -200,11 +200,11 @@ const BlogLocalAI: React.FC = () => {
       </p>
       <h3 style={h3Style}>4. Personal knowledge base and note search</h3>
       <p>
-        Running a local embedding model over thousands of notes, saved articles, and research documents creates a personal search engine that understands content — not just filenames. The experience is meaningfully better than keyword search across note-taking apps.
+        Running a local embedding model over thousands of notes, saved articles, and research documents creates a personal search engine that understands content - not just filenames. The experience is meaningfully better than keyword search across note-taking apps.
       </p>
       <h3 style={h3Style}>5. Offline AI assistant for travel or restricted environments</h3>
       <p>
-        On a plane, in a rural area, or in a secure facility without internet — local AI keeps working. For professionals who travel frequently or work in restricted network environments, offline capability is a hard requirement.
+        On a plane, in a rural area, or in a secure facility without internet - local AI keeps working. For professionals who travel frequently or work in restricted network environments, offline capability is a hard requirement.
       </p>
 
       <div style={ctaBoxStyle}>
@@ -222,7 +222,7 @@ const BlogLocalAI: React.FC = () => {
       {/* ── Section 6 ── */}
       <h2 style={h2Style}>Privacy and Local AI: What "No Cloud" Actually Means</h2>
       <p>
-        The phrase "no data leaves your device" gets used in marketing a lot. It's worth being precise about what it actually means — and how to verify it.
+        The phrase "no data leaves your device" gets used in marketing a lot. It's worth being precise about what it actually means - and how to verify it.
       </p>
       <p>
         When a local AI tool makes this claim, it means that the input (your files, your queries) is never transmitted to a remote server. The model runs on your own CPU/GPU. The index it builds lives on your own storage. No third party ever has access to any of it.
@@ -240,7 +240,7 @@ const BlogLocalAI: React.FC = () => {
         Honest comparison requires acknowledging limitations. Local AI isn't the right tool for every situation.
       </p>
       <p>
-        <strong style={{ color: '#fff' }}>Task complexity.</strong> For highly complex reasoning tasks — analyzing massive datasets, generating sophisticated long-form content, processing multi-modal inputs (text + images + audio simultaneously) — frontier cloud models still significantly outperform local alternatives. GPT-4o and Gemini 1.5 Pro are genuinely more capable than any locally runnable model in 2026 for hard reasoning tasks.
+        <strong style={{ color: '#fff' }}>Task complexity.</strong> For highly complex reasoning tasks - analyzing massive datasets, generating sophisticated long-form content, processing multi-modal inputs (text + images + audio simultaneously) - frontier cloud models still significantly outperform local alternatives. GPT-4o and Gemini 1.5 Pro are genuinely more capable than any locally runnable model in 2026 for hard reasoning tasks.
       </p>
       <p>
         <strong style={{ color: '#fff' }}>Hardware requirements for large tasks.</strong> If you want to run a model large enough to rival cloud quality (70B+ parameters), you need a machine with 64GB+ of RAM or a high-end GPU. That's a significant hardware investment.
@@ -276,11 +276,11 @@ const BlogLocalAI: React.FC = () => {
       </div>
       <div style={faqItemStyle}>
         <h3 style={{ ...h3Style, marginTop: 0 }}>What is the best local AI model for file search?</h3>
-        <p>For file search specifically, you don't need a large language model at all — you need a good embedding model. The best options in 2026 include nomic-embed-text, all-MiniLM-L6-v2, and BGE-M3. These models are small (under 1GB), fast, and produce high-quality semantic embeddings for document content.</p>
+        <p>For file search specifically, you don't need a large language model at all - you need a good embedding model. The best options in 2026 include nomic-embed-text, all-MiniLM-L6-v2, and BGE-M3. These models are small (under 1GB), fast, and produce high-quality semantic embeddings for document content.</p>
       </div>
       <div style={faqItemStyle}>
         <h3 style={{ ...h3Style, marginTop: 0 }}>Is local AI better for privacy than cloud AI?</h3>
-        <p>Yes, categorically. Cloud AI sends your data to a third party's servers. No matter how strong the provider's privacy policy is, you are trusting them to handle your data appropriately. Local AI never sends your data anywhere — it physically cannot be accessed by the model provider because the computation happens on your machine.</p>
+        <p>Yes, categorically. Cloud AI sends your data to a third party's servers. No matter how strong the provider's privacy policy is, you are trusting them to handle your data appropriately. Local AI never sends your data anywhere - it physically cannot be accessed by the model provider because the computation happens on your machine.</p>
       </div>
       <div style={{ ...faqItemStyle, borderBottom: 'none', marginBottom: 0, paddingBottom: 0 }}>
         <h3 style={{ ...h3Style, marginTop: 0 }}>Can I use local AI without coding experience?</h3>

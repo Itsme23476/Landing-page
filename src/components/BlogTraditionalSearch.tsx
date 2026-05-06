@@ -60,17 +60,17 @@ const faqItemStyle: React.CSSProperties = {
 const BlogTraditionalSearch: React.FC = () => {
   return (
     <BlogPostLayout
-      title="Why File Search on Windows and Mac is Broken — And How to Fix It"
+      title="Why File Search on Windows and Mac is Broken - And How to Fix It"
       date="Oct 18, 2026"
       readTime="7 min read"
       category="Product"
     >
       {/* ── Keyword-rich intro ── */}
       <p>
-        <strong style={{ color: '#fff' }}>File search on Windows and Mac is broken</strong> — and has been for over 20 years. Despite massive leaps in hardware performance, AI capability, and software engineering, finding a file on your own computer in 2026 is still frustratingly slow, unreliable, and often completely useless when you can't remember an exact filename. This guide explains exactly why <strong style={{ color: '#fff' }}>Windows Search and macOS Spotlight fall short</strong>, what a good desktop file search tool should actually do, and what you can use right now to fix the problem permanently.
+        <strong style={{ color: '#fff' }}>File search on Windows and Mac is broken</strong> - and has been for over 20 years. Despite massive leaps in hardware performance, AI capability, and software engineering, finding a file on your own computer in 2026 is still frustratingly slow, unreliable, and often completely useless when you can't remember an exact filename. This guide explains exactly why <strong style={{ color: '#fff' }}>Windows Search and macOS Spotlight fall short</strong>, what a good desktop file search tool should actually do, and what you can use right now to fix the problem permanently.
       </p>
       <p>
-        If you've ever typed something into Windows Search and gotten zero results for a file you know exists, or used Spotlight only to realize it found everything except what you needed — you're experiencing a systemic failure, not user error.
+        If you've ever typed something into Windows Search and gotten zero results for a file you know exists, or used Spotlight only to realize it found everything except what you needed - you're experiencing a systemic failure, not user error.
       </p>
 
       {/* ── TOC ── */}
@@ -97,10 +97,10 @@ const BlogTraditionalSearch: React.FC = () => {
       {/* ── Section 1 ── */}
       <h2 style={h2Style}>How Windows Search and macOS Spotlight Actually Work</h2>
       <p>
-        Both Windows Search and macOS Spotlight rely on what's called an inverted index — a database that maps words found in file names and metadata to the files that contain them. When you type a search term, the OS looks it up in this index and returns matches.
+        Both Windows Search and macOS Spotlight rely on what's called an inverted index - a database that maps words found in file names and metadata to the files that contain them. When you type a search term, the OS looks it up in this index and returns matches.
       </p>
       <p>
-        The key limitation: <strong style={{ color: '#fff' }}>most of this indexing is built around file names and metadata, not file content</strong>. Yes, both systems claim to index document contents — and they do, partially. But the content indexing is inconsistently applied, slow to update, and frequently incomplete, especially on machines with large drives or older files that were present before indexing was enabled.
+        The key limitation: <strong style={{ color: '#fff' }}>most of this indexing is built around file names and metadata, not file content</strong>. Yes, both systems claim to index document contents - and they do, partially. But the content indexing is inconsistently applied, slow to update, and frequently incomplete, especially on machines with large drives or older files that were present before indexing was enabled.
       </p>
       <p>
         Even when content is indexed, neither system understands meaning. They match character strings. So searching for "apartment agreement" won't find a PDF titled "lease_2025.pdf" even if that PDF contains the words "apartment" and "agreement" dozens of times, because the index is looking at tokens, not semantic relationships.
@@ -115,7 +115,7 @@ const BlogTraditionalSearch: React.FC = () => {
         Consider what a typical Downloads folder looks like: "IMG_4837.png," "invoice (3).pdf," "untitled-document-2.docx," "Screenshot 2026-03-14 at 10.22.01.png," "Export-Final-USE-THIS-ONE.xlsx." These aren't exceptional cases. They're the norm. Files get auto-generated names by browsers, export functions, screenshot tools, email clients, and a dozen other sources every single day.
       </p>
       <p>
-        Windows Search and Spotlight are fundamentally unequipped to handle this reality because their search model assumes that someone gave the file a meaningful name. When the name is meaningless — which is most of the time — the search either returns everything or nothing.
+        Windows Search and Spotlight are fundamentally unequipped to handle this reality because their search model assumes that someone gave the file a meaningful name. When the name is meaningless - which is most of the time - the search either returns everything or nothing.
       </p>
       <h3 style={h3Style}>The consequences of bad filename-based search</h3>
       <p>
@@ -134,7 +134,7 @@ const BlogTraditionalSearch: React.FC = () => {
         <strong style={{ color: '#fff' }}>Result flooding.</strong> Broad searches on a large drive return hundreds or thousands of results with no intelligent ranking. Your most-accessed file in the last month is presented alongside a .tmp file from 2017. There's no intelligence applied to the ordering.
       </p>
       <p>
-        <strong style={{ color: '#fff' }}>Missing file types.</strong> Both Windows and macOS have lists of file types they index and lists of types they ignore. Files that don't make the include list — certain code files, certain export formats, files in excluded directories — are invisible to search entirely.
+        <strong style={{ color: '#fff' }}>Missing file types.</strong> Both Windows and macOS have lists of file types they index and lists of types they ignore. Files that don't make the include list - certain code files, certain export formats, files in excluded directories - are invisible to search entirely.
       </p>
       <p>
         <strong style={{ color: '#fff' }}>External drive gaps.</strong> Search indexes typically don't extend to external drives by default. If you have a terabyte external with your archive, it's effectively unsearchable through the built-in tools unless you jump through configuration hoops.
@@ -146,7 +146,7 @@ const BlogTraditionalSearch: React.FC = () => {
         After understanding what the built-in tools lack, the requirements for a genuinely useful <strong style={{ color: '#fff' }}>desktop file search application</strong> become clear:
       </p>
       <p>
-        <strong style={{ color: '#fff' }}>1. Index actual file content, not just names.</strong> The full text of PDFs, documents, spreadsheets, and notes should be searchable. Not through keyword matching alone — through semantic understanding.
+        <strong style={{ color: '#fff' }}>1. Index actual file content, not just names.</strong> The full text of PDFs, documents, spreadsheets, and notes should be searchable. Not through keyword matching alone - through semantic understanding.
       </p>
       <p>
         <strong style={{ color: '#fff' }}>2. Support natural language queries.</strong> A user should be able to type "the Q3 revenue report from last year" and get the right answer, even if the file is named "Report_Q3_2025_v7_SEND.xlsx."
@@ -158,7 +158,7 @@ const BlogTraditionalSearch: React.FC = () => {
         <strong style={{ color: '#fff' }}>4. Keep data private.</strong> File contents are personal. An AI search tool that uploads document contents to a cloud server in order to process them is asking you to trade privacy for functionality. Local processing is the right architecture.
       </p>
       <p>
-        <strong style={{ color: '#fff' }}>5. Stay up to date automatically.</strong> The index should update in real-time as files are created, moved, or deleted — not on a fixed schedule that lags by hours.
+        <strong style={{ color: '#fff' }}>5. Stay up to date automatically.</strong> The index should update in real-time as files are created, moved, or deleted - not on a fixed schedule that lags by hours.
       </p>
 
       <div style={ctaBoxStyle}>
@@ -179,13 +179,13 @@ const BlogTraditionalSearch: React.FC = () => {
         Slow file search doesn't appear on anyone's list of major productivity problems because each individual incident is small. You spend three minutes looking for something, you find it, you move on. No big deal.
       </p>
       <p>
-        But the cumulative math is punishing. Research on knowledge worker productivity consistently finds that employees spend between 15% and 35% of their working time searching for information. At even the conservative end of that range — 15% of a 40-hour work week — that's six hours per week spent finding things instead of doing things. Over a year, that's over 300 hours. Seven and a half full work weeks.
+        But the cumulative math is punishing. Research on knowledge worker productivity consistently finds that employees spend between 15% and 35% of their working time searching for information. At even the conservative end of that range - 15% of a 40-hour work week - that's six hours per week spent finding things instead of doing things. Over a year, that's over 300 hours. Seven and a half full work weeks.
       </p>
       <p>
-        Even if your personal situation is far less extreme — say, 10 minutes per day — that's still 40+ hours annually. A full work week, every year, just looking for files on your own computer.
+        Even if your personal situation is far less extreme - say, 10 minutes per day - that's still 40+ hours annually. A full work week, every year, just looking for files on your own computer.
       </p>
       <p>
-        The subtler cost is cognitive. Every failed search is an interruption. It breaks your focus, introduces frustration, and forces context switching. The compounding effect of dozens of small interruptions per day has a measurable impact on deep work — even if each individual interruption seems trivial.
+        The subtler cost is cognitive. Every failed search is an interruption. It breaks your focus, introduces frustration, and forces context switching. The compounding effect of dozens of small interruptions per day has a measurable impact on deep work - even if each individual interruption seems trivial.
       </p>
 
       {/* ── Section 6 ── */}
@@ -194,15 +194,15 @@ const BlogTraditionalSearch: React.FC = () => {
         <strong style={{ color: '#fff' }}>AI file search</strong> works fundamentally differently from filename-based search. Instead of matching character strings in file names, it builds a semantic understanding of what each file contains and matches your query against that understanding.
       </p>
       <p>
-        This is made possible by transformer-based language models — the same architecture behind ChatGPT, though much smaller versions optimized for local hardware. When the file manager reads your documents, it generates a numerical representation (a vector embedding) of the content's meaning. When you search, it converts your query into the same vector space and finds the files whose content is closest in meaning to what you're looking for.
+        This is made possible by transformer-based language models - the same architecture behind ChatGPT, though much smaller versions optimized for local hardware. When the file manager reads your documents, it generates a numerical representation (a vector embedding) of the content's meaning. When you search, it converts your query into the same vector space and finds the files whose content is closest in meaning to what you're looking for.
       </p>
       <p>
         The result is search that handles the real-world messiness of how files actually exist:
       </p>
       <p>
-        — A file named "jdnwjek293.pdf" that contains a vendor contract is found when you search for "vendor agreement."<br />
-        — A screenshot named "Screen Shot 2025-08-03 at 2.04.38 PM.png" that shows an error message is found when you search for "the error from the deployment last August."<br />
-        — Notes scattered across fifty markdown files become navigable by topic rather than requiring you to remember which file contains which information.
+        - A file named "jdnwjek293.pdf" that contains a vendor contract is found when you search for "vendor agreement."<br />
+        - A screenshot named "Screen Shot 2025-08-03 at 2.04.38 PM.png" that shows an error message is found when you search for "the error from the deployment last August."<br />
+        - Notes scattered across fifty markdown files become navigable by topic rather than requiring you to remember which file contains which information.
       </p>
       <p>
         To understand more about how this differs from the traditional approach and get a deeper technical breakdown, read: <a href="/blog/future-of-local-ai" style={{ color: '#b066ff', textDecoration: 'none' }}>The Future of Local AI on Your Machine</a>.
