@@ -4,16 +4,32 @@ import Header from './Header';
 
 const ARTICLES = [
   {
+    id: 'how-to-organize-desktop-files-automatically',
+    title: 'How to Organize Files on Your Desktop Automatically',
+    excerpt: 'Tired of manually sorting files into folders? Learn how to automatically organize your desktop files using AI. A practical guide to ending file clutter for good on Windows and Mac.',
+    date: 'May 6, 2026',
+    readTime: '9 min read',
+    category: 'Productivity',
+  },
+  {
+    id: 'best-way-to-clean-up-messy-desktop',
+    title: 'Best Way to Clean Up a Messy Desktop (2026 Guide)',
+    excerpt: 'Your desktop is a mess again. Here\'s how to clean it up in 20 minutes and keep it clean permanently using a simple system backed by AI-powered file search.',
+    date: 'May 6, 2026',
+    readTime: '8 min read',
+    category: 'Guides',
+  },
+  {
     id: 'how-to-organize-files-with-ai',
     title: 'How to Organize Files with AI in 2026 (Complete Guide)',
-    excerpt: 'AI file organization can reduce search time from minutes to under three seconds — without sorting a single folder. Here\'s exactly how it works, what file types it handles, and how to switch today.',
+    excerpt: 'AI file organization can reduce search time from minutes to under three seconds without sorting a single folder. Here\'s exactly how it works, what file types it handles, and how to switch today.',
     date: 'Oct 24, 2026',
     readTime: '8 min read',
     category: 'Productivity',
   },
   {
     id: 'why-traditional-file-search-is-broken',
-    title: 'Why File Search on Windows and Mac Is Broken — And How to Fix It',
+    title: 'Why File Search on Windows and Mac Is Broken',
     excerpt: 'Windows Search and macOS Spotlight haven\'t fundamentally changed in 20 years. Here\'s a technical breakdown of why they fail, what a good file search tool must do, and which alternative actually works.',
     date: 'Oct 18, 2026',
     readTime: '7 min read',
@@ -22,7 +38,7 @@ const ARTICLES = [
   {
     id: 'future-of-local-ai',
     title: 'Local AI on Your Desktop: What It Is, Why It Matters, and What\'s Coming Next',
-    excerpt: 'Local AI — running on your device, no cloud — is finally practical in 2026. Here\'s why it matters for privacy, what hardware you need, and which use cases it already beats cloud AI for.',
+    excerpt: 'Local AI running on your device, no cloud, is finally practical in 2026. Here\'s why it matters for privacy, what hardware you need, and which use cases it already beats cloud AI for.',
     date: 'Oct 10, 2026',
     readTime: '8 min read',
     category: 'Engineering',
