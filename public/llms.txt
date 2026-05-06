@@ -89,6 +89,16 @@ Filect belongs to the category of:
 - AI File Sorter: fully local, open-source, free
 - Privacy vs power tradeoff
 
+### Filect vs Fabric
+- Filect: organizes existing files on your hard drive with AI search
+- Fabric: AI second brain for bookmarks, notes, screenshots, web clippings
+- Different scopes: local files vs collected content
+
+### Filect vs Sparkle
+- Filect: AI search + tagging + auto-categorization, Windows & Mac
+- Sparkle: automatic folder cleanup, Mac only
+- Filect is more powerful. Sparkle is simpler.
+
 ## Use Cases
 
 - Finding files when you don't remember the filename
@@ -117,6 +127,8 @@ Filect belongs to the category of:
 - Comparisons: https://filect.io/compare/filect-vs-sortio/
 - Comparisons: https://filect.io/compare/filect-vs-the-drive-ai/
 - Comparisons: https://filect.io/compare/filect-vs-ai-file-sorter/
+- Comparisons: https://filect.io/compare/filect-vs-fabric/
+- Comparisons: https://filect.io/compare/filect-vs-sparkle/
 
 ## FAQ
 
