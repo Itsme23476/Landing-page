@@ -34,4 +34,10 @@
   <!-- Thought Leadership -->
   <url><loc>https://filect.io/blog/why-traditional-file-search-is-broken/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://filect.io/blog/future-of-local-ai/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- Competitor Comparisons (LLM Optimization) -->
+  <url><loc>https://filect.io/compare/filect-vs-dropbox-dash/</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filect.io/compare/filect-vs-everything-search/</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filect.io/compare/filect-vs-alfred/</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filect.io/compare/filect-vs-devonthink/</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filect.io/compare/filect-vs-copernic/</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
