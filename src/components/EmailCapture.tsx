@@ -60,7 +60,7 @@ const EmailCapture: React.FC = () => {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '700px',
+          width: '900px',
           height: '400px',
           background: 'radial-gradient(ellipse, rgba(147, 51, 234, 0.06) 0%, transparent 70%)',
           pointerEvents: 'none',
@@ -74,71 +74,68 @@ const EmailCapture: React.FC = () => {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         style={{
           position: 'relative',
-          maxWidth: '720px',
+          maxWidth: '1080px',
           margin: '0 auto',
-          padding: '48px 48px 44px',
+          padding: '48px 56px 44px',
           borderRadius: '20px',
           border: '1px solid rgba(147, 51, 234, 0.12)',
           background: 'linear-gradient(145deg, rgba(20, 16, 36, 0.8) 0%, rgba(10, 10, 16, 0.9) 100%)',
           backdropFilter: 'blur(16px)',
         }}
       >
-        {/* Top row: badge + heading */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', marginBottom: '12px' }}>
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              padding: '5px 14px',
-              borderRadius: '100px',
-              background: 'rgba(147, 51, 234, 0.1)',
-              border: '1px solid rgba(147, 51, 234, 0.18)',
-            }}
-          >
-            <span style={{ fontSize: '13px' }}>🎁</span>
-            <span
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                color: '#c084fc',
-                letterSpacing: '0.03em',
-              }}
-            >
-              Exclusive Offer
-            </span>
-          </motion.div>
-
-          {/* Heading */}
-          <h3
+        {/* Badge */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '5px 14px',
+            borderRadius: '100px',
+            background: 'rgba(147, 51, 234, 0.1)',
+            border: '1px solid rgba(147, 51, 234, 0.18)',
+            marginBottom: '20px',
+          }}
+        >
+          <span style={{ fontSize: '13px' }}>🎁</span>
+          <span
             style={{
               fontFamily: "'Inter', sans-serif",
-              fontSize: '1.75rem',
-              fontWeight: 700,
-              color: '#ffffff',
-              letterSpacing: '-0.02em',
-              lineHeight: 1.3,
-              margin: 0,
+              fontSize: '0.75rem',
+              fontWeight: 600,
+              color: '#c084fc',
+              letterSpacing: '0.03em',
             }}
           >
-            Get 20% Off Filect Pro
-          </h3>
-        </div>
+            Exclusive Offer
+          </span>
+        </motion.div>
+
+        {/* Heading */}
+        <h3
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: '1.75rem',
+            fontWeight: 700,
+            color: '#ffffff',
+            letterSpacing: '-0.02em',
+            lineHeight: 1.3,
+            margin: '0 0 12px',
+          }}
+        >
+          Get 20% Off Filect Pro
+        </h3>
 
         <p
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: '1rem',
             color: 'rgba(200, 190, 220, 0.65)',
-            marginBottom: '32px',
             lineHeight: 1.6,
-            maxWidth: '480px',
+            maxWidth: '520px',
             margin: '0 auto 32px',
           }}
         >
@@ -296,52 +293,11 @@ const EmailCapture: React.FC = () => {
               color: 'rgba(148, 163, 184, 0.35)',
               fontFamily: "'Inter', sans-serif",
               letterSpacing: '0.01em',
-              marginBottom: '0',
             }}
           >
             No spam, ever. Unsubscribe with one click.
           </p>
         )}
-
-        {/* Value props */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '32px',
-            marginTop: '28px',
-            paddingTop: '24px',
-            borderTop: '1px solid rgba(255, 255, 255, 0.04)',
-            flexWrap: 'wrap',
-          }}
-        >
-          {[
-            { icon: '💸', text: '20% off your first month' },
-            { icon: '📁', text: 'Monthly file organization tips' },
-            { icon: '🚀', text: 'Early access to new features' },
-          ].map((item, i) => (
-            <div
-              key={i}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-              }}
-            >
-              <span style={{ fontSize: '14px' }}>{item.icon}</span>
-              <span
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '0.78rem',
-                  color: 'rgba(200, 190, 220, 0.45)',
-                  fontWeight: 500,
-                }}
-              >
-                {item.text}
-              </span>
-            </div>
-          ))}
-        </div>
       </motion.div>
 
       <style>{`
