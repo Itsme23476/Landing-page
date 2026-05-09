@@ -296,11 +296,52 @@ const EmailCapture: React.FC = () => {
               color: 'rgba(148, 163, 184, 0.35)',
               fontFamily: "'Inter', sans-serif",
               letterSpacing: '0.01em',
+              marginBottom: '0',
             }}
           >
             No spam, ever. Unsubscribe with one click.
           </p>
         )}
+
+        {/* Value props */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '32px',
+            marginTop: '28px',
+            paddingTop: '24px',
+            borderTop: '1px solid rgba(255, 255, 255, 0.04)',
+            flexWrap: 'wrap',
+          }}
+        >
+          {[
+            { icon: '💸', text: '20% off your first month' },
+            { icon: '📁', text: 'Monthly file organization tips' },
+            { icon: '🚀', text: 'Early access to new features' },
+          ].map((item, i) => (
+            <div
+              key={i}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+              }}
+            >
+              <span style={{ fontSize: '14px' }}>{item.icon}</span>
+              <span
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '0.78rem',
+                  color: 'rgba(200, 190, 220, 0.45)',
+                  fontWeight: 500,
+                }}
+              >
+                {item.text}
+              </span>
+            </div>
+          ))}
+        </div>
       </motion.div>
 
       <style>{`
