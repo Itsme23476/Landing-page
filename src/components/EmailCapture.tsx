@@ -53,16 +53,16 @@ const EmailCapture: React.FC = () => {
         overflow: 'hidden',
       }}
     >
-      {/* Subtle glow behind the card */}
+      {/* Ambient glow */}
       <div
         style={{
           position: 'absolute',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '500px',
-          height: '300px',
-          background: 'radial-gradient(ellipse, rgba(147, 51, 234, 0.08) 0%, transparent 70%)',
+          width: '700px',
+          height: '400px',
+          background: 'radial-gradient(ellipse, rgba(147, 51, 234, 0.06) 0%, transparent 70%)',
           pointerEvents: 'none',
         }}
       />
@@ -74,76 +74,78 @@ const EmailCapture: React.FC = () => {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         style={{
           position: 'relative',
-          maxWidth: '560px',
+          maxWidth: '720px',
           margin: '0 auto',
-          padding: '40px 36px 36px',
-          borderRadius: '16px',
-          border: '1px solid rgba(147, 51, 234, 0.15)',
-          background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.04) 0%, rgba(15, 15, 20, 0.6) 100%)',
-          backdropFilter: 'blur(12px)',
+          padding: '48px 48px 44px',
+          borderRadius: '20px',
+          border: '1px solid rgba(147, 51, 234, 0.12)',
+          background: 'linear-gradient(145deg, rgba(20, 16, 36, 0.8) 0%, rgba(10, 10, 16, 0.9) 100%)',
+          backdropFilter: 'blur(16px)',
         }}
       >
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '6px',
-            padding: '6px 14px',
-            borderRadius: '100px',
-            background: 'rgba(147, 51, 234, 0.12)',
-            border: '1px solid rgba(147, 51, 234, 0.2)',
-            marginBottom: '20px',
-          }}
-        >
-          <span style={{ fontSize: '14px' }}>🎁</span>
-          <span
+        {/* Top row: badge + heading */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', marginBottom: '12px' }}>
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
             style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: '0.78rem',
-              fontWeight: 600,
-              color: '#c084fc',
-              letterSpacing: '0.02em',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '5px 14px',
+              borderRadius: '100px',
+              background: 'rgba(147, 51, 234, 0.1)',
+              border: '1px solid rgba(147, 51, 234, 0.18)',
             }}
           >
-            Exclusive Offer
-          </span>
-        </motion.div>
+            <span style={{ fontSize: '13px' }}>🎁</span>
+            <span
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '0.75rem',
+                fontWeight: 600,
+                color: '#c084fc',
+                letterSpacing: '0.03em',
+              }}
+            >
+              Exclusive Offer
+            </span>
+          </motion.div>
 
-        {/* Heading */}
-        <h3
-          style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '1.6rem',
-            fontWeight: 700,
-            color: '#ffffff',
-            marginBottom: '10px',
-            letterSpacing: '-0.02em',
-            lineHeight: 1.3,
-          }}
-        >
-          Get 20% Off Filect
-        </h3>
+          {/* Heading */}
+          <h3
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: '1.75rem',
+              fontWeight: 700,
+              color: '#ffffff',
+              letterSpacing: '-0.02em',
+              lineHeight: 1.3,
+              margin: 0,
+            }}
+          >
+            Get 20% Off Filect Pro
+          </h3>
+        </div>
 
         <p
           style={{
             fontFamily: "'Inter', sans-serif",
-            fontSize: '0.95rem',
-            color: 'rgba(200, 190, 220, 0.7)',
-            marginBottom: '28px',
+            fontSize: '1rem',
+            color: 'rgba(200, 190, 220, 0.65)',
+            marginBottom: '32px',
             lineHeight: 1.6,
-            maxWidth: '400px',
-            margin: '0 auto 28px',
+            maxWidth: '480px',
+            margin: '0 auto 32px',
           }}
         >
-          Subscribe for your discount code + monthly tips on file organization and productivity.
+          Drop your email and we'll send you a 20% discount code, plus monthly tips on file organization and productivity.
         </p>
 
-        {/* Form */}
+        {/* Form / Success */}
         <AnimatePresence mode="wait">
           {status === 'success' ? (
             <motion.div
@@ -153,17 +155,19 @@ const EmailCapture: React.FC = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               style={{
-                padding: '20px',
-                borderRadius: '10px',
-                background: 'rgba(52, 211, 153, 0.08)',
-                border: '1px solid rgba(52, 211, 153, 0.2)',
+                padding: '24px 32px',
+                borderRadius: '12px',
+                background: 'rgba(52, 211, 153, 0.06)',
+                border: '1px solid rgba(52, 211, 153, 0.15)',
+                maxWidth: '440px',
+                margin: '0 auto',
               }}
             >
-              <div style={{ fontSize: '24px', marginBottom: '8px' }}>✓</div>
+              <div style={{ fontSize: '28px', marginBottom: '10px' }}>✓</div>
               <p
                 style={{
                   fontFamily: "'Inter', sans-serif",
-                  fontSize: '0.95rem',
+                  fontSize: '1rem',
                   fontWeight: 600,
                   color: '#34d399',
                   marginBottom: '4px',
@@ -174,8 +178,8 @@ const EmailCapture: React.FC = () => {
               <p
                 style={{
                   fontFamily: "'Inter', sans-serif",
-                  fontSize: '0.85rem',
-                  color: 'rgba(52, 211, 153, 0.7)',
+                  fontSize: '0.88rem',
+                  color: 'rgba(52, 211, 153, 0.65)',
                 }}
               >
                 {message}
@@ -189,42 +193,43 @@ const EmailCapture: React.FC = () => {
               exit={{ opacity: 0 }}
               style={{
                 display: 'flex',
-                gap: '8px',
+                gap: '10px',
                 justifyContent: 'center',
                 alignItems: 'stretch',
+                maxWidth: '520px',
+                margin: '0 auto',
               }}
             >
-              <div style={{ position: 'relative', flex: '1 1 auto', maxWidth: '320px' }}>
-                <input
-                  type="email"
-                  placeholder="you@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  disabled={status === 'loading'}
-                  style={{
-                    width: '100%',
-                    padding: '13px 16px',
-                    borderRadius: '10px',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    background: 'rgba(0, 0, 0, 0.3)',
-                    color: '#ffffff',
-                    fontSize: '0.9rem',
-                    fontFamily: "'Inter', sans-serif",
-                    outline: 'none',
-                    transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
-                    boxSizing: 'border-box',
-                  }}
-                  onFocus={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(147, 51, 234, 0.5)';
-                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(147, 51, 234, 0.08)';
-                  }}
-                  onBlur={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
-                />
-              </div>
+              <input
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={status === 'loading'}
+                style={{
+                  flex: '1 1 auto',
+                  minWidth: 0,
+                  padding: '14px 18px',
+                  borderRadius: '10px',
+                  border: '1px solid rgba(255, 255, 255, 0.07)',
+                  background: 'rgba(0, 0, 0, 0.35)',
+                  color: '#ffffff',
+                  fontSize: '0.92rem',
+                  fontFamily: "'Inter', sans-serif",
+                  outline: 'none',
+                  transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+                  boxSizing: 'border-box',
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(147, 51, 234, 0.45)';
+                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(147, 51, 234, 0.06)';
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.07)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              />
 
               <motion.button
                 type="submit"
@@ -232,12 +237,12 @@ const EmailCapture: React.FC = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 style={{
-                  padding: '13px 28px',
+                  padding: '14px 32px',
                   borderRadius: '10px',
                   border: 'none',
                   background: 'linear-gradient(135deg, #9333ea 0%, #7c3aed 100%)',
                   color: '#ffffff',
-                  fontSize: '0.9rem',
+                  fontSize: '0.92rem',
                   fontWeight: 600,
                   fontFamily: "'Inter', sans-serif",
                   cursor: status === 'loading' ? 'wait' : 'pointer',
@@ -262,7 +267,7 @@ const EmailCapture: React.FC = () => {
           )}
         </AnimatePresence>
 
-        {/* Error message */}
+        {/* Error */}
         <AnimatePresence>
           {status === 'error' && message && (
             <motion.p
@@ -270,7 +275,7 @@ const EmailCapture: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               style={{
-                marginTop: '12px',
+                marginTop: '14px',
                 fontSize: '0.82rem',
                 fontFamily: "'Inter', sans-serif",
                 color: '#f87171',
@@ -282,13 +287,13 @@ const EmailCapture: React.FC = () => {
           )}
         </AnimatePresence>
 
-        {/* Footer text */}
+        {/* Footer */}
         {status !== 'success' && (
           <p
             style={{
-              marginTop: '16px',
-              fontSize: '0.72rem',
-              color: 'rgba(148, 163, 184, 0.4)',
+              marginTop: '18px',
+              fontSize: '0.73rem',
+              color: 'rgba(148, 163, 184, 0.35)',
               fontFamily: "'Inter', sans-serif",
               letterSpacing: '0.01em',
             }}
@@ -298,7 +303,6 @@ const EmailCapture: React.FC = () => {
         )}
       </motion.div>
 
-      {/* Spinner keyframes */}
       <style>{`
         @keyframes spin {
           from { transform: rotate(0deg); }
