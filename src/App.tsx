@@ -11,6 +11,7 @@ import SignUpSuccess from './components/SignUpSuccess';
 import ResetPassword from './components/ResetPassword';
 import SecretResetPassword from './components/SecretResetPassword';
 import BlogIndex from './components/BlogIndex';
+import EmailCapture from './components/EmailCapture';
 
 function Home() {
   return (
@@ -32,6 +33,8 @@ function Home() {
       </div>
 
       <CtaSection />
+
+      <EmailCapture />
 
       <footer style={{ marginTop: '100px', borderTop: '1px solid var(--border-light)', padding: '40px 24px', textAlign: 'center', color: 'var(--text-secondary)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
