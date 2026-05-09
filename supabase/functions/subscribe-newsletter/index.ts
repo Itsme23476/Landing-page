@@ -53,14 +53,14 @@ Deno.serve(async (req: Request) => {
 
     // Step 2: Fire event to trigger welcome email automation
     if (!alreadyExists) {
-      await fetch('https://api.resend.com/events', {
+      await fetch('https://api.resend.com/events/send', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${RESEND_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: 'subscriber.created',
+          event: 'subscriber.created',
           email: email,
           payload: { email: email },
         }),
