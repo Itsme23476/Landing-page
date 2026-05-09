@@ -22,7 +22,7 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const { email, firstName } = await req.json();
+    const { email } = await req.json();
 
     if (!email || !email.includes('@')) {
       return new Response(JSON.stringify({ error: 'Valid email required' }), {
@@ -31,8 +31,8 @@ Deno.serve(async (req: Request) => {
       });
     }
 
-    // Create contact in Resend
-    const res = await fetch('https://api.resend.com/contacts', {
+    // Step 1: Create contact in Resend
+    const contactRes = await fetch('https://api.resend.com/contacts', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
@@ -40,29 +40,48 @@ Deno.serve(async (req: Request) => {
       },
       body: JSON.stringify({
         email: email,
-        first_name: firstName || '',
         unsubscribed: false,
         segment_ids: ['15d90247-6334-4719-a066-97dc8710e532'],
       }),
     });
 
-    const data = await res.json();
+    const contactData = await contactRes.json();
 
-    if (!res.ok) {
-      // If contact already exists, still return success
-      if (res.status === 409 || (data.message && data.message.includes('already'))) {
-        return new Response(JSON.stringify({ success: true, message: 'Already subscribed' }), {
-          status: 200,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        });
-      }
-      return new Response(JSON.stringify({ error: data.message || 'Failed to subscribe' }), {
-        status: res.status,
+    // If contact already exists, still trigger the event but note it
+    const alreadyExists = contactRes.status === 409 || 
+      (contactData.message && contactData.message.includes('already'));
+
+    // Step 2: Fire event to trigger welcome email automation
+    if (!alreadyExists) {
+      await fetch('https://api.resend.com/events', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: 'subscriber.created',
+          email: email,
+          payload: { email: email },
+        }),
+      });
+    }
+
+    if (alreadyExists) {
+      return new Response(JSON.stringify({ success: true, message: 'Already subscribed' }), {
+        status: 200,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
-    return new Response(JSON.stringify({ success: true, id: data.id }), {
+    if (!contactRes.ok) {
+      return new Response(JSON.stringify({ error: contactData.message || 'Failed to subscribe' }), {
+        status: contactRes.status,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    return new Response(JSON.stringify({ success: true, id: contactData.id }), {
       status: 200,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
