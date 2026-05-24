@@ -9,7 +9,7 @@ export default function PaymentSuccess() {
   }, []);
 
   const handleClose = () => {
-    window.close();
+    window.location.href = 'filect://open';
   };
 
   return (
