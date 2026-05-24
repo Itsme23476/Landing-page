@@ -1,9 +1,6 @@
 export default function SignUpSuccess() {
   const handleClose = () => {
-    window.close();
-    setTimeout(() => {
-      window.location.href = '/';
-    }, 100);
+    window.location.href = 'filect://open';
   };
 
   return (
@@ -74,8 +71,8 @@ export default function SignUpSuccess() {
           lineHeight: '1.7',
           marginBottom: '32px',
         }}>
-          Your email has been confirmed and your account is now active. 
-          You can close this page and log in to the app with your credentials.
+          Your email has been confirmed and your account is now active.
+          Click below to open Filect — your credentials are already filled in.
         </p>
 
         <div style={{
@@ -124,7 +121,7 @@ export default function SignUpSuccess() {
             e.currentTarget.style.boxShadow = '0 4px 15px rgba(124, 77, 255, 0.3)';
           }}
         >
-          Close This Page
+          Open the App
         </button>
 
         <p style={{
@@ -132,7 +129,7 @@ export default function SignUpSuccess() {
           fontSize: '13px',
           marginTop: '16px',
         }}>
-          You can now log in to <span style={{ color: 'var(--primary)' }}>File Search Assistant</span>
+          Your account is ready. Welcome to <span style={{ color: 'var(--primary)' }}>Filect</span>
         </p>
       </div>
 
