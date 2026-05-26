@@ -31,10 +31,15 @@ export default function Signup() {
   useEffect(() => {
     const isOAuthReturn = new URLSearchParams(window.location.search).get('oauth') === '1';
     if (!isOAuthReturn) return;
-    supabase.auth.getSession().then(({ data }) => {
-      if (data.session?.user) {
-        goToCheckout(data.session.user.id, data.session.user.email || '');
+    supabase.auth.getSession().then(async ({ data }) => {
+      const user = data.session?.user;
+      if (!user) return;
+      // Tag the signup source on first web signup (Google users don't go through
+      // the email signUp where we set this). Only set if not already present.
+      if (!user.user_metadata?.signup_source) {
+        try { await supabase.auth.updateUser({ data: { signup_source: 'web' } }); } catch (_e) { /* noop */ }
       }
+      goToCheckout(user.id, user.email || '');
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -66,7 +71,10 @@ export default function Signup() {
       const { error } = await supabase.auth.signUp({
         email,
         password,
-        options: { emailRedirectTo: 'https://filect.io/signup-success' },
+        options: {
+          emailRedirectTo: 'https://filect.io/signup-success',
+          data: { signup_source: 'web' },
+        },
       });
       if (error) {
         if (error.message.toLowerCase().includes('already')) {

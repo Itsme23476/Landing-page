@@ -10,8 +10,10 @@ export default function OpenApp() {
     const params = new URLSearchParams(window.location.search);
     const uid = params.get('uid');
     const email = params.get('email');
+    // Bring them back to the plan they originally abandoned (falls back to Starter).
+    const plan = params.get('plan') || STARTER_PRICE_ID;
     if (uid) {
-      const q = new URLSearchParams({ user_id: uid, price_id: STARTER_PRICE_ID });
+      const q = new URLSearchParams({ user_id: uid, price_id: plan });
       if (email) q.set('email', email);
       setCheckoutUrl(`${SUPABASE_URL}/functions/v1/create-checkout-web?${q.toString()}`);
     }
