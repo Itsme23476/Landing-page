@@ -25,8 +25,12 @@ export default function Signup() {
     window.location.href = `${SUPABASE_URL}/functions/v1/create-checkout?${q.toString()}`;
   };
 
-  // If returning from Google OAuth (or already signed in), go straight to checkout.
+  // ONLY auto-continue to checkout when we're genuinely returning from a Google
+  // OAuth redirect (marked with ?oauth=1). A stale/persisted session from a
+  // previous visit must NOT silently send the user to checkout.
   useEffect(() => {
+    const isOAuthReturn = new URLSearchParams(window.location.search).get('oauth') === '1';
+    if (!isOAuthReturn) return;
     supabase.auth.getSession().then(({ data }) => {
       if (data.session?.user) {
         goToCheckout(data.session.user.id, data.session.user.email || '');
@@ -39,7 +43,7 @@ export default function Signup() {
     setError('');
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}/signup?plan=${plan}` },
+      options: { redirectTo: `${window.location.origin}/signup?plan=${plan}&oauth=1` },
     });
     if (error) setError(error.message);
   };
