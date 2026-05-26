@@ -69,6 +69,14 @@
     .pricing-head h1 span { background: linear-gradient(to right, #FFFFFF, var(--purple-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .pricing-head p { color: var(--text-secondary); font-size: 1.15rem; max-width: 540px; margin: 0 auto; }
 
+    /* ── Billing toggle ── */
+    .billing-toggle { display: inline-flex; gap: 4px; background: rgba(255,255,255,0.04); border: 1px solid var(--border-light); border-radius: 9999px; padding: 5px; margin-top: 28px; }
+    .billing-toggle button { background: transparent; border: none; color: var(--text-secondary); font-family: inherit; font-size: 0.95rem; font-weight: 600; padding: 9px 22px; border-radius: 9999px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+    .billing-toggle button.active { background: var(--purple-light); color: #000; }
+    .save-pill { background: rgba(176,102,255,0.2); color: var(--purple-light); font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 9999px; }
+    .billing-toggle button.active .save-pill { background: rgba(0,0,0,0.18); color: #000; }
+    .annual-note { color: var(--purple-light); font-size: 0.85rem; font-weight: 600; margin: -14px 0 18px; }
+
     /* ── Tiers ── */
     .tiers {
       position: relative; z-index: 2; max-width: 1120px; margin: 0 auto;
@@ -180,14 +188,22 @@
         <p>Every plan includes a 10-day free trial. You won't be charged until the trial ends — cancel anytime before then.</p>
       </div>
 
+      <div style="text-align:center; position:relative; z-index:2; padding:0 24px;">
+        <div class="billing-toggle">
+          <button type="button" id="bt-monthly" onclick="applyBilling('monthly')">Monthly</button>
+          <button type="button" id="bt-annual" class="active" onclick="applyBilling('annual')">Annual <span class="save-pill">Save 33%</span></button>
+        </div>
+      </div>
+
       <section class="tiers" id="tiers">
 
         <!-- Basic -->
         <div class="tier">
           <h2>Basic</h2>
           <p class="blurb">For getting your files under control.</p>
-          <div class="price-row"><span class="price-amount">$15</span><span class="price-period">/ month</span></div>
-          <a class="cta-btn cta-secondary" href="/signup?plan=price_1SeEv5BATYQXewwiQ5XO32PD">Start Free Trial</a>
+          <div class="price-row"><span class="price-amount" data-m="$15" data-a="$120">$120</span><span class="price-period" data-m="/ month" data-a="/ year">/ year</span></div>
+          <p class="annual-note annual-only">Save 33% — 4 months free</p>
+          <a class="cta-btn cta-secondary" data-m="price_1SeEv5BATYQXewwiQ5XO32PD" data-a="price_1TbNhCBATYQXewwi6k6RJfAV" href="/signup?plan=price_1TbNhCBATYQXewwi6k6RJfAV">Start Free Trial</a>
           <ul class="feature-list">
             <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Unlimited text &amp; audio categorization</li>
             <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>1,000 image &amp; video categorizations / month</li>
@@ -202,8 +218,9 @@
           <span class="popular-badge">MOST POPULAR</span>
           <h2>Pro</h2>
           <p class="blurb">For power users with large libraries.</p>
-          <div class="price-row"><span class="price-amount">$49</span><span class="price-period">/ month</span></div>
-          <a class="cta-btn cta-primary" href="/signup?plan=price_1SuJOxBATYQXewwiuqsqAcMJ">Start Free Trial</a>
+          <div class="price-row"><span class="price-amount" data-m="$49" data-a="$399">$399</span><span class="price-period" data-m="/ month" data-a="/ year">/ year</span></div>
+          <p class="annual-note annual-only">Save 33% — 4 months free</p>
+          <a class="cta-btn cta-primary" data-m="price_1SuJOxBATYQXewwiuqsqAcMJ" data-a="price_1TbNhOBATYQXewwinVl6TOP1" href="/signup?plan=price_1TbNhOBATYQXewwinVl6TOP1">Start Free Trial</a>
           <ul class="feature-list">
             <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Unlimited text &amp; audio categorization</li>
             <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>5,000 image &amp; video categorizations / month</li>
@@ -218,8 +235,9 @@
         <div class="tier">
           <h2>Premium</h2>
           <p class="blurb">For teams &amp; heavy professional use.</p>
-          <div class="price-row"><span class="price-amount">$199</span><span class="price-period">/ month</span></div>
-          <a class="cta-btn cta-secondary" href="/signup?plan=price_1TbMZjBATYQXewwiLqkGfPuX">Start Free Trial</a>
+          <div class="price-row"><span class="price-amount" data-m="$199" data-a="$1,599">$1,599</span><span class="price-period" data-m="/ month" data-a="/ year">/ year</span></div>
+          <p class="annual-note annual-only">Save 33% — 4 months free</p>
+          <a class="cta-btn cta-secondary" data-m="price_1TbMZjBATYQXewwiLqkGfPuX" data-a="price_1TbNhOBATYQXewwiHTK56Jwy" href="/signup?plan=price_1TbNhOBATYQXewwiHTK56Jwy">Start Free Trial</a>
           <ul class="feature-list">
             <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Unlimited text &amp; audio categorization</li>
             <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Effectively unlimited image &amp; video (50,000 / mo)</li>
@@ -241,7 +259,7 @@
               <tr><th></th><th>Basic</th><th class="col-pop">Pro</th><th>Premium</th></tr>
             </thead>
             <tbody>
-              <tr><td>Monthly price</td><td>$15</td><td class="col-pop">$49</td><td>$199</td></tr>
+              <tr><td>Price</td><td data-m="$15 / mo" data-a="$120 / yr">$120 / yr</td><td class="col-pop" data-m="$49 / mo" data-a="$399 / yr">$399 / yr</td><td data-m="$199 / mo" data-a="$1,599 / yr">$1,599 / yr</td></tr>
               <tr><td>Text &amp; audio categorization</td><td>Unlimited</td><td class="col-pop">Unlimited</td><td>Unlimited</td></tr>
               <tr><td>Image &amp; video categorization</td><td>1,000 / month</td><td class="col-pop">5,000 / month</td><td>50,000 / month</td></tr>
               <tr><td>Semantic file search</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
@@ -253,9 +271,9 @@
               <tr><td>1-on-1 personalized onboarding</td><td class="no">—</td><td class="col-pop no">—</td><td class="yes">✓</td></tr>
               <tr class="cta-row">
                 <td></td>
-                <td><a class="mini-cta" href="/signup?plan=price_1SeEv5BATYQXewwiQ5XO32PD">Start trial</a></td>
-                <td class="col-pop"><a class="mini-cta primary" href="/signup?plan=price_1SuJOxBATYQXewwiuqsqAcMJ">Start trial</a></td>
-                <td><a class="mini-cta" href="/signup?plan=price_1TbMZjBATYQXewwiLqkGfPuX">Start trial</a></td>
+                <td><a class="mini-cta" data-m="price_1SeEv5BATYQXewwiQ5XO32PD" data-a="price_1TbNhCBATYQXewwi6k6RJfAV" href="/signup?plan=price_1TbNhCBATYQXewwi6k6RJfAV">Start trial</a></td>
+                <td class="col-pop"><a class="mini-cta primary" data-m="price_1SuJOxBATYQXewwiuqsqAcMJ" data-a="price_1TbNhOBATYQXewwinVl6TOP1" href="/signup?plan=price_1TbNhOBATYQXewwinVl6TOP1">Start trial</a></td>
+                <td><a class="mini-cta" data-m="price_1TbMZjBATYQXewwiLqkGfPuX" data-a="price_1TbNhOBATYQXewwiHTK56Jwy" href="/signup?plan=price_1TbNhOBATYQXewwiHTK56Jwy">Start trial</a></td>
               </tr>
             </tbody>
           </table>
@@ -307,6 +325,23 @@
     </footer>
   </div>
 
+<script>
+  function applyBilling(mode) {
+    document.querySelectorAll('[data-m]').forEach(function (el) {
+      var val = mode === 'annual' ? el.getAttribute('data-a') : el.getAttribute('data-m');
+      if (val === null) return;
+      if (el.tagName === 'A') { el.setAttribute('href', '/signup?plan=' + val); }
+      else { el.textContent = val; }
+    });
+    document.querySelectorAll('.annual-only').forEach(function (el) {
+      el.style.display = (mode === 'annual') ? '' : 'none';
+    });
+    var m = document.getElementById('bt-monthly'), a = document.getElementById('bt-annual');
+    if (m) m.classList.toggle('active', mode === 'monthly');
+    if (a) a.classList.toggle('active', mode === 'annual');
+  }
+  applyBilling('annual');
+</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
