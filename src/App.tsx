@@ -13,6 +13,7 @@ import SecretResetPassword from './components/SecretResetPassword';
 import BlogIndex from './components/BlogIndex';
 import EmailCapture from './components/EmailCapture';
 import OpenApp from './components/OpenApp';
+import Signup from './components/Signup';
 
 function Home() {
   return (
@@ -60,6 +61,7 @@ function App() {
         <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/signup-success" element={<SignUpSuccess />} />
         <Route path="/open" element={<OpenApp />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/secret-reset-password" element={<SecretResetPassword />} />
       </Routes>
