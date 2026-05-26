@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
@@ -23,6 +23,25 @@ export default function Signup() {
   const goToCheckout = (userId: string, userEmail: string) => {
     const q = new URLSearchParams({ user_id: userId, email: userEmail, price_id: plan });
     window.location.href = `${SUPABASE_URL}/functions/v1/create-checkout?${q.toString()}`;
+  };
+
+  // If returning from Google OAuth (or already signed in), go straight to checkout.
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      if (data.session?.user) {
+        goToCheckout(data.session.user.id, data.session.user.email || '');
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const signInWithGoogle = async () => {
+    setError('');
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: `${window.location.origin}/signup?plan=${plan}` },
+    });
+    if (error) setError(error.message);
   };
 
   // Step 1: email + password
@@ -122,6 +141,17 @@ export default function Signup() {
                 : 'Log in to continue to checkout.'}
             </p>
 
+            <button type="button" onClick={signInWithGoogle} style={googleBtn}>
+              <svg width="18" height="18" viewBox="0 0 18 18" style={{ flexShrink: 0 }}>
+                <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62z"/>
+                <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.8.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.33A9 9 0 0 0 9 18z"/>
+                <path fill="#FBBC05" d="M3.97 10.72a5.4 5.4 0 0 1 0-3.44V4.95H.96a9 9 0 0 0 0 8.1l3.01-2.33z"/>
+                <path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58C13.46.9 11.42 0 9 0A9 9 0 0 0 .96 4.95l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58z"/>
+              </svg>
+              Continue with Google
+            </button>
+            <div style={dividerStyle}><span style={{ background: 'rgba(15,15,26,0.4)', padding: '0 12px' }}>or</span></div>
+
             <form onSubmit={handleCredentials}>
               <input type="email" placeholder="Email" value={email} autoComplete="email" onChange={(e) => setEmail(e.target.value)} style={inputStyle} />
               <input type="password" placeholder="Password" value={password} autoComplete={mode === 'signup' ? 'new-password' : 'current-password'} onChange={(e) => setPassword(e.target.value)} style={inputStyle} />
@@ -206,4 +236,12 @@ const ghostBtn: React.CSSProperties = {
 };
 const linkBtn: React.CSSProperties = {
   background: 'none', border: 'none', color: 'var(--text-secondary)', fontSize: '13px', cursor: 'pointer', textDecoration: 'underline',
+};
+const googleBtn: React.CSSProperties = {
+  width: '100%', padding: '13px', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
+  background: '#ffffff', color: '#1a1a2e', border: 'none', borderRadius: '10px', fontSize: '15px', fontWeight: 600, cursor: 'pointer',
+};
+const dividerStyle: React.CSSProperties = {
+  textAlign: 'center', color: 'var(--text-secondary)', fontSize: '13px', margin: '0 0 16px',
+  borderTop: '1px solid var(--border-light)', lineHeight: '0',
 };
