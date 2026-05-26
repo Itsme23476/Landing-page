@@ -12,51 +12,84 @@ export default function Signup() {
   const plan = params.get('plan') || DEFAULT_PLAN;
 
   const [mode, setMode] = useState<'signup' | 'login'>('signup');
+  const [step, setStep] = useState<'credentials' | 'code'>('credentials');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [code, setCode] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [info, setInfo] = useState('');
 
   const goToCheckout = (userId: string, userEmail: string) => {
     const q = new URLSearchParams({ user_id: userId, email: userEmail, price_id: plan });
     window.location.href = `${SUPABASE_URL}/functions/v1/create-checkout?${q.toString()}`;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Step 1: email + password
+  const handleCredentials = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError(''); setInfo('');
     if (!email || !password) { setError('Please enter your email and password.'); return; }
     setBusy(true);
     try {
-      if (mode === 'signup') {
-        const { data, error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: { emailRedirectTo: 'https://filect.io/signup-success' },
-        });
-        if (error) {
-          // If they already have an account, switch them to log in
-          if (error.message.toLowerCase().includes('already')) {
-            setMode('login');
-            setError('You already have an account — please log in.');
-          } else {
-            setError(error.message);
-          }
-          return;
-        }
-        if (data.user) { goToCheckout(data.user.id, email); return; }
-        setError('Could not create your account. Please try again.');
-      } else {
+      if (mode === 'login') {
         const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) { setError(error.message); return; }
         if (data.user) { goToCheckout(data.user.id, email); return; }
         setError('Could not log you in. Please try again.');
+        return;
       }
-    } catch (err) {
+      // signup
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: { emailRedirectTo: 'https://filect.io/signup-success' },
+      });
+      if (error) {
+        if (error.message.toLowerCase().includes('already')) {
+          setMode('login');
+          setError('You already have an account — please log in.');
+        } else { setError(error.message); }
+        return;
+      }
+      // Move to code step. (Supabase emails a 6-digit code; no session yet.)
+      setStep('code');
+      setInfo(`We sent a 6-digit code to ${email}. Enter it below to verify your email.`);
+    } catch {
       setError('Something went wrong. Please try again.');
-    } finally {
-      setBusy(false);
-    }
+    } finally { setBusy(false); }
+  };
+
+  // Step 2: verify the 6-digit code, then go to checkout
+  const handleCode = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(''); setInfo('');
+    if (!code.trim()) { setError('Enter the 6-digit code from your email.'); return; }
+    setBusy(true);
+    try {
+      const { data, error } = await supabase.auth.verifyOtp({
+        email, token: code.trim(), type: 'signup',
+      });
+      if (error) { setError('That code is incorrect or expired. Check your email and try again.'); return; }
+      if (data.user) { goToCheckout(data.user.id, email); return; }
+      setError('Could not verify. Please try again.');
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally { setBusy(false); }
+  };
+
+  const resendCode = async () => {
+    setError(''); setInfo('');
+    setBusy(true);
+    try {
+      const { error } = await supabase.auth.resend({ type: 'signup', email });
+      if (error) setError(error.message);
+      else setInfo(`New code sent to ${email}.`);
+    } finally { setBusy(false); }
+  };
+
+  const wrongEmail = () => {
+    setStep('credentials'); setCode(''); setError(''); setInfo('');
   };
 
   return (
@@ -77,68 +110,65 @@ export default function Signup() {
         boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
         position: 'relative', zIndex: 1,
       }}>
-        <h1 style={{ color: '#FFFFFF', fontSize: '26px', fontWeight: 700, marginBottom: '8px', textAlign: 'center' }}>
-          {mode === 'signup' ? 'Create your account' : 'Welcome back'}
-        </h1>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: '1.6', marginBottom: '28px', textAlign: 'center' }}>
-          {mode === 'signup'
-            ? 'Sign up to start your 10-day free trial. You won’t be charged until the trial ends — cancel anytime before then.'
-            : 'Log in to continue to checkout.'}
-        </p>
 
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email" placeholder="Email" value={email} autoComplete="email"
-            onChange={(e) => setEmail(e.target.value)}
-            style={inputStyle}
-          />
-          <input
-            type="password" placeholder="Password" value={password}
-            autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
-            onChange={(e) => setPassword(e.target.value)}
-            style={inputStyle}
-          />
+        {step === 'credentials' ? (
+          <>
+            <h1 style={{ color: '#FFFFFF', fontSize: '26px', fontWeight: 700, marginBottom: '8px', textAlign: 'center' }}>
+              {mode === 'signup' ? 'Create your account' : 'Welcome back'}
+            </h1>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: '1.6', marginBottom: '28px', textAlign: 'center' }}>
+              {mode === 'signup'
+                ? 'Sign up to start your 10-day free trial. You won’t be charged until the trial ends — cancel anytime before then.'
+                : 'Log in to continue to checkout.'}
+            </p>
 
-          {error && (
-            <p style={{ color: '#ff6b6b', fontSize: '13px', margin: '4px 0 12px', textAlign: 'center' }}>{error}</p>
-          )}
+            <form onSubmit={handleCredentials}>
+              <input type="email" placeholder="Email" value={email} autoComplete="email" onChange={(e) => setEmail(e.target.value)} style={inputStyle} />
+              <input type="password" placeholder="Password" value={password} autoComplete={mode === 'signup' ? 'new-password' : 'current-password'} onChange={(e) => setPassword(e.target.value)} style={inputStyle} />
+              {error && <p style={errStyle}>{error}</p>}
+              <button type="submit" disabled={busy} style={primaryBtn(busy)}>
+                {busy ? 'Please wait…' : mode === 'signup' ? 'Continue →' : 'Log in & continue →'}
+              </button>
+            </form>
 
-          <button
-            type="submit" disabled={busy}
-            style={{
-              width: '100%', padding: '14px 24px',
-              background: 'linear-gradient(135deg, rgba(178, 139, 255, 0.9) 0%, rgba(109, 40, 217, 0.9) 100%)',
-              border: '1px solid rgba(178, 139, 255, 0.3)', borderRadius: '10px',
-              color: '#FFFFFF', fontSize: '15px', fontWeight: 600, cursor: busy ? 'default' : 'pointer',
-              opacity: busy ? 0.7 : 1, boxShadow: '0 4px 15px rgba(124, 77, 255, 0.3)',
-            }}
-          >
-            {busy ? 'Please wait…' : mode === 'signup' ? 'Continue to checkout →' : 'Log in & continue →'}
-          </button>
-        </form>
+            <div style={{ marginTop: '18px', textAlign: 'center' }}>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '10px' }}>
+                {mode === 'signup' ? 'Already have an account?' : 'Need an account?'}
+              </p>
+              <button type="button" onClick={() => { setMode(mode === 'signup' ? 'login' : 'signup'); setError(''); }} style={ghostBtn}>
+                {mode === 'signup' ? 'Log in' : 'Sign up'}
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <h1 style={{ color: '#FFFFFF', fontSize: '26px', fontWeight: 700, marginBottom: '8px', textAlign: 'center' }}>
+              Verify your email
+            </h1>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: '1.6', marginBottom: '24px', textAlign: 'center' }}>
+              {info || `We sent a 6-digit code to ${email}.`}
+            </p>
 
-        <div style={{ marginTop: '18px', textAlign: 'center' }}>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '10px' }}>
-            {mode === 'signup' ? 'Already have an account?' : 'Need an account?'}
-          </p>
-          <button
-            type="button"
-            onClick={() => { setMode(mode === 'signup' ? 'login' : 'signup'); setError(''); }}
-            style={{
-              width: '100%', padding: '11px',
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(178,139,255,0.45)',
-              borderRadius: '10px', color: '#b28bff',
-              fontSize: '15px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s',
-            }}
-            onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(178,139,255,0.12)'; }}
-            onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; }}
-          >
-            {mode === 'signup' ? 'Log in' : 'Sign up'}
-          </button>
-        </div>
+            <form onSubmit={handleCode}>
+              <input
+                type="text" inputMode="numeric" placeholder="Enter 6-digit code" value={code}
+                onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                style={{ ...inputStyle, textAlign: 'center', fontSize: '22px', letterSpacing: '6px', fontWeight: 700 }}
+              />
+              {error && <p style={errStyle}>{error}</p>}
+              <button type="submit" disabled={busy} style={primaryBtn(busy)}>
+                {busy ? 'Verifying…' : 'Verify & continue →'}
+              </button>
+            </form>
 
-        <p style={{ color: 'var(--text-secondary)', fontSize: '12px', marginTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+            <div style={{ marginTop: '16px', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <button type="button" onClick={resendCode} disabled={busy} style={linkBtn}>Resend code</button>
+              <button type="button" onClick={wrongEmail} style={linkBtn}>Wrong email? Go back</button>
+            </div>
+          </>
+        )}
+
+        <p style={{ color: 'var(--text-secondary)', fontSize: '12px', marginTop: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
           <span>🔒</span> Secure payment powered by Stripe
         </p>
       </div>
@@ -158,4 +188,22 @@ const inputStyle: React.CSSProperties = {
   width: '100%', padding: '13px 16px', marginBottom: '12px',
   background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-light)',
   borderRadius: '10px', color: '#fff', fontSize: '15px', outline: 'none',
+};
+const errStyle: React.CSSProperties = { color: '#ff6b6b', fontSize: '13px', margin: '4px 0 12px', textAlign: 'center' };
+function primaryBtn(busy: boolean): React.CSSProperties {
+  return {
+    width: '100%', padding: '14px 24px',
+    background: 'linear-gradient(135deg, rgba(178, 139, 255, 0.9) 0%, rgba(109, 40, 217, 0.9) 100%)',
+    border: '1px solid rgba(178, 139, 255, 0.3)', borderRadius: '10px',
+    color: '#FFFFFF', fontSize: '15px', fontWeight: 600, cursor: busy ? 'default' : 'pointer',
+    opacity: busy ? 0.7 : 1, boxShadow: '0 4px 15px rgba(124, 77, 255, 0.3)',
+  };
+}
+const ghostBtn: React.CSSProperties = {
+  width: '100%', padding: '11px', background: 'rgba(255,255,255,0.04)',
+  border: '1px solid rgba(178,139,255,0.45)', borderRadius: '10px', color: '#b28bff',
+  fontSize: '15px', fontWeight: 600, cursor: 'pointer',
+};
+const linkBtn: React.CSSProperties = {
+  background: 'none', border: 'none', color: 'var(--text-secondary)', fontSize: '13px', cursor: 'pointer', textDecoration: 'underline',
 };
