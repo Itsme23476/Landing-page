@@ -22,7 +22,7 @@ export default function Signup() {
 
   const goToCheckout = (userId: string, userEmail: string) => {
     const q = new URLSearchParams({ user_id: userId, email: userEmail, price_id: plan });
-    window.location.href = `${SUPABASE_URL}/functions/v1/create-checkout?${q.toString()}`;
+    window.location.href = `${SUPABASE_URL}/functions/v1/create-checkout-web?${q.toString()}`;
   };
 
   // ONLY auto-continue to checkout when we're genuinely returning from a Google
