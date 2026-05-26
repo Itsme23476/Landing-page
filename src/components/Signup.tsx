@@ -181,8 +181,8 @@ export default function Signup() {
 
             <form onSubmit={handleCode}>
               <input
-                type="text" inputMode="numeric" placeholder="Enter 6-digit code" value={code}
-                onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                type="text" inputMode="numeric" placeholder="Enter the code" value={code}
+                onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, 8))}
                 style={{ ...inputStyle, textAlign: 'center', fontSize: '22px', letterSpacing: '6px', fontWeight: 700 }}
               />
               {error && <p style={errStyle}>{error}</p>}
