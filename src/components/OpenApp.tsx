@@ -13,7 +13,7 @@ export default function OpenApp() {
     if (uid) {
       const q = new URLSearchParams({ user_id: uid, price_id: STARTER_PRICE_ID });
       if (email) q.set('email', email);
-      setCheckoutUrl(`${SUPABASE_URL}/functions/v1/create-checkout?${q.toString()}`);
+      setCheckoutUrl(`${SUPABASE_URL}/functions/v1/create-checkout-web?${q.toString()}`);
     }
   }, []);
 
