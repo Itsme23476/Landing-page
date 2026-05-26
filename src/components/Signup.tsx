@@ -117,15 +117,26 @@ export default function Signup() {
           </button>
         </form>
 
-        <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginTop: '18px', textAlign: 'center' }}>
-          {mode === 'signup' ? 'Already have an account? ' : 'Need an account? '}
-          <span
+        <div style={{ marginTop: '18px', textAlign: 'center' }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '10px' }}>
+            {mode === 'signup' ? 'Already have an account?' : 'Need an account?'}
+          </p>
+          <button
+            type="button"
             onClick={() => { setMode(mode === 'signup' ? 'login' : 'signup'); setError(''); }}
-            style={{ color: 'var(--primary)', cursor: 'pointer' }}
+            style={{
+              width: '100%', padding: '11px',
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid rgba(178,139,255,0.45)',
+              borderRadius: '10px', color: '#b28bff',
+              fontSize: '15px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s',
+            }}
+            onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(178,139,255,0.12)'; }}
+            onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; }}
           >
             {mode === 'signup' ? 'Log in' : 'Sign up'}
-          </span>
-        </p>
+          </button>
+        </div>
 
         <p style={{ color: 'var(--text-secondary)', fontSize: '12px', marginTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
           <span>🔒</span> Secure payment powered by Stripe
