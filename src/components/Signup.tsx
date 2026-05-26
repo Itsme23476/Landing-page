@@ -78,11 +78,11 @@ export default function Signup() {
         position: 'relative', zIndex: 1,
       }}>
         <h1 style={{ color: '#FFFFFF', fontSize: '26px', fontWeight: 700, marginBottom: '8px', textAlign: 'center' }}>
-          {mode === 'signup' ? 'Start your free trial' : 'Welcome back'}
+          {mode === 'signup' ? 'Create your account' : 'Welcome back'}
         </h1>
         <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: '1.6', marginBottom: '28px', textAlign: 'center' }}>
           {mode === 'signup'
-            ? '10 days free. Cancel anytime before then and you won’t be charged.'
+            ? 'Sign up to start your 10-day free trial. You won’t be charged until the trial ends — cancel anytime before then.'
             : 'Log in to continue to checkout.'}
         </p>
 
