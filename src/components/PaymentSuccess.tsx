@@ -127,67 +127,48 @@ export default function PaymentSuccess() {
           color: 'var(--text-secondary)',
           fontSize: '15px',
           lineHeight: '1.7',
-          marginBottom: '32px',
-        }}>
-          Your payment has been processed successfully. 
-          You can now close this tab and return to the Filect app to enjoy all premium features.
-        </p>
-
-        <div style={{
-          backgroundColor: 'rgba(124, 77, 255, 0.08)',
-          border: '1px solid rgba(124, 77, 255, 0.2)',
-          borderRadius: '14px',
-          padding: '24px',
           marginBottom: '28px',
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '16px' }}>
-            <span style={{ color: '#4ADE80', fontSize: '20px' }}>✓</span>
-            <span style={{ color: '#D1D5DB', fontSize: '15px', fontWeight: 500 }}>Payment confirmed</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '16px' }}>
-            <span style={{ color: '#4ADE80', fontSize: '20px' }}>✓</span>
-            <span style={{ color: '#D1D5DB', fontSize: '15px', fontWeight: 500 }}>Premium access activated</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
-            <span style={{ color: '#4ADE80', fontSize: '20px' }}>✓</span>
-            <span style={{ color: '#D1D5DB', fontSize: '15px', fontWeight: 500 }}>Receipt sent to your email</span>
-          </div>
+          Your 10-day free trial has started. Download Filect (if you haven't already),
+          then <strong style={{ color: '#fff' }}>log in with the email you used</strong> — your
+          subscription is already linked to your account.
+        </p>
+
+        {/* Step 1: Download */}
+        <p style={{ color: '#fff', fontSize: '14px', fontWeight: 600, marginBottom: '12px', textAlign: 'left' }}>1. Download the app</p>
+        <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
+          <a href="https://github.com/Itsme23476/Mac-version/releases/latest" style={{
+            flex: 1, padding: '13px', borderRadius: '10px', textDecoration: 'none', textAlign: 'center',
+            background: 'linear-gradient(135deg, rgba(178,139,255,0.9), rgba(109,40,217,0.9))',
+            color: '#fff', fontSize: '14px', fontWeight: 600, boxShadow: '0 4px 15px rgba(124,77,255,0.3)',
+          }}>Download for Mac</a>
+          <a href="https://github.com/Itsme23476/App-interface/releases/latest" style={{
+            flex: 1, padding: '13px', borderRadius: '10px', textDecoration: 'none', textAlign: 'center',
+            background: 'rgba(255,255,255,0.06)', color: '#fff', fontSize: '14px', fontWeight: 600,
+            border: '1px solid rgba(176,102,255,0.4)',
+          }}>Download for Windows</a>
         </div>
 
+        {/* Step 2: open / log in */}
+        <p style={{ color: '#fff', fontSize: '14px', fontWeight: 600, marginBottom: '10px', textAlign: 'left' }}>2. Already have the app?</p>
         <button
           onClick={handleClose}
           style={{
-            width: '100%',
-            padding: '16px 24px',
-            background: 'linear-gradient(135deg, rgba(178, 139, 255, 0.8) 0%, rgba(109, 40, 217, 0.8) 100%)',
-            border: '1px solid rgba(178, 139, 255, 0.3)',
-            borderRadius: '12px',
-            color: '#FFFFFF',
-            fontSize: '16px',
-            fontWeight: 600,
-            cursor: 'pointer',
-            transition: 'all 0.2s',
-            boxShadow: '0 4px 20px rgba(124, 77, 255, 0.35)',
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.transform = 'translateY(-2px)';
-            e.currentTarget.style.boxShadow = '0 6px 25px rgba(124, 77, 255, 0.45)';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 4px 20px rgba(124, 77, 255, 0.35)';
+            width: '100%', padding: '13px 24px',
+            background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(178,139,255,0.45)',
+            borderRadius: '10px', color: '#b28bff', fontSize: '15px', fontWeight: 600, cursor: 'pointer',
           }}
         >
-          Close & Open the App
+          Open Filect & log in
         </button>
 
         <p style={{
           color: 'var(--text-secondary)',
-          fontSize: '14px',
-          marginTop: '20px',
+          fontSize: '13px',
+          marginTop: '18px',
           lineHeight: '1.6',
         }}>
-          Your subscription is now active in the app.
+          ✓ Trial started &nbsp;·&nbsp; ✓ Subscription linked &nbsp;·&nbsp; ✓ Receipt emailed
         </p>
 
         <p style={{
