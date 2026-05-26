@@ -113,19 +113,22 @@
     .check { flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; }
 
     /* ── Compare table ── */
-    .compare { position: relative; z-index: 2; max-width: 920px; margin: 0 auto; padding: 10px 24px 80px; }
-    .compare h2 { font-size: 1.6rem; font-weight: 700; text-align: center; margin-bottom: 32px; }
+    .compare { position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; padding: 40px 24px 100px; }
+    .compare h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em; text-align: center; margin-bottom: 14px; }
+    .compare .sub { color: var(--text-secondary); text-align: center; font-size: 1.1rem; margin-bottom: 48px; }
     .compare-scroll { overflow-x: auto; }
-    .compare table { width: 100%; border-collapse: collapse; min-width: 560px; }
-    .compare th, .compare td { padding: 15px 14px; text-align: center; border-bottom: 1px solid var(--border-light); font-size: 0.92rem; }
-    .compare thead th { font-weight: 700; font-size: 1.05rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
-    .compare td:first-child, .compare th:first-child { text-align: left; color: var(--text-primary); font-weight: 500; }
+    .compare table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    .compare th, .compare td { padding: 22px 24px; text-align: center; border-bottom: 1px solid var(--border-light); font-size: 1.05rem; }
+    .compare thead th { font-weight: 800; font-size: 1.45rem; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 24px; }
+    .compare td:first-child, .compare th:first-child { text-align: left; color: var(--text-primary); font-weight: 500; width: 38%; }
     .compare td { color: var(--text-secondary); }
     .compare .col-pop { background: rgba(176,102,255,0.07); }
     .compare thead .col-pop { color: var(--purple-light); }
-    .compare .yes { color: var(--purple-light); font-weight: 700; }
-    .compare .cta-row td { padding-top: 22px; border-bottom: none; }
-    .compare .mini-cta { display: inline-block; padding: 9px 18px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(176,102,255,0.4); transition: all 0.2s; }
+    .compare .col-pop:first-child { background: transparent; }
+    .compare .yes { color: var(--purple-light); font-weight: 700; font-size: 1.3rem; }
+    .compare .no { color: #4a4a5c; font-size: 1.2rem; }
+    .compare .cta-row td { padding-top: 28px; border-bottom: none; }
+    .compare .mini-cta { display: inline-block; padding: 12px 26px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(176,102,255,0.4); transition: all 0.2s; }
     .compare .mini-cta:hover { background: rgba(176,102,255,0.15); }
     .compare .mini-cta.primary { background: var(--purple-light); color: #000; border: none; }
     .compare .mini-cta.primary:hover { background: #C4A6FF; }
@@ -231,6 +234,7 @@
 
       <section class="compare">
         <h2>Compare plans</h2>
+        <p class="sub">Every plan includes a 10-day free trial. Find the one that fits.</p>
         <div class="compare-scroll">
           <table>
             <thead>
@@ -245,6 +249,8 @@
               <tr><td>Mac &amp; Windows</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
               <tr><td>10-day free trial</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
               <tr><td>Support</td><td>Standard</td><td class="col-pop">Priority email</td><td>Priority</td></tr>
+              <tr><td>Suggest features for the app</td><td class="no">—</td><td class="col-pop no">—</td><td class="yes">✓</td></tr>
+              <tr><td>1-on-1 personalized onboarding</td><td class="no">—</td><td class="col-pop no">—</td><td class="yes">✓</td></tr>
               <tr class="cta-row">
                 <td></td>
                 <td><a class="mini-cta" href="/signup?plan=price_1SeEv5BATYQXewwiQ5XO32PD">Start trial</a></td>
