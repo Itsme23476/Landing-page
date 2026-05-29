@@ -14,6 +14,12 @@ import BlogIndex from './components/BlogIndex';
 import EmailCapture from './components/EmailCapture';
 import OpenApp from './components/OpenApp';
 import Signup from './components/Signup';
+import Account from './components/Account';
+import Contact from './components/Contact';
+import Verify from './components/Verify';
+import Cancel from './components/Cancel';
+import TrialBlocked from './components/TrialBlocked';
+import Affiliates from './components/Affiliates';
 
 function Home() {
   return (
@@ -43,6 +49,8 @@ function Home() {
           <div style={{ display: 'flex', gap: '24px' }}>
             <a href="/privacy.html" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Privacy Policy</a>
             <a href="/pricing.html" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Pricing</a>
+            <a href="/contact" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Contact</a>
+            <a href="/affiliates" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Affiliate Program</a>
           </div>
           <p style={{ fontSize: '0.9rem' }}>&copy; {new Date().getFullYear()} Filect. All rights reserved.</p>
         </div>
@@ -62,6 +70,12 @@ function App() {
         <Route path="/signup-success" element={<SignUpSuccess />} />
         <Route path="/open" element={<OpenApp />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/verify" element={<Verify />} />
+        <Route path="/cancel" element={<Cancel />} />
+        <Route path="/trial-blocked" element={<TrialBlocked />} />
+        <Route path="/affiliates" element={<Affiliates />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/secret-reset-password" element={<SecretResetPassword />} />
       </Routes>
