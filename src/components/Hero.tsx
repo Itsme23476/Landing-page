@@ -7,10 +7,9 @@ const Hero: React.FC = () => {
     <section style={{ 
       display: 'grid', 
       gridTemplateColumns: '1fr 1fr', 
-      gap: '60px', 
-      alignItems: 'center', 
-      padding: '80px 0',
-      minHeight: '80vh'
+      gap: '60px',
+      alignItems: 'center',
+      padding: '96px 0 104px'
     }}>
       {/* Left: Text content */}
       <motion.div 
@@ -26,29 +25,29 @@ const Hero: React.FC = () => {
           </span>
         </div>
         
-        <h1 className="sr-only">AI-Powered File Search & Organization</h1>
-        <div style={{ 
-          fontSize: '4.5rem', 
-          fontWeight: 800, 
+        <h1 className="sr-only">AI File Organization and Search</h1>
+        <div style={{
+          fontSize: '4.5rem',
+          fontWeight: 800,
           lineHeight: 1.1,
           letterSpacing: '-0.03em'
         }} role="heading" aria-level={2}>
           Find any file.<br />
           <span className="text-gradient">Instantly.</span>
         </div>
-        
-        <p style={{ 
-          fontSize: '1.25rem', 
+
+        <p style={{
+          fontSize: '1.25rem',
           color: 'var(--text-secondary)',
           lineHeight: 1.6,
           maxWidth: '480px'
         }}>
-          The smartest AI file manager. Search your entire computer using natural language to find and organize files with AI. No folders. No guessing. Just results.
+          The smartest AI file manager. It organizes your files automatically, so you never have to sort your desktop again. And when you need to find one of your files you can just type what it is and it shows up. No more digging through folders.
         </p>
         
         <div style={{ display: 'flex', gap: '16px', marginTop: '16px', flexWrap: 'nowrap' }}>
           <motion.a
-            href="https://github.com/Itsme23476/App-interface/releases/download/v12.0.0/Filect.exe"
+            href="https://github.com/Itsme23476/App-interface/releases/download/v12.2.10/Filect.exe"
             whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(176,102,255,0.6)' }}
             whileTap={{ scale: 0.97 }}
             style={{
@@ -74,7 +73,7 @@ const Hero: React.FC = () => {
           </motion.a>
 
           <motion.a
-            href="https://github.com/Itsme23476/Mac-version/releases/download/v14.0.0/Filect-14.0.0-mac.dmg"
+            href="https://github.com/Itsme23476/Mac-version/releases/download/v14.1.10/Filect-14.1.10-mac.dmg"
             whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(255,255,255,0.2)' }}
             whileTap={{ scale: 0.97 }}
             style={{
