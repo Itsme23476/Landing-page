@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { hasUsedTrial } from '../utils/trialMemory';
 
 type Tier = {
   name: string;
@@ -56,6 +57,12 @@ const TIERS: Tier[] = [
 ];
 
 const Pricing: React.FC = () => {
+  // Soft trial-abuse layer: if this browser already used a trial, swap the
+  // copy so we don't promise something the server-side card check will block.
+  // Read in an effect so SSR/hydration doesn't mismatch.
+  const [trialUsed, setTrialUsed] = useState(false);
+  useEffect(() => { setTrialUsed(hasUsedTrial()); }, []);
+
   return (
     <section id="pricing" style={{ padding: '120px 24px', position: 'relative', zIndex: 10 }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
@@ -71,7 +78,9 @@ const Pricing: React.FC = () => {
             Start organizing your files today.
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 60px' }}>
-            Every plan includes a 10-day free trial. Cancel anytime.
+            {trialUsed
+              ? 'You\'ve already used your free trial. Subscribe to continue.'
+              : 'Every plan includes a 10-day free trial. Cancel anytime.'}
           </p>
         </motion.div>
 

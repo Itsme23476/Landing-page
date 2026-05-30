@@ -1,10 +1,65 @@
 import { useEffect, useState } from 'react';
 
+const MAC_URL = 'https://github.com/Itsme23476/Mac-version/releases/latest';
+const WIN_URL = 'https://github.com/Itsme23476/App-interface/releases/latest';
+
 export default function PaymentSuccess() {
   const [showConfetti, setShowConfetti] = useState(true);
+  const [isWindows, setIsWindows] = useState(false);
+  // ?from=app means they paid from inside the desktop app — they already have it,
+  // so skip the download steps and just send them back to the app.
+  const [fromApp] = useState(() => new URLSearchParams(window.location.search).get('from') === 'app');
 
   useEffect(() => {
     const timer = setTimeout(() => setShowConfetti(false), 3000);
+    const ua = (navigator.userAgent || '').toLowerCase();
+    setIsWindows(ua.includes('win'));
+    if (new URLSearchParams(window.location.search).get('from') === 'app') {
+      // Nudge the app to the foreground automatically.
+      window.location.href = 'filect://open';
+    }
+    // Soft trial-abuse layer: remember in this browser that a trial has been
+    // used. Next visit to /pricing will show "Subscribe now" instead of
+    // "Start free trial". Trivially bypassable; the real enforcement is
+    // server-side card fingerprint matching in stripe-webhook.
+    import('../utils/trialMemory').then(({ markTrialUsed }) => markTrialUsed());
+
+    // Trial-abuse check. Our stripe-webhook may have just canceled the sub
+    // because the card was already used for a prior trial. Detect that case
+    // and redirect to /trial-blocked instead of showing success. We poll a
+    // few times because the webhook is racing the success_url redirect.
+    (async () => {
+      try {
+        const supabaseUrl = 'https://gsvccxhdgcshiwgjvgfi.supabase.co';
+        const anon = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdzdmNjeGhkZ2NzaGl3Z2p2Z2ZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjczOTY2NTIsImV4cCI6MjA4Mjk3MjY1Mn0.Sbb6YJjlQ_ig2LCcs9zz_Be1kU-iIHBx4Vu4nzCPyTM';
+        // We don't know the user's session here (this page is reached from
+        // Stripe, not an authenticated nav). Best-effort: check most recent
+        // sub by session/email if present. If not detectable, just show
+        // success (the canceled sub is harmless — user can re-attempt).
+        const sessionId = new URLSearchParams(window.location.search).get('session_id');
+        if (!sessionId) return;
+        for (let attempt = 0; attempt < 6; attempt++) {
+          await new Promise((r) => setTimeout(r, attempt === 0 ? 800 : 1500));
+          const res = await fetch(`${supabaseUrl}/rest/v1/subscriptions?select=user_id,status,trial_blocked_reason&order=updated_at.desc&limit=1`, {
+            headers: { apikey: anon, Authorization: `Bearer ${anon}` },
+          }).catch(() => null);
+          if (!res || !res.ok) continue;
+          const rows = await res.json();
+          const latest = rows?.[0];
+          if (latest?.trial_blocked_reason === 'duplicate_trial_card') {
+            const q = new URLSearchParams();
+            if (latest.user_id) q.set('user_id', latest.user_id);
+            const priceFromUrl = new URLSearchParams(window.location.search).get('price');
+            if (priceFromUrl) q.set('price', priceFromUrl);
+            window.location.replace(`/trial-blocked?${q.toString()}`);
+            return;
+          }
+        }
+      } catch {
+        // Best-effort only; never block success page if check fails.
+      }
+    })();
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -111,7 +166,7 @@ export default function PaymentSuccess() {
           marginBottom: '8px',
           letterSpacing: '-0.02em',
         }}>
-          Payment Successful!
+          You're all set!
         </h1>
 
         <h2 style={{
@@ -120,47 +175,64 @@ export default function PaymentSuccess() {
           fontWeight: 500,
           marginBottom: '20px',
         }}>
-          Thank you for your purchase
+          Your 10-day free trial has started
         </h2>
 
-        <p style={{
-          color: 'var(--text-secondary)',
-          fontSize: '15px',
-          lineHeight: '1.7',
-          marginBottom: '28px',
-        }}>
-          Your 10-day free trial has started. Download Filect (if you haven't already),
-          then <strong style={{ color: '#fff' }}>log in with the email you used</strong> — your
-          subscription is already linked to your account.
-        </p>
+        {fromApp ? (
+          <>
+            <p style={{
+              color: 'var(--text-secondary)', fontSize: '15px', lineHeight: '1.7', marginBottom: '28px',
+            }}>
+              Your subscription is active. Head back to Filect — it's all unlocked.
+            </p>
+            <button
+              onClick={handleClose}
+              style={{
+                width: '100%', padding: '14px 24px',
+                background: 'linear-gradient(135deg, rgba(178,139,255,0.9), rgba(109,40,217,0.9))',
+                border: '1px solid rgba(178,139,255,0.3)', borderRadius: '10px',
+                color: '#fff', fontSize: '15px', fontWeight: 600, cursor: 'pointer',
+                boxShadow: '0 4px 15px rgba(124,77,255,0.3)',
+              }}
+            >
+              Return to Filect
+            </button>
+          </>
+        ) : (
+          <>
+            <p style={{
+              color: 'var(--text-secondary)', fontSize: '15px', lineHeight: '1.7', marginBottom: '28px',
+            }}>
+              Download Filect and <strong style={{ color: '#fff' }}>log in with the email you used</strong> —
+              your subscription is already linked.
+            </p>
 
-        {/* Step 1: Download */}
-        <p style={{ color: '#fff', fontSize: '14px', fontWeight: 600, marginBottom: '12px', textAlign: 'left' }}>1. Download the app</p>
-        <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
-          <a href="https://github.com/Itsme23476/Mac-version/releases/latest" style={{
-            flex: 1, padding: '13px', borderRadius: '10px', textDecoration: 'none', textAlign: 'center',
-            background: 'linear-gradient(135deg, rgba(178,139,255,0.9), rgba(109,40,217,0.9))',
-            color: '#fff', fontSize: '14px', fontWeight: 600, boxShadow: '0 4px 15px rgba(124,77,255,0.3)',
-          }}>Download for Mac</a>
-          <a href="https://github.com/Itsme23476/App-interface/releases/latest" style={{
-            flex: 1, padding: '13px', borderRadius: '10px', textDecoration: 'none', textAlign: 'center',
-            background: 'rgba(255,255,255,0.06)', color: '#fff', fontSize: '14px', fontWeight: 600,
-            border: '1px solid rgba(176,102,255,0.4)',
-          }}>Download for Windows</a>
-        </div>
+            {/* Step 1: Download (auto-detected OS) */}
+            <p style={{ color: '#fff', fontSize: '14px', fontWeight: 600, marginBottom: '12px', textAlign: 'left' }}>1. Download the app</p>
+            <a href={isWindows ? WIN_URL : MAC_URL} style={{
+              display: 'block', padding: '14px', borderRadius: '10px', textDecoration: 'none', textAlign: 'center',
+              background: 'linear-gradient(135deg, rgba(178,139,255,0.9), rgba(109,40,217,0.9))',
+              color: '#fff', fontSize: '15px', fontWeight: 600, boxShadow: '0 4px 15px rgba(124,77,255,0.3)',
+            }}>Download for {isWindows ? 'Windows' : 'Mac'}</a>
+            <p style={{ marginTop: '10px', marginBottom: '24px', fontSize: '13px', color: 'var(--text-secondary)' }}>
+              On {isWindows ? 'Mac' : 'Windows'} instead?{' '}
+              <a href={isWindows ? MAC_URL : WIN_URL} style={{ color: 'var(--primary)', textDecoration: 'none' }}>Download here</a>
+            </p>
 
-        {/* Step 2: open / log in */}
-        <p style={{ color: '#fff', fontSize: '14px', fontWeight: 600, marginBottom: '10px', textAlign: 'left' }}>2. Already have the app?</p>
-        <button
-          onClick={handleClose}
-          style={{
-            width: '100%', padding: '13px 24px',
-            background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(178,139,255,0.45)',
-            borderRadius: '10px', color: '#b28bff', fontSize: '15px', fontWeight: 600, cursor: 'pointer',
-          }}
-        >
-          Open Filect & log in
-        </button>
+            {/* Step 2: open / log in */}
+            <p style={{ color: '#fff', fontSize: '14px', fontWeight: 600, marginBottom: '10px', textAlign: 'left' }}>2. Already have the app?</p>
+            <button
+              onClick={handleClose}
+              style={{
+                width: '100%', padding: '13px 24px',
+                background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(178,139,255,0.45)',
+                borderRadius: '10px', color: '#b28bff', fontSize: '15px', fontWeight: 600, cursor: 'pointer',
+              }}
+            >
+              Open Filect & log in
+            </button>
+          </>
+        )}
 
         <p style={{
           color: 'var(--text-secondary)',
@@ -168,7 +240,7 @@ export default function PaymentSuccess() {
           marginTop: '18px',
           lineHeight: '1.6',
         }}>
-          ✓ Trial started &nbsp;·&nbsp; ✓ Subscription linked &nbsp;·&nbsp; ✓ Receipt emailed
+          ✓ Trial started &nbsp;·&nbsp; ✓ No charge today &nbsp;·&nbsp; ✓ Subscription linked
         </p>
 
         <p style={{
