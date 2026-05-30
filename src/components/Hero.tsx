@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
         
         <div style={{ display: 'flex', gap: '16px', marginTop: '16px', flexWrap: 'nowrap' }}>
           <motion.a
-            href="https://github.com/Itsme23476/App-interface/releases/download/v12.2.10/Filect.exe"
+            href="https://github.com/Itsme23476/App-interface/releases/download/v12.2.11/Filect.exe"
             whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(176,102,255,0.6)' }}
             whileTap={{ scale: 0.97 }}
             style={{
