@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY);
 
 const Header: React.FC = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => setLoggedIn(!!data.session));
+  }, []);
+
   return (
     <header style={{ 
       display: 'flex', 
@@ -29,16 +38,18 @@ const Header: React.FC = () => {
         <a href="/blog" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Blog</a>
         <a href="/pricing.html" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Pricing</a>
         <a href="/#download" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Download</a>
+        <a href="/contact" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Contact</a>
       </nav>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-        <button style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer' }}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </button>
-        <a href="#download" className="button-primary" style={{ padding: '8px 20px', borderRadius: '6px', fontSize: '0.9rem', textDecoration: 'none', display: 'inline-block' }}>Get Started</a>
+        {loggedIn ? (
+          <a href="/account" className="button-primary" style={{ padding: '8px 20px', borderRadius: '6px', fontSize: '0.9rem', textDecoration: 'none', display: 'inline-block' }}>Account</a>
+        ) : (
+          <>
+            <a href="/signup?mode=login" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Log in</a>
+            <a href="/signup" className="button-primary" style={{ padding: '8px 20px', borderRadius: '6px', fontSize: '0.9rem', textDecoration: 'none', display: 'inline-block' }}>Get Started</a>
+          </>
+        )}
       </div>
     </header>
   );

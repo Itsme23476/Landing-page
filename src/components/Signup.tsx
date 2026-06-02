@@ -11,7 +11,9 @@ export default function Signup() {
   const params = new URLSearchParams(window.location.search);
   const plan = params.get('plan') || DEFAULT_PLAN;
 
-  const [mode, setMode] = useState<'signup' | 'login'>('signup');
+  const [mode, setMode] = useState<'signup' | 'login'>(
+    params.get('mode') === 'login' ? 'login' : 'signup'
+  );
   const [step, setStep] = useState<'credentials' | 'code'>('credentials');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,6 +25,22 @@ export default function Signup() {
   const goToCheckout = (userId: string, userEmail: string) => {
     const q = new URLSearchParams({ user_id: userId, email: userEmail, price_id: plan });
     window.location.href = `${SUPABASE_URL}/functions/v1/create-checkout-web?${q.toString()}`;
+  };
+
+  // After any successful auth, send the user to the right place:
+  //  - active/trialing subscription      -> /account (manage)
+  //  - no sub but they explicitly picked a plan (came from pricing) -> checkout
+  //  - no sub, no plan (e.g. nav signup) -> pricing to choose a plan first
+  const routeAfterAuth = async (userId: string, userEmail: string) => {
+    const { data } = await supabase
+      .from('subscriptions')
+      .select('status')
+      .eq('user_id', userId)
+      .in('status', ['active', 'trialing'])
+      .limit(1);
+    if (data && data.length) { window.location.href = '/account'; return; }
+    if (params.get('plan')) { goToCheckout(userId, userEmail); return; }
+    window.location.href = '/pricing.html';
   };
 
   // ONLY auto-continue to checkout when we're genuinely returning from a Google
@@ -39,16 +57,19 @@ export default function Signup() {
       if (!user.user_metadata?.signup_source) {
         try { await supabase.auth.updateUser({ data: { signup_source: 'web' } }); } catch (_e) { /* noop */ }
       }
-      goToCheckout(user.id, user.email || '');
+      routeAfterAuth(user.id, user.email || '');
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const signInWithGoogle = async () => {
     setError('');
+    // Only carry a plan through OAuth if one was explicitly chosen (came from
+    // pricing). A plain nav signup carries none, so we route to pricing after.
+    const explicit = params.get('plan');
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}/signup?plan=${plan}&oauth=1` },
+      options: { redirectTo: `${window.location.origin}/signup?oauth=1${explicit ? `&plan=${explicit}` : ''}` },
     });
     if (error) setError(error.message);
   };
@@ -63,7 +84,7 @@ export default function Signup() {
       if (mode === 'login') {
         const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) { setError(error.message); return; }
-        if (data.user) { goToCheckout(data.user.id, email); return; }
+        if (data.user) { await routeAfterAuth(data.user.id, email); return; }
         setError('Could not log you in. Please try again.');
         return;
       }
@@ -102,7 +123,7 @@ export default function Signup() {
         email, token: code.trim(), type: 'signup',
       });
       if (error) { setError('That code is incorrect or expired. Check your email and try again.'); return; }
-      if (data.user) { goToCheckout(data.user.id, email); return; }
+      if (data.user) { await routeAfterAuth(data.user.id, email); return; }
       setError('Could not verify. Please try again.');
     } catch {
       setError('Something went wrong. Please try again.');

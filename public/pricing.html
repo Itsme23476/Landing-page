@@ -175,6 +175,7 @@
           <a class="hide-mob" href="/blog">Blog</a>
           <a class="hide-mob" href="/pricing.html" style="color: #fff;">Pricing</a>
           <a class="hide-mob" href="/#download">Download</a>
+          <a class="hide-mob" href="/contact">Contact</a>
         </nav>
         <div class="header-actions">
           <a class="btn-get-started" href="#tiers">Get Started</a>
@@ -184,8 +185,8 @@
 
     <main>
       <div class="pricing-head">
-        <h1>Pick your plan.<br><span>Start free for 10 days.</span></h1>
-        <p>Every plan includes a 10-day free trial. You won't be charged until the trial ends — cancel anytime before then.</p>
+        <h1>Pick your plan.<br><span id="plan-headline-sub">Start free for 10 days.</span></h1>
+        <p id="plan-subtitle">Every plan includes a 10-day free trial. You won't be charged until the trial ends — cancel anytime before then.</p>
       </div>
 
       <div style="text-align:center; position:relative; z-index:2; padding:0 24px;">
@@ -320,18 +321,90 @@
         <a href="/privacy.html">Privacy Policy</a>
         <a href="/blog">Blog</a>
         <a href="/#features">Features</a>
+        <a href="/contact">Contact</a>
       </div>
       <p class="footer-copy">&copy; 2026 Filect. All rights reserved.</p>
     </footer>
   </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+  var SUPA_URL = 'https://gsvccxhdgcshiwgjvgfi.supabase.co';
+  var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdzdmNjeGhkZ2NzaGl3Z2p2Z2ZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjczOTY2NTIsImV4cCI6MjA4Mjk3MjY1Mn0.Sbb6YJjlQ_ig2LCcs9zz_Be1kU-iIHBx4Vu4nzCPyTM';
+  var sb = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+  var FILECT_USER = null;   // { id, email } when logged in
+  var FILECT_SUB = null;    // { priceId } when they have an active/trialing sub
+  var BILLING_MODE = 'annual';
+
+  // Identity handed off from the desktop app (so no second login on the web).
+  var P = new URLSearchParams(location.search);
+  var APP_UID = P.get('uid');
+  var APP_EMAIL = P.get('email');
+  var APP_SOURCE = P.get('source');  // 'app' when opened from the desktop app
+  var APP_CURRENT = P.get('current'); // current price_id when handed off for an UPGRADE
+
+  // Soft trial-abuse nudge (UX only, NOT enforcement — the real gate is the
+  // server-side card-fingerprint check). If this browser already used a free
+  // trial — cookie/localStorage marker 'filect_trial_used' set by PaymentSuccess
+  // — drop the "free trial" wording so we don't promise a second trial we won't
+  // honor. Trivially bypassed (incognito / cleared storage / another browser),
+  // which is fine: honest repeat visitors just see "Subscribe" instead.
+  function filectHasUsedTrial() {
+    try { if (localStorage.getItem('filect_trial_used')) return true; } catch (e) {}
+    try {
+      if (document.cookie.split(';').some(function (c) { return c.trim().indexOf('filect_trial_used=') === 0; })) return true;
+    } catch (e) {}
+    return false;
+  }
+  var TRIAL_USED = filectHasUsedTrial();
+  if (TRIAL_USED) {
+    var _sub = document.getElementById('plan-subtitle');
+    if (_sub) _sub.textContent = "You've already used your free trial on this device — subscribe to continue. Cancel anytime.";
+    var _hsub = document.getElementById('plan-headline-sub');
+    if (_hsub) _hsub.textContent = 'Subscribe to continue.';
+  }
+
+  // Start a brand-new subscription (logged-in -> checkout, logged-out -> signup).
+  function ctaHref(priceId) {
+    if (FILECT_USER) {
+      var q = new URLSearchParams({ user_id: FILECT_USER.id, email: FILECT_USER.email || '', price_id: priceId });
+      if (APP_SOURCE) q.set('source', APP_SOURCE);
+      return SUPA_URL + '/functions/v1/create-checkout-web?' + q.toString();
+    }
+    return '/signup?plan=' + priceId;
+  }
+
+  // Switch an existing subscription to a different plan (upgrade / downgrade).
+  function changeHref(priceId) {
+    var q = new URLSearchParams({ user_id: FILECT_USER.id, price_id: priceId });
+    return SUPA_URL + '/functions/v1/change-plan?' + q.toString();
+  }
+
   function applyBilling(mode) {
+    BILLING_MODE = mode;
     document.querySelectorAll('[data-m]').forEach(function (el) {
       var val = mode === 'annual' ? el.getAttribute('data-a') : el.getAttribute('data-m');
       if (val === null) return;
-      if (el.tagName === 'A') { el.setAttribute('href', '/signup?plan=' + val); }
-      else { el.textContent = val; }
+      if (el.tagName !== 'A') { el.textContent = val; return; }
+      if (!el.dataset.label) el.dataset.label = el.textContent; // remember original CTA text
+      if (FILECT_SUB && val === FILECT_SUB.priceId) {
+        el.setAttribute('href', 'javascript:void(0)');
+        el.textContent = 'Current plan';
+        el.removeAttribute('onclick');
+        el.style.opacity = '0.55'; el.style.pointerEvents = 'none';
+      } else if (FILECT_SUB) {
+        el.setAttribute('href', changeHref(val));
+        el.textContent = el.classList.contains('mini-cta') ? 'Switch' : 'Switch to this plan';
+        el.setAttribute('onclick', "return confirm('Switch to this plan? Your subscription changes right away and billing is prorated.');");
+        el.style.opacity = ''; el.style.pointerEvents = '';
+      } else {
+        el.setAttribute('href', ctaHref(val));
+        el.textContent = TRIAL_USED
+          ? (el.classList.contains('mini-cta') ? 'Subscribe' : 'Subscribe now')
+          : el.dataset.label;
+        el.removeAttribute('onclick');
+        el.style.opacity = ''; el.style.pointerEvents = '';
+      }
     });
     document.querySelectorAll('.annual-only').forEach(function (el) {
       el.style.display = (mode === 'annual') ? '' : 'none';
@@ -341,6 +414,27 @@
     if (a) a.classList.toggle('active', mode === 'annual');
   }
   applyBilling('annual');
+
+  if (APP_UID) {
+    // Opened from the desktop app: use the handed-off identity directly so the
+    // user can check out without a separate web login. If a current plan was
+    // passed, this is an upgrade -> show "Switch to this plan" (no trial CTA).
+    FILECT_USER = { id: APP_UID, email: APP_EMAIL || '' };
+    if (APP_CURRENT) FILECT_SUB = { priceId: APP_CURRENT };
+    applyBilling(BILLING_MODE);
+  } else {
+    sb.auth.getSession().then(function (res) {
+      var u = res && res.data && res.data.session && res.data.session.user;
+      if (!u) return;
+      FILECT_USER = { id: u.id, email: u.email };
+      sb.from('subscriptions').select('price_id,status').eq('user_id', u.id)
+        .in('status', ['active', 'trialing']).order('updated_at', { ascending: false }).limit(1)
+        .then(function (r) {
+          if (r && r.data && r.data.length) FILECT_SUB = { priceId: r.data[0].price_id };
+          applyBilling(BILLING_MODE);
+        });
+    });
+  }
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>

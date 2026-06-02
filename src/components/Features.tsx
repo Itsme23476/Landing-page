@@ -4,18 +4,17 @@ import { motion } from 'framer-motion';
 const Features: React.FC = () => {
   const cards = [
     {
-      title: "Natural Language",
-      description: "Don't remember the exact filename? AI file search lets you just describe what's inside. Filect understands context.",
+      title: "Auto-Organize",
+      description: "Filect sorts your files into the right folders for you, automatically. No dragging, no naming, no guessing.",
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"></path>
         </svg>
       )
     },
     {
       title: "AI Analysis",
-      description: "Advanced AI models analyze your documents to understand content, semantics, and intent.",
+      description: "Advanced AI models read your documents to understand what's inside, so everything ends up where it belongs.",
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
@@ -35,19 +34,12 @@ const Features: React.FC = () => {
       )
     },
     {
-      title: "Keyboard First",
-      description: "Summon Filect with a simple shortcut. Navigate entirely without your mouse.",
+      title: "Privacy First",
+      description: "Filect processes your files securely through OpenAI. Nothing is stored or shared, and only you can see your data.",
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-          <path d="M6 8h.01"></path>
-          <path d="M10 8h.01"></path>
-          <path d="M14 8h.01"></path>
-          <path d="M18 8h.01"></path>
-          <path d="M8 12h.01"></path>
-          <path d="M12 12h.01"></path>
-          <path d="M16 12h.01"></path>
-          <path d="M7 16h10"></path>
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
         </svg>
       )
     },
@@ -64,13 +56,12 @@ const Features: React.FC = () => {
       )
     },
     {
-      title: "Minimal UI",
-      description: "A distraction-free interface designed to get you to your file and out of the way.",
+      title: "Natural Language",
+      description: "Don't remember the exact filename? Just describe what's inside and Filect finds it. It understands context.",
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-          <line x1="3" y1="9" x2="21" y2="9"></line>
-          <line x1="9" y1="21" x2="9" y2="9"></line>
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
       )
     }
@@ -89,7 +80,7 @@ const Features: React.FC = () => {
           Designed for flow.
         </h2>
         <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
-          Traditional file explorers are broken. Filect fixes them by acting as your personal AI file manager, letting you find files instantly the way you think.
+          Traditional file explorers are broken. Filect fixes them by organizing your files for you, and letting you find anything the way you think.
         </p>
       </motion.div>
 

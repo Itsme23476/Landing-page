@@ -6,22 +6,22 @@ const HowItWorks: React.FC = () => {
     {
       number: "1",
       title: "Install Filect",
-      description: "Download the lightweight client for Windows."
+      description: "Download the lightweight app for Windows or Mac."
     },
     {
       number: "2",
-      title: "Index Folders",
-      description: "Select the directories you want to make searchable."
+      title: "Select a folder",
+      description: "Point Filect at the folder you want organized."
     },
     {
       number: "3",
-      title: "Just Type",
-      description: 'Describe what you need: "Invoice from March" or "React project".'
+      title: "Type your instructions",
+      description: 'Tell it how you want things sorted, like "by project" or "by file type".'
     },
     {
       number: "4",
-      title: "Instant Access",
-      description: "Press Enter to open the file immediately."
+      title: "Folder gets organized",
+      description: "Filect sorts everything into place for you, automatically."
     }
   ];
 
