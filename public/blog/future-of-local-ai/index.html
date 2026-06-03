@@ -71,6 +71,15 @@
     .site-footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; color: var(--muted); font-size: 0.85rem; }
     @media (max-width: 600px) { body { font-size: 16px; } .header-nav .hide-mob { display: none; } }
   </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"What is the difference between local AI and on-device AI?","acceptedAnswer":{"@type":"Answer","text":"These terms are used interchangeably. Both refer to AI processing that happens on the user's own hardware rather than on a remote cloud server. \"On-device\" is more common in mobile contexts; \"local AI\" is more common in the desktop and server context."}},
+    {"@type":"Question","name":"Does running local AI slow down my computer?","acceptedAnswer":{"@type":"Answer","text":"During active inference, local AI uses CPU, GPU, or NPU resources measurably. For brief tasks like search queries, this is imperceptible on modern hardware. Most local AI tools release resources when idle."}},
+    {"@type":"Question","name":"What is the best local AI model for file search?","acceptedAnswer":{"@type":"Answer","text":"For file search specifically, you need a good embedding model - not a large language model. The best options in 2026 include nomic-embed-text, all-MiniLM-L6-v2, and BGE-M3. These are small (under 1GB), fast, and produce high-quality semantic embeddings for document content."}},
+    {"@type":"Question","name":"Is local AI better for privacy than cloud AI?","acceptedAnswer":{"@type":"Answer","text":"Yes, categorically. Cloud AI sends your data to a third party's servers. No matter how strong the privacy policy, you are trusting them to handle your data appropriately. Local AI never sends your data anywhere - the computation happens on your machine and the model provider physically cannot access it."}},
+    {"@type":"Question","name":"Can I use local AI without coding experience?","acceptedAnswer":{"@type":"Answer","text":"Yes, increasingly so. Applications like Filect bring local AI to specific use cases without any technical setup. For more general-purpose local AI, tools like Ollama with Open WebUI make it accessible to non-developers. The learning curve is dropping rapidly as the ecosystem matures."}}
+  ]}
+  </script>
 </head>
 <body>
 

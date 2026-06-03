@@ -71,6 +71,14 @@
     .site-footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; color: var(--muted); font-size: 0.85rem; }
     @media (max-width: 600px) { body { font-size: 16px; } .header-nav .hide-mob { display: none; } }
   </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Why doesn't Windows Search find files I know exist?","acceptedAnswer":{"@type":"Answer","text":"Most common reasons: the file is in an excluded location, the index hasn't updated since the file was added, or the file type isn't supported. You can force a rebuild via Settings → Searching Windows → Advanced Search Indexer Settings → Rebuild. For a permanent fix, use an AI-based search tool that doesn't rely on Windows' indexer."}},
+    {"@type":"Question","name":"Is macOS Spotlight better than Windows Search?","acceptedAnswer":{"@type":"Answer","text":"Spotlight is faster and more reliably indexed on most machines. However, both share the same fundamental limitations: no semantic search, heavy reliance on file names, and failure when files have auto-generated names."}},
+    {"@type":"Question","name":"Can I improve Windows Search without third-party software?","acceptedAnswer":{"@type":"Answer","text":"Yes, to a degree. You can expand indexed locations, enable content indexing for more file types, and rebuild the index. These tweaks help at the margins but don't address the core limitation: Windows Search still doesn't understand meaning, only character strings."}},
+    {"@type":"Question","name":"What's the fastest file search tool for Windows and Mac?","acceptedAnswer":{"@type":"Answer","text":"For pure filename search, \"Everything\" by Voidtools is the fastest on Windows. For content-aware natural language search, AI-powered tools like Filect provide results in under one second by maintaining a local semantic index of file contents."}}
+  ]}
+  </script>
 </head>
 <body>
 
