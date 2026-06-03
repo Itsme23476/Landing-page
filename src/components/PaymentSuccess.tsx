@@ -14,10 +14,12 @@ export default function PaymentSuccess() {
     const timer = setTimeout(() => setShowConfetti(false), 3000);
     const ua = (navigator.userAgent || '').toLowerCase();
     setIsWindows(ua.includes('win'));
-    if (new URLSearchParams(window.location.search).get('from') === 'app') {
-      // Nudge the app to the foreground automatically.
-      window.location.href = 'filect://open';
-    }
+    // NOTE: deliberately NO filect:// URL-scheme redirect for app purchases.
+    // The custom scheme is unreliable from packaged apps, and on Windows it
+    // resolves to the *Mac* app registration → a wrong "open Filect Mac" prompt.
+    // Both desktop apps poll their subscription every 3s and auto-unlock on
+    // their own, so we just tell the user to switch back — no scheme needed,
+    // and no Mac/Windows divergence.
     // Soft trial-abuse layer: remember in this browser that a trial has been
     // used. Next visit to /pricing will show "Subscribe now" instead of
     // "Start free trial". Trivially bypassable; the real enforcement is
@@ -179,25 +181,12 @@ export default function PaymentSuccess() {
         </h2>
 
         {fromApp ? (
-          <>
-            <p style={{
-              color: 'var(--text-secondary)', fontSize: '15px', lineHeight: '1.7', marginBottom: '28px',
-            }}>
-              Your subscription is active. Head back to Filect — it's all unlocked.
-            </p>
-            <button
-              onClick={handleClose}
-              style={{
-                width: '100%', padding: '14px 24px',
-                background: 'linear-gradient(135deg, rgba(178,139,255,0.9), rgba(109,40,217,0.9))',
-                border: '1px solid rgba(178,139,255,0.3)', borderRadius: '10px',
-                color: '#fff', fontSize: '15px', fontWeight: 600, cursor: 'pointer',
-                boxShadow: '0 4px 15px rgba(124,77,255,0.3)',
-              }}
-            >
-              Return to Filect
-            </button>
-          </>
+          <p style={{
+            color: 'var(--text-secondary)', fontSize: '15px', lineHeight: '1.7', marginBottom: '28px',
+          }}>
+            Your subscription is active — <strong style={{ color: '#fff' }}>you can close this tab.</strong>{' '}
+            Filect is unlocking automatically; just switch back to the app.
+          </p>
         ) : (
           <>
             <p style={{
