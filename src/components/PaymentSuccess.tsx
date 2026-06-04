@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { trackDownload } from '../utils/ads';
 
 const MAC_URL = 'https://github.com/Itsme23476/Mac-version/releases/latest';
 const WIN_URL = 'https://github.com/Itsme23476/App-interface/releases/latest';
@@ -217,14 +218,14 @@ export default function PaymentSuccess() {
 
             {/* Step 1: Download (auto-detected OS) */}
             <p style={{ color: '#fff', fontSize: '14px', fontWeight: 600, marginBottom: '12px', textAlign: 'left' }}>1. Download the app</p>
-            <a href={isWindows ? WIN_URL : MAC_URL} style={{
+            <a href={isWindows ? WIN_URL : MAC_URL} onClick={() => trackDownload(isWindows ? 'windows' : 'mac')} style={{
               display: 'block', padding: '14px', borderRadius: '10px', textDecoration: 'none', textAlign: 'center',
               background: 'linear-gradient(135deg, rgba(178,139,255,0.9), rgba(109,40,217,0.9))',
               color: '#fff', fontSize: '15px', fontWeight: 600, boxShadow: '0 4px 15px rgba(124,77,255,0.3)',
             }}>Download for {isWindows ? 'Windows' : 'Mac'}</a>
             <p style={{ marginTop: '10px', marginBottom: '24px', fontSize: '13px', color: 'var(--text-secondary)' }}>
               On {isWindows ? 'Mac' : 'Windows'} instead?{' '}
-              <a href={isWindows ? MAC_URL : WIN_URL} style={{ color: 'var(--primary)', textDecoration: 'none' }}>Download here</a>
+              <a href={isWindows ? MAC_URL : WIN_URL} onClick={() => trackDownload(isWindows ? 'mac' : 'windows')} style={{ color: 'var(--primary)', textDecoration: 'none' }}>Download here</a>
             </p>
 
             {/* Step 2: open / log in */}

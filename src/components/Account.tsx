@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import Header from './Header';
+import { trackDownload } from '../utils/ads';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -193,8 +194,8 @@ export default function Account() {
             <section style={sectionStyle}>
               <h2 style={sectionTitle}>Download the app</h2>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <a href={isWindows ? WIN_URL : MAC_URL} target="_blank" rel="noopener noreferrer" style={primaryBtn}>Download for {isWindows ? 'Windows' : 'Mac'}</a>
-                <a href={isWindows ? MAC_URL : WIN_URL} target="_blank" rel="noopener noreferrer" style={ghostBtn}>Download for {isWindows ? 'Mac' : 'Windows'}</a>
+                <a href={isWindows ? WIN_URL : MAC_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackDownload(isWindows ? 'windows' : 'mac')} style={primaryBtn}>Download for {isWindows ? 'Windows' : 'Mac'}</a>
+                <a href={isWindows ? MAC_URL : WIN_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackDownload(isWindows ? 'mac' : 'windows')} style={ghostBtn}>Download for {isWindows ? 'Mac' : 'Windows'}</a>
               </div>
               <p style={{ margin: '14px 0 0', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
                 Log in inside the app with this same email to use your subscription.
