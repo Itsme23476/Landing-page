@@ -26,6 +26,19 @@ export default function PaymentSuccess() {
     // server-side card fingerprint matching in stripe-webhook.
     import('../utils/trialMemory').then(({ markTrialUsed }) => markTrialUsed());
 
+    // Fire the Google Ads "Trial Started" conversion — once, web trials only
+    // (desktop-app purchases aren't ad-driven), and only when the trial wasn't
+    // blocked as a duplicate-card abuse case in the check below.
+    let conversionFired = false;
+    const fireAdsConversion = () => {
+      if (conversionFired || fromApp) return;
+      conversionFired = true;
+      const g = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+      if (typeof g === 'function') {
+        g('event', 'conversion', { send_to: 'AW-18065589953/yzZgCO_uzLgcEMGNrKZD' });
+      }
+    };
+
     // Trial-abuse check. Our stripe-webhook may have just canceled the sub
     // because the card was already used for a prior trial. Detect that case
     // and redirect to /trial-blocked instead of showing success. We poll a
@@ -39,7 +52,7 @@ export default function PaymentSuccess() {
         // sub by session/email if present. If not detectable, just show
         // success (the canceled sub is harmless — user can re-attempt).
         const sessionId = new URLSearchParams(window.location.search).get('session_id');
-        if (!sessionId) return;
+        if (!sessionId) { fireAdsConversion(); return; }
         for (let attempt = 0; attempt < 6; attempt++) {
           await new Promise((r) => setTimeout(r, attempt === 0 ? 800 : 1500));
           const res = await fetch(`${supabaseUrl}/rest/v1/subscriptions?select=user_id,status,trial_blocked_reason&order=updated_at.desc&limit=1`, {
@@ -57,8 +70,11 @@ export default function PaymentSuccess() {
             return;
           }
         }
+        // Polled and never blocked → a genuine trial started.
+        fireAdsConversion();
       } catch {
         // Best-effort only; never block success page if check fails.
+        fireAdsConversion();
       }
     })();
 
