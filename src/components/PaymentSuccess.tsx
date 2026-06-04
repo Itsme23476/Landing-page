@@ -26,12 +26,15 @@ export default function PaymentSuccess() {
     // server-side card fingerprint matching in stripe-webhook.
     import('../utils/trialMemory').then(({ markTrialUsed }) => markTrialUsed());
 
-    // Fire the Google Ads "Trial Started" conversion — once, web trials only
-    // (desktop-app purchases aren't ad-driven), and only when the trial wasn't
-    // blocked as a duplicate-card abuse case in the check below.
+    // Fire the Google Ads "Trial Started" conversion — once per success page.
+    // Fires for BOTH the web-first flow AND the app-first flow (land on site →
+    // download the app → start the trial inside it). In both, the Stripe checkout
+    // and this success page render in the user's browser, which is where the
+    // ad-click GCLID lives — so Google can attribute it. Trials with no GCLID
+    // (organic/direct) fire the event but aren't counted as ad conversions.
     let conversionFired = false;
     const fireAdsConversion = () => {
-      if (conversionFired || fromApp) return;
+      if (conversionFired) return;
       conversionFired = true;
       const g = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
       if (typeof g === 'function') {
