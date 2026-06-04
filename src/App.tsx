@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { initDownloadTracking } from './utils/ads';
 import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -61,6 +63,8 @@ function Home() {
 }
 
 function App() {
+  // Track clicks on any download link site-wide (survives button updates).
+  useEffect(() => { initDownloadTracking(); }, []);
   return (
     <BrowserRouter>
       <Analytics />
