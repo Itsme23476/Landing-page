@@ -40,6 +40,11 @@ export default function PaymentSuccess() {
       const g = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
       if (typeof g === 'function') {
         g('event', 'conversion', { send_to: 'AW-18065589953/yzZgCO_uzLgcEMGNrKZD' });
+        // GA4 key event: makes trial starts measurable by traffic source (e.g.
+        // UTM-tagged YouTube description/pinned-comment links) instead of only
+        // appearing as an anonymous /payment-success page view. Fires under the
+        // exact same genuine-trial condition as the Ads conversion above.
+        g('event', 'trial_started', { method: 'web' });
       }
     };
 
