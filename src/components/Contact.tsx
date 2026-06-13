@@ -1,16 +1,55 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Header from './Header';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPPORT_EMAIL = 'softwaregentofficial@gmail.com';
+// When this is set, the invisible Cloudflare Turnstile captcha is shown and
+// required. Until then the form works as before (honeypot + rate limit still apply).
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
 
 export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [company, setCompany] = useState(''); // honeypot — real users never fill this
+  const [token, setToken] = useState(''); // Turnstile token
   const [busy, setBusy] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState('');
+  const widgetRef = useRef<HTMLDivElement>(null);
+  const widgetId = useRef<string | null>(null);
+
+  // Load + render the Turnstile widget once, only if a site key is configured.
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY) return;
+    const renderWidget = () => {
+      const t = (window as any).turnstile;
+      if (!t || !widgetRef.current || widgetId.current !== null) return;
+      widgetId.current = t.render(widgetRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        theme: 'dark',
+        callback: (tok: string) => setToken(tok),
+        'expired-callback': () => setToken(''),
+        'error-callback': () => setToken(''),
+      });
+    };
+    if ((window as any).turnstile) { renderWidget(); return; }
+    const id = 'cf-turnstile-script';
+    const existing = document.getElementById(id) as HTMLScriptElement | null;
+    if (existing) { existing.addEventListener('load', renderWidget); return; }
+    const s = document.createElement('script');
+    s.id = id;
+    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+    s.async = true; s.defer = true;
+    s.onload = renderWidget;
+    document.head.appendChild(s);
+  }, []);
+
+  const resetTurnstile = () => {
+    const t = (window as any).turnstile;
+    if (t && widgetId.current !== null) t.reset(widgetId.current);
+    setToken('');
+  };
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,16 +58,20 @@ export default function Contact() {
       setError('Please enter your email and a message (at least 10 characters).');
       return;
     }
+    if (TURNSTILE_SITE_KEY && !token) {
+      setError('Please complete the verification below.');
+      return;
+    }
     setBusy(true);
     try {
       const r = await fetch(`${SUPABASE_URL}/functions/v1/send-contact`, {
         method: 'POST', headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ name, email, message: message.trim() }),
+        body: JSON.stringify({ name, email, message: message.trim(), company, turnstileToken: token }),
       });
       const j = await r.json();
       if (j.ok) setSent(true);
-      else setError('Could not send your message. Please email us directly instead.');
-    } catch { setError('Something went wrong. Please email us directly instead.'); }
+      else { setError('Could not send your message. Please email us directly instead.'); resetTurnstile(); }
+    } catch { setError('Something went wrong. Please email us directly instead.'); resetTurnstile(); }
     finally { setBusy(false); }
   };
 
@@ -62,6 +105,16 @@ export default function Contact() {
           </div>
         ) : (
           <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {/* Honeypot: hidden off-screen. Real users never see or fill it; bots do. */}
+            <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
+              <label>
+                Company (leave this empty)
+                <input
+                  type="text" tabIndex={-1} autoComplete="off" value={company}
+                  onChange={(e) => setCompany(e.target.value)}
+                />
+              </label>
+            </div>
             <input
               type="text" placeholder="Your name (optional)" value={name}
               onChange={(e) => setName(e.target.value)} style={inputStyle}
@@ -75,6 +128,7 @@ export default function Contact() {
               onChange={(e) => setMessage(e.target.value)} required
               style={{ ...inputStyle, resize: 'vertical', fontFamily: 'inherit' }}
             />
+            {TURNSTILE_SITE_KEY && <div ref={widgetRef} style={{ minHeight: '65px' }} />}
             {error && <p style={{ color: '#F87171', fontSize: '0.85rem', margin: 0 }}>{error}</p>}
             <button type="submit" disabled={busy} style={{
               padding: '14px 24px',
