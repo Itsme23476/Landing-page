@@ -3,9 +3,11 @@ import Header from './Header';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPPORT_EMAIL = 'softwaregentofficial@gmail.com';
-// When this is set, the invisible Cloudflare Turnstile captcha is shown and
-// required. Until then the form works as before (honeypot + rate limit still apply).
-const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
+// Cloudflare Turnstile site key — public by design (it ships in the browser).
+// Env var overrides if set; otherwise the default below is used. When this has a
+// value the invisible captcha is shown and required.
+const TURNSTILE_SITE_KEY =
+  (import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined) || '0x4AAAAAADkLQczhwB4X3-8y';
 
 export default function Contact() {
   const [name, setName] = useState('');
