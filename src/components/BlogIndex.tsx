@@ -314,10 +314,11 @@ const BlogIndex: React.FC = () => {
 
           {/* Comparisons Section */}
           <motion.div
+            id="comparisons"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}
-            style={{ marginTop: '80px', marginBottom: '40px', textAlign: 'center' }}
+            style={{ marginTop: '80px', marginBottom: '40px', textAlign: 'center', scrollMarginTop: '90px' }}
           >
             <h2 style={{ 
               fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', 
@@ -345,6 +346,8 @@ const BlogIndex: React.FC = () => {
             gap: '20px' 
           }}>
             {[
+              { slug: 'filect-vs-spotlight', name: 'Spotlight', desc: 'Mac built-in search' },
+              { slug: 'filect-vs-windows-search', name: 'Windows Search', desc: 'Windows built-in search' },
               { slug: 'filect-vs-fabric', name: 'Fabric', desc: 'AI second brain for research' },
               { slug: 'filect-vs-sortio', name: 'Sortio', desc: 'AI file sorting by rules' },
               { slug: 'filect-vs-sparkle', name: 'Sparkle', desc: 'Mac auto folder cleanup' },
