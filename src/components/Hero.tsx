@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import DashboardMockup from './DashboardMockup';
 import { trackDownload } from '../utils/ads';
+import ProductHuntBadge from './ProductHuntBadge';
 
 const Hero: React.FC = () => {
   return (
@@ -106,6 +107,8 @@ const Hero: React.FC = () => {
         <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0 }}>
           Free download · 10-day free trial · card required · cancel anytime
         </p>
+
+        <ProductHuntBadge />
       </motion.div>
 
       {/* Right: Dashboard UI Mockup */}
