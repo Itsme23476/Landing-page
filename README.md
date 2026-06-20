@@ -1,73 +1,65 @@
-# React + TypeScript + Vite
+# Filect — Landing Page & Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Marketing site and web app for **Filect**, an AI-powered desktop file organizer and
+natural-language search tool for Windows and macOS. Live at
+[filect.io](https://filect.io).
 
-Currently, two official plugins are available:
+This repo contains the public website (home, blog, comparison pages), the
+account/auth flows, and the conversion/SEO infrastructure. The desktop app itself
+lives in separate repos (`App-interface` for Windows, `Mac-version` for macOS).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech stack
 
-## React Compiler
+- **React 19 + TypeScript** built with **Vite**
+- **react-router-dom** for client-side routing (SPA)
+- **Supabase** for auth and edge functions (newsletter, contact)
+- **framer-motion** for animation
+- **Tailwind** (via CDN in `index.html`) + inline styles
+- Hosted on **Vercel**; analytics via GA4, Google Ads, Vercel Analytics, and Endorsely
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting started
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+cp .env.example .env.local   # then fill in your values
+npm run dev                  # start the dev server
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Command           | Description                          |
+| ----------------- | ------------------------------------ |
+| `npm run dev`     | Start the Vite dev server            |
+| `npm run build`   | Type-check and build for production   |
+| `npm run preview` | Preview the production build locally  |
+| `npm run lint`    | Run ESLint                           |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Environment variables
+
+See [`.env.example`](.env.example). All `VITE_`-prefixed vars are exposed to the
+browser by design — the Supabase anon key is meant to be public, so security
+relies on **Row-Level Security being correctly configured** on every table.
+Set the real values in Vercel's project settings for production.
+
+## Project structure
+
 ```
+src/
+  components/   React pages & UI (Hero, Pricing, Account, blog posts, …)
+  utils/        ads.ts (conversion tracking), trialMemory.ts (trial UX)
+  App.tsx       Routes
+public/
+  blog/         Pre-rendered static blog posts (SEO)
+  compare/      "Filect vs <competitor>" comparison pages (SEO)
+  sitemap.xml, robots.txt, llms.txt, pricing/privacy/terms HTML
+supabase/
+  functions/    Edge functions (e.g. subscribe-newsletter)
+```
+
+## Notes for contributors
+
+- The `public/` HTML pages (blog, compare, sitemap, structured data, meta tags)
+  are indexed by Google. **Change them carefully** to avoid affecting search
+  rankings.
+- Account, auth, and payment flows are wired to Supabase + Stripe — verify
+  end-to-end before changing.
