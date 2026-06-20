@@ -26,16 +26,16 @@ const Hero: React.FC = () => {
           </span>
         </div>
         
-        <h1 className="sr-only">AI File Organization and Search</h1>
-        <div style={{
+        <h1 style={{
+          margin: 0,
           fontSize: '4.5rem',
           fontWeight: 800,
           lineHeight: 1.1,
           letterSpacing: '-0.03em'
-        }} role="heading" aria-level={2}>
+        }}>
           Find any file.<br />
           <span className="text-gradient">Instantly.</span>
-        </div>
+        </h1>
 
         <p style={{
           fontSize: '1.25rem',
@@ -102,6 +102,10 @@ const Hero: React.FC = () => {
             Download for Mac
           </motion.a>
         </div>
+
+        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0 }}>
+          Free download · 10-day free trial · card required · cancel anytime
+        </p>
       </motion.div>
 
       {/* Right: Dashboard UI Mockup */}

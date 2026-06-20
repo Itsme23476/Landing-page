@@ -195,7 +195,7 @@ const CtaSection: React.FC = () => {
               textTransform: 'uppercase',
             }}
           >
-            Available for Windows and macOS
+            Free download · 10-day free trial · card required · cancel anytime
           </p>
         </motion.div>
       </div>
