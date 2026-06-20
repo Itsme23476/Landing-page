@@ -26,7 +26,7 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section id="how-it-works" style={{ paddingTop: '120px', paddingBottom: '300px', position: 'relative' }}>
+    <section id="how-it-works" style={{ paddingTop: '120px', paddingBottom: '120px', position: 'relative' }}>
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}

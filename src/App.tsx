@@ -8,6 +8,7 @@ import ProductMockup from './components/ProductMockup';
 import Features from './components/Features';
 import HowItWorks from './components/HowItWorks';
 import CtaSection from './components/CtaSection';
+import Testimonials from './components/Testimonials';
 import PaymentSuccess from './components/PaymentSuccess';
 import SignUpSuccess from './components/SignUpSuccess';
 import ResetPassword from './components/ResetPassword';
@@ -42,6 +43,8 @@ function Home() {
         </main>
       </div>
 
+      <Testimonials />
+
       <CtaSection />
 
       <EmailCapture />
@@ -54,6 +57,7 @@ function Home() {
             <a href="/pricing.html" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Pricing</a>
             <a href="/contact" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Contact</a>
             <a href="/affiliates" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Affiliate Program</a>
+            <a href="https://www.youtube.com/@softwaregent7443" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>YouTube</a>
           </div>
           <p style={{ fontSize: '0.9rem' }}>&copy; {new Date().getFullYear()} Filect. All rights reserved.</p>
         </div>
