@@ -2,10 +2,10 @@
 //
 // WHY: the app is a client-rendered SPA, so non-JS crawlers (GPTBot, Perplexity,
 // some bots) see an empty <div id="root">. This injects a static, accurate
-// snapshot of the homepage's content into ONLY the "/" document so those crawlers
-// can read it. Real users still get the full React app: main.tsx uses createRoot()
-// (not hydrate), so React simply replaces this snapshot on mount — no hydration
-// mismatch, no behavior change, downloads/auth/payment untouched.
+// snapshot of the homepage's content into a <noscript> block in ONLY the "/"
+// document. Browsers with JS ignore <noscript> entirely, so real users never see
+// the snapshot (no flash) and React renders into the empty #root as usual. Non-JS
+// crawlers read the <noscript> content. Downloads/auth/payment untouched.
 //
 // ROUTING (see vercel.json): "/" serves this prerendered index.html; every other
 // SPA route serves app.html, which is the untouched bare shell — so non-home
@@ -79,7 +79,8 @@ if (!html.includes(ROOT_EMPTY)) {
 mkdirSync(dist, { recursive: true });
 writeFileSync(shellPath, html, 'utf8');
 
-// 2) index.html = same shell with the homepage snapshot injected into #root.
-writeFileSync(indexPath, html.replace(ROOT_EMPTY, `<div id="root">${snapshot}</div>`), 'utf8');
+// 2) index.html = same shell + the snapshot in a <noscript> after the empty #root.
+//    JS users never see it (no flash); non-JS crawlers read it.
+writeFileSync(indexPath, html.replace(ROOT_EMPTY, `${ROOT_EMPTY}<noscript>${snapshot}</noscript>`), 'utf8');
 
-console.log('[prerender] wrote dist/app.html (bare shell) and injected homepage snapshot into dist/index.html');
+console.log('[prerender] wrote dist/app.html (bare shell) and injected homepage snapshot into <noscript> in dist/index.html');
