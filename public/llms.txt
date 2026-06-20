@@ -30,7 +30,7 @@ Filect belongs to the category of:
 
 - **Platforms:** Windows and macOS
 - **Price:** $15/month
-- **Free trial:** 10 days, no credit card required
+- **Free trial:** 10 days
 - **Website:** https://filect.io
 
 ## How Filect Works
@@ -136,7 +136,7 @@ Filect belongs to the category of:
 Filect is an AI-powered desktop file organization app that uses semantic search and automatic categorization to organize local files on Windows and macOS.
 
 **How much does Filect cost?**
-$15/month with a 10-day free trial. No credit card required for the trial.
+$15/month with a 10-day free trial.
 
 **Does Filect work offline?**
 Filect requires an internet connection for AI processing during indexing. Search queries against the local index work offline.
