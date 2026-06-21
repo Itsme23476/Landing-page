@@ -15,7 +15,7 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pricing - Filect | AI File Search & Organization</title>
-  <meta name="description" content="Filect pricing. Every plan starts with a 10-day free trial — cancel anytime before you're charged. Plans from $15/month." />
+  <meta name="description" content="Filect pricing. Every plan starts with a 10-day free trial, cancel anytime before you're charged. Plans from $15/month." />
   <meta property="og:title" content="Filect Pricing - Free 10-day Trial" />
   <meta property="og:description" content="Try Filect free for 10 days. Plans from $15/month for AI file search, natural language queries, and automated organization." />
   <meta property="og:type" content="website" />
@@ -187,7 +187,7 @@
     <main>
       <div class="pricing-head">
         <h1>Pick your plan.<br><span id="plan-headline-sub">Start free for 10 days.</span></h1>
-        <p id="plan-subtitle">Every plan includes a 10-day free trial — card required. You won't be charged until the trial ends — cancel anytime before then.</p>
+        <p id="plan-subtitle">Every plan includes a 10-day free trial, and a card is required. You are not charged until the trial ends, and you can cancel anytime before then.</p>
       </div>
 
       <div style="text-align:center; position:relative; z-index:2; padding:0 24px;">
@@ -292,12 +292,12 @@
 
         <div class="faq-item">
           <h3>What happens after the 10-day trial?</h3>
-          <p>Your plan begins and your card is charged for the first month. If you cancel before the trial ends, you're never billed and the app simply stops processing new files — nothing is deleted.</p>
+          <p>Your plan begins and your card is charged for the first month. If you cancel before the trial ends, you're never billed and the app simply stops processing new files, nothing is deleted.</p>
         </div>
 
         <div class="faq-item">
           <h3>Can I cancel anytime?</h3>
-          <p>Yes. There are no contracts. Cancel during the trial to avoid any charge, or later from inside the app — your subscription stays active until the end of the period you've paid for.</p>
+          <p>Yes. There are no contracts. Cancel during the trial to avoid any charge, or later from inside the app, your subscription stays active until the end of the period you've paid for.</p>
         </div>
 
         <div class="faq-item">
@@ -344,10 +344,10 @@
   var APP_SOURCE = P.get('source');  // 'app' when opened from the desktop app
   var APP_CURRENT = P.get('current'); // current price_id when handed off for an UPGRADE
 
-  // Soft trial-abuse nudge (UX only, NOT enforcement — the real gate is the
+  // Soft trial-abuse nudge (UX only, NOT enforcement, the real gate is the
   // server-side card-fingerprint check). If this browser already used a free
-  // trial — cookie/localStorage marker 'filect_trial_used' set by PaymentSuccess
-  // — drop the "free trial" wording so we don't promise a second trial we won't
+  // trial, cookie/localStorage marker 'filect_trial_used' set by PaymentSuccess
+  //, drop the "free trial" wording so we don't promise a second trial we won't
   // honor. Trivially bypassed (incognito / cleared storage / another browser),
   // which is fine: honest repeat visitors just see "Subscribe" instead.
   function filectHasUsedTrial() {
@@ -360,7 +360,7 @@
   var TRIAL_USED = filectHasUsedTrial();
   if (TRIAL_USED) {
     var _sub = document.getElementById('plan-subtitle');
-    if (_sub) _sub.textContent = "You've already used your free trial on this device — subscribe to continue. Cancel anytime.";
+    if (_sub) _sub.textContent = "You've already used your free trial on this device, subscribe to continue. Cancel anytime.";
     var _hsub = document.getElementById('plan-headline-sub');
     if (_hsub) _hsub.textContent = 'Subscribe to continue.';
   }
