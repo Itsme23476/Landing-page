@@ -4,11 +4,11 @@ import { initDownloadTracking } from './utils/ads';
 import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import ProductMockup from './components/ProductMockup';
 import Features from './components/Features';
 import HowItWorks from './components/HowItWorks';
 import CtaSection from './components/CtaSection';
 import Testimonials from './components/Testimonials';
+import VideoDemo from './components/VideoDemo';
 import PaymentSuccess from './components/PaymentSuccess';
 import SignUpSuccess from './components/SignUpSuccess';
 import ResetPassword from './components/ResetPassword';
@@ -37,7 +37,7 @@ function Home() {
         
         <main>
           <Hero />
-          <ProductMockup />
+          <VideoDemo />
           <Features />
           <HowItWorks />
         </main>

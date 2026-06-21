@@ -104,6 +104,19 @@ const Hero: React.FC = () => {
           </motion.a>
         </div>
 
+        <button
+          type="button"
+          onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '9px', alignSelf: 'flex-start', background: 'transparent', border: 'none', cursor: 'pointer', padding: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', fontWeight: 500, fontFamily: 'inherit', transition: 'color 0.2s' }}
+          onMouseOver={e => (e.currentTarget.style.color = '#fff')}
+          onMouseOut={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
+        >
+          <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px', borderRadius: '50%', background: 'rgba(176,102,255,0.18)', border: '1px solid rgba(176,102,255,0.5)' }}>
+            <svg width="9" height="11" viewBox="0 0 24 28" fill="#b066ff" aria-hidden="true"><path d="M2 2l20 12L2 26V2z" /></svg>
+          </span>
+          Watch the 80-second demo
+        </button>
+
         <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0 }}>
           Free download · 10-day free trial · card required · cancel anytime
         </p>
