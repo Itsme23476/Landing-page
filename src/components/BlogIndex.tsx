@@ -4,6 +4,38 @@ import Header from './Header';
 
 const ARTICLES = [
   {
+    id: 'spotlight-not-finding-files',
+    title: 'Mac Spotlight Not Finding Files? Here\'s the Fix',
+    excerpt: 'Spotlight not showing files you know exist? Here is why it happens on Mac, how to rebuild the index, and what to use when it still comes up empty.',
+    date: 'July 8, 2026',
+    readTime: '7 min read',
+    category: 'Guides',
+  },
+  {
+    id: 'windows-cant-find-file',
+    title: 'Windows Can\'t Find a File You Know Exists?',
+    excerpt: 'Windows Search skipping files that are right there? Here is why it misses them, how to fix the index, and how to find any file even when Search won\'t.',
+    date: 'July 8, 2026',
+    readTime: '7 min read',
+    category: 'Guides',
+  },
+  {
+    id: 'how-to-organize-client-files-freelancer',
+    title: 'How to Organize Client Files as a Freelancer',
+    excerpt: 'Juggling files for a dozen clients? Here is a simple folder system for freelancers, plus how to find any client file in seconds without the digging.',
+    date: 'July 8, 2026',
+    readTime: '8 min read',
+    category: 'Guides',
+  },
+  {
+    id: 'digital-declutter-guide',
+    title: 'Digital Declutter: A Step-by-Step Guide',
+    excerpt: 'Drowning in files, downloads, and desktop chaos? This digital declutter guide gives you a step-by-step system to clean it all up and keep it clean.',
+    date: 'July 8, 2026',
+    readTime: '9 min read',
+    category: 'Guides',
+  },
+  {
     id: 'sparkle-alternative-for-windows',
     title: 'Sparkle for Windows: The 5 Best Alternatives',
     excerpt: 'Sparkle is Mac only, and no Windows version is coming. Here are the best Sparkle alternatives for Windows, from free rule tools to AI that does it all.',
