@@ -4,6 +4,30 @@ import Header from './Header';
 
 const ARTICLES = [
   {
+    id: 'sparkle-alternative-for-windows',
+    title: 'Sparkle for Windows: The 5 Best Alternatives',
+    excerpt: 'Sparkle is Mac only, and no Windows version is coming. Here are the best Sparkle alternatives for Windows, from free rule tools to AI that does it all.',
+    date: 'July 7, 2026',
+    readTime: '8 min read',
+    category: 'Product',
+  },
+  {
+    id: 'hazel-alternative-for-windows',
+    title: 'Hazel for Windows: The 5 Best Alternatives',
+    excerpt: 'Hazel is Mac only and always has been. Here are the best Hazel alternatives for Windows, from rule-based folder automation to AI that needs no rules.',
+    date: 'July 7, 2026',
+    readTime: '8 min read',
+    category: 'Product',
+  },
+  {
+    id: 'automate-para-method',
+    title: 'How to Automate the PARA Method with AI',
+    excerpt: 'PARA works until the manual filing stops. Here is how to automate the PARA method with AI so every file lands in the right place, with zero upkeep.',
+    date: 'July 7, 2026',
+    readTime: '9 min read',
+    category: 'Guides',
+  },
+  {
     id: 'how-to-organize-screenshots',
     title: 'How to Organize Screenshots on Mac and Windows',
     excerpt: 'Screenshots pile up fast and all look alike. Here is how to organize, rename, and actually find your screenshots on Mac and Windows, plus a faster AI shortcut.',
@@ -399,6 +423,9 @@ const BlogIndex: React.FC = () => {
               { slug: 'filect-vs-fabric', name: 'Fabric', desc: 'AI second brain for research' },
               { slug: 'filect-vs-sortio', name: 'Sortio', desc: 'AI file sorting by rules' },
               { slug: 'filect-vs-sparkle', name: 'Sparkle', desc: 'Mac auto folder cleanup' },
+              { slug: 'filect-vs-hazel', name: 'Hazel', desc: 'Mac rule-based automation' },
+              { slug: 'filect-vs-file-juggler', name: 'File Juggler', desc: 'Windows folder automation' },
+              { slug: 'filect-vs-listary', name: 'Listary', desc: 'Windows launcher & search' },
               { slug: 'filect-vs-dropbox-dash', name: 'Dropbox Dash', desc: 'Cloud app search' },
               { slug: 'filect-vs-everything-search', name: 'Everything Search', desc: 'Instant filename search' },
               { slug: 'filect-vs-alfred', name: 'Alfred', desc: 'Mac launcher & productivity' },

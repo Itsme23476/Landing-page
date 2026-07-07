@@ -5,6 +5,8 @@
   <url><loc>https://filect.io/privacy.html</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://filect.io/blog</loc><lastmod>2026-05-07</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <!-- Tool/Alternative Pages (Tier 1 - Highest Conversion) -->
+  <url><loc>https://filect.io/blog/sparkle-alternative-for-windows/</loc><lastmod>2026-07-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filect.io/blog/hazel-alternative-for-windows/</loc><lastmod>2026-07-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://filect.io/blog/find-file-without-knowing-name/</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://filect.io/blog/windows-search-alternative/</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://filect.io/blog/spotlight-alternative-mac/</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -40,6 +42,7 @@
   <url><loc>https://filect.io/blog/how-to-organize-photos-on-computer/</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://filect.io/blog/how-to-organize-work-files/</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://filect.io/blog/how-to-organize-receipts-and-tax-documents/</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://filect.io/blog/automate-para-method/</loc><lastmod>2026-07-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <!-- Competitor Comparisons (LLM Optimization) -->
   <url><loc>https://filect.io/compare/filect-vs-spotlight/</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://filect.io/compare/filect-vs-windows-search/</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -53,4 +56,8 @@
   <url><loc>https://filect.io/compare/filect-vs-ai-file-sorter/</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://filect.io/compare/filect-vs-fabric/</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://filect.io/compare/filect-vs-sparkle/</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filect.io/compare/filect-vs-hazel/</loc><lastmod>2026-07-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filect.io/compare/filect-vs-file-juggler/</loc><lastmod>2026-07-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filect.io/compare/filect-vs-listary/</loc><lastmod>2026-07-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filect.io/compare/dropbox-dash-vs-glean/</loc><lastmod>2026-07-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
