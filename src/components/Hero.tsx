@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
         
         <div style={{ display: 'flex', gap: '16px', marginTop: '16px', flexWrap: 'nowrap' }}>
           <motion.a
-            href="https://github.com/Itsme23476/App-interface/releases/download/v12.2.14/Filect.exe"
+            href="https://github.com/Itsme23476/App-interface/releases/download/v12.2.16/Filect.exe"
             onClick={() => trackDownload('windows')}
             whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(176,102,255,0.6)' }}
             whileTap={{ scale: 0.97 }}
@@ -76,7 +76,7 @@ const Hero: React.FC = () => {
           </motion.a>
 
           <motion.a
-            href="https://github.com/Itsme23476/Mac-version/releases/download/v14.1.14/Filect-14.1.14-mac.dmg"
+            href="https://github.com/Itsme23476/Mac-version/releases/download/v14.1.17/Filect-14.1.17-mac.dmg"
             onClick={() => trackDownload('mac')}
             whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(255,255,255,0.2)' }}
             whileTap={{ scale: 0.97 }}
