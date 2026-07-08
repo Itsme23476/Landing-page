@@ -20,6 +20,7 @@ import Signup from './components/Signup';
 import Account from './components/Account';
 import Contact from './components/Contact';
 import Verify from './components/Verify';
+import Launch from './components/Launch';
 import Cancel from './components/Cancel';
 import TrialBlocked from './components/TrialBlocked';
 import Affiliates from './components/Affiliates';
@@ -82,6 +83,7 @@ function App() {
         <Route path="/account" element={<Account />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/verify" element={<Verify />} />
+        <Route path="/launch" element={<Launch />} />
         <Route path="/cancel" element={<Cancel />} />
         <Route path="/trial-blocked" element={<TrialBlocked />} />
         <Route path="/affiliates" element={<Affiliates />} />
