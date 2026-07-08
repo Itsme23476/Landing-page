@@ -39,6 +39,13 @@ export default function Account() {
   const [flowErr, setFlowErr] = useState('');
   const [endsDate, setEndsDate] = useState<string | null>(null);
   const [justChanged] = useState(() => new URLSearchParams(window.location.search).get('changed') === '1');
+  const [planChangeMsg] = useState(() => {
+    const v = new URLSearchParams(window.location.search).get('planChange');
+    if (v === 'comp') return 'This is a complimentary account, so there is no billable plan to switch. Contact support if you need a change.';
+    if (v === 'notfound') return "We couldn't find an active billing subscription to change. If you think that's wrong, contact support.";
+    if (v === 'error') return 'Something went wrong changing your plan, so no changes were made. Please try again or contact support.';
+    return '';
+  });
 
   useEffect(() => {
     setIsWindows((navigator.userAgent || '').toLowerCase().includes('win'));
@@ -133,6 +140,16 @@ export default function Account() {
                 color: '#4ADE80', fontSize: '0.9rem', fontWeight: 500,
               }}>
                 ✓ Your plan has been updated{planName ? ` to ${planName}` : ''}. The change is now active on your subscription.
+              </div>
+            )}
+
+            {planChangeMsg && (
+              <div style={{
+                background: 'rgba(248,113,113,0.1)', border: '1px solid rgba(248,113,113,0.3)',
+                borderRadius: '12px', padding: '14px 18px', marginBottom: '20px',
+                color: '#F87171', fontSize: '0.9rem', fontWeight: 500,
+              }}>
+                {planChangeMsg}
               </div>
             )}
 
