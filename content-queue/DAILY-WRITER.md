@@ -61,7 +61,8 @@ matching template, then replace only the content. This guarantees identical styl
 - Quick self-check: title core <= 60 chars, description <= 160, and grep the new
   file for `—`, `–`, `--`, ` - ` to confirm none in visible copy.
 - Create a branch `article/<slug>`, commit, push, and open a PR titled
-  `New article: <title>`. Leave it for human review. DO NOT auto-merge.
+  `New article: <title>` WITH `--label article-draft` (the label already exists in
+  the repo). Leave it for human review. DO NOT auto-merge.
 - In the PR body, note the target keyword and which related articles it links to.
 
 ## 6. Guardrails
