@@ -159,7 +159,7 @@ const CtaSection: React.FC = () => {
             </motion.a>
 
             <motion.a
-              href="https://github.com/Itsme23476/Mac-version/releases/download/v14.1.17/Filect-14.1.17-mac.dmg"
+              href="https://github.com/Itsme23476/Mac-version/releases/download/v14.1.18/Filect-14.1.18-mac.dmg"
               onClick={() => trackDownload('mac')}
               whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(255,255,255,0.2)' }}
               whileTap={{ scale: 0.97 }}
