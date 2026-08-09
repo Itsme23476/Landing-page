@@ -70,6 +70,17 @@ export default function Signup() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // If already signed in and this is a "next" flow (e.g. Enterprise -> contact),
+  // skip the form and go straight there. Safe because next is a content page,
+  // not checkout — the plan/checkout path still never auto-continues a stale session.
+  useEffect(() => {
+    if (!next) return;
+    supabase.auth.getSession().then(({ data }) => {
+      if (data.session?.user) window.location.href = next;
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const signInWithGoogle = async () => {
     setError('');
     // Only carry a plan through OAuth if one was explicitly chosen (came from
