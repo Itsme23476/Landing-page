@@ -21,6 +21,15 @@ export default function Contact() {
   const widgetRef = useRef<HTMLDivElement>(null);
   const widgetId = useRef<string | null>(null);
 
+  // Prefill an enterprise inquiry when arriving from the pricing page's Enterprise tile.
+  useEffect(() => {
+    try {
+      if (new URLSearchParams(window.location.search).get('topic') === 'enterprise') {
+        setMessage("I'm interested in the Filect Enterprise plan. Here is a bit about our team size and use case:\n\n");
+      }
+    } catch { /* no-op */ }
+  }, []);
+
   // Load + render the Turnstile widget once, only if a site key is configured.
   useEffect(() => {
     if (!TURNSTILE_SITE_KEY) return;
