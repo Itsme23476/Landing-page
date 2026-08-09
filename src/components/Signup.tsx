@@ -11,6 +11,13 @@ export default function Signup() {
   const params = new URLSearchParams(window.location.search);
   const plan = params.get('plan') || DEFAULT_PLAN;
 
+  // Optional post-auth redirect, e.g. the Enterprise "Contact Us" tile sends
+  // people to /signup?next=/contact so they create an account first, then land
+  // on the contact form. Only allow same-site absolute paths (block // and full
+  // URLs) so this can't be abused as an open redirect.
+  const rawNext = params.get('next');
+  const next = rawNext && rawNext.startsWith('/') && !rawNext.startsWith('//') ? rawNext : null;
+
   const [mode, setMode] = useState<'signup' | 'login'>(
     params.get('mode') === 'login' ? 'login' : 'signup'
   );
@@ -32,6 +39,7 @@ export default function Signup() {
   //  - no sub but they explicitly picked a plan (came from pricing) -> checkout
   //  - no sub, no plan (e.g. nav signup) -> pricing to choose a plan first
   const routeAfterAuth = async (userId: string, userEmail: string) => {
+    if (next) { window.location.href = next; return; } // e.g. Enterprise -> /contact
     const { data } = await supabase
       .from('subscriptions')
       .select('status')
@@ -69,7 +77,7 @@ export default function Signup() {
     const explicit = params.get('plan');
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}/signup?oauth=1${explicit ? `&plan=${explicit}` : ''}` },
+      options: { redirectTo: `${window.location.origin}/signup?oauth=1${explicit ? `&plan=${explicit}` : ''}${next ? `&next=${encodeURIComponent(next)}` : ''}` },
     });
     if (error) setError(error.message);
   };
@@ -170,8 +178,10 @@ export default function Signup() {
             </h1>
             <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: '1.6', marginBottom: '28px', textAlign: 'center' }}>
               {mode === 'signup'
-                ? 'Sign up to start your 10-day free trial. You won’t be charged until the trial ends — cancel anytime before then.'
-                : 'Log in to continue to checkout.'}
+                ? (next
+                    ? 'Create your account first, then we’ll take you straight to the contact form to reach our team.'
+                    : 'Sign up to start your 10-day free trial. You won’t be charged until the trial ends — cancel anytime before then.')
+                : (next ? 'Log in to continue.' : 'Log in to continue to checkout.')}
             </p>
 
             <button type="button" onClick={signInWithGoogle} style={googleBtn}>
@@ -232,7 +242,7 @@ export default function Signup() {
         )}
 
         <p style={{ color: 'var(--text-secondary)', fontSize: '12px', marginTop: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-          <span>🔒</span> Secure payment powered by Stripe
+          <span>🔒</span> {next ? 'Secure sign-up' : 'Secure payment powered by Stripe'}
         </p>
       </div>
 
