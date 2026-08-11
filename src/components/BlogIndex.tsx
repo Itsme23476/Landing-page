@@ -4,6 +4,22 @@ import Header from './Header';
 
 const ARTICLES = [
   {
+    id: 'windows-11-ai-file-search',
+    title: 'Windows 11 AI File Search: What It Does and the Catch',
+    excerpt: 'Windows 11 finally has AI search that understands what you mean. Here is what it does, why it needs a Copilot+ PC, and how to get it on any PC.',
+    date: 'August 10, 2026',
+    readTime: '8 min read',
+    category: 'News',
+  },
+  {
+    id: 'best-ai-file-organizer-for-windows',
+    title: 'Best AI File Organizer for Windows in 2026',
+    excerpt: 'Most Windows file tools sort by name and date. These are the ones that use AI to organize and find files by what they actually contain.',
+    date: 'August 10, 2026',
+    readTime: '9 min read',
+    category: 'Product',
+  },
+  {
     id: 'spotlight-not-finding-files',
     title: 'Mac Spotlight Not Finding Files? Here\'s the Fix',
     excerpt: 'Spotlight not showing files you know exist? Here is why it happens on Mac, how to rebuild the index, and what to use when it still comes up empty.',
