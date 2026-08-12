@@ -4,6 +4,22 @@ import Header from './Header';
 
 const ARTICLES = [
   {
+    id: 'how-to-find-duplicate-files',
+    title: 'How to Find and Delete Duplicate Files (Windows & Mac)',
+    excerpt: 'Duplicate files waste space and clutter search. Here is how to find and delete them on Windows and Mac, using built-in tools and free apps.',
+    date: 'August 10, 2026',
+    readTime: '9 min read',
+    category: 'Guides',
+  },
+  {
+    id: 'how-to-batch-rename-files',
+    title: 'How to Batch Rename Files on Windows and Mac',
+    excerpt: 'Rename dozens of files at once with the built-in tools on Windows and Mac, the free PowerToys renamer, and when renaming is worth it at all.',
+    date: 'August 10, 2026',
+    readTime: '8 min read',
+    category: 'Guides',
+  },
+  {
     id: 'windows-11-ai-file-search',
     title: 'Windows 11 AI File Search: What It Does and the Catch',
     excerpt: 'Windows 11 finally has AI search that understands what you mean. Here is what it does, why it needs a Copilot+ PC, and how to get it on any PC.',
