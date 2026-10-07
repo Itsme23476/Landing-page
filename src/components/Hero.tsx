@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
         <div>
           <span className="badge">
             <span style={{ marginRight: '6px' }}>✨</span>
-            V1 NOW AVAILABLE
+            NEW · TALK TO FILECT
           </span>
         </div>
         
@@ -34,18 +34,30 @@ const Hero: React.FC = () => {
           lineHeight: 1.1,
           letterSpacing: '-0.03em'
         }}>
-          Find any file.<br />
-          <span className="text-gradient">Instantly.</span>
+          Talk to <span className="text-gradient">Filect.</span>
         </h1>
 
         <p style={{
           fontSize: '1.25rem',
           color: 'var(--text-secondary)',
           lineHeight: 1.6,
-          maxWidth: '480px'
+          maxWidth: '500px'
         }}>
-          The smartest AI file manager. It organizes your files automatically, so you never have to sort your desktop again. And when you need to find one of your files you can just type what it is and it shows up. No more digging through folders.
+          Hold a key and talk. Your words type into any app, your files surface by voice, and your folders organize themselves. And when you are not talking, it is still the AI search that finds any file you describe.
         </p>
+
+        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          {[
+            { k: 'Dictate', hold: 'Fn' },
+            { k: 'Voice search', hold: 'Fn + ⇧' },
+            { k: 'Voice organize', hold: 'Fn + ⌥' },
+          ].map((c) => (
+            <span key={c.k} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '7px 14px', borderRadius: '999px', border: '1px solid rgba(176,102,255,0.35)', background: 'rgba(176,102,255,0.08)', fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
+              <strong style={{ color: '#fff', fontWeight: 600 }}>{c.k}</strong>
+              <span style={{ color: 'var(--text-secondary)' }}>hold {c.hold}</span>
+            </span>
+          ))}
+        </div>
         
         <div style={{ display: 'flex', gap: '16px', marginTop: '16px', flexWrap: 'nowrap' }}>
           <motion.a
@@ -119,6 +131,9 @@ const Hero: React.FC = () => {
 
         <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0 }}>
           Free download · 10-day free trial · card required · cancel anytime
+        </p>
+        <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0, opacity: 0.85 }}>
+          Voice features on Mac. File search and organize on Mac and Windows.
         </p>
 
         <ProductHuntBadge />
