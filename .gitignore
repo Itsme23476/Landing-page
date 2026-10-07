@@ -6,3 +6,6 @@ dist/
 .env
 .env.*
 !.env.example
+
+# MCP config holds API keys — never commit
+.mcp.json
