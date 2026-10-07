@@ -343,6 +343,32 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+  // ---- A/B price experiment: Basic $15 (control) vs $25 (variant), 50/50, cookie-persisted ----
+  (function(){
+    var COOKIE = 'filect_price_variant';
+    function getCookie(n){ try { return (document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)')||[])[2]||null; } catch(e){ return null; } }
+    var v = getCookie(COOKIE);
+    if (v !== '15' && v !== '25') {
+      v = Math.random() < 0.5 ? '15' : '25';
+      try { document.cookie = COOKIE+'='+v+'; path=/; max-age='+(180*86400)+'; SameSite=Lax'; } catch(e){}
+    }
+    try { if (typeof gtag === 'function') gtag('event','price_experiment',{ variant: v, experiment: 'price_15_vs_25' }); } catch(e){}
+    try { var _ve = { name: 'price_experiment', data: { variant: v } }; if (window.va) window.va('event', _ve); else (window.vaq = window.vaq || []).push(['event', _ve]); } catch(e){}
+    if (v !== '25') return; // control: leave the $15 pricing exactly as-is
+    // Rewrite the Basic tier to the $25 variant (runs before applyBilling reads data-m/data-a).
+    var M = 'price_1UNmblBATYQXewwi2HNpCcve', A = 'price_1UNmgVBATYQXewwiluFS0lz8';
+    function setMA(el, dm, da){ if(!el) return; el.setAttribute('data-m', dm); el.setAttribute('data-a', da); }
+    var amt = document.querySelector('.price-amount[data-m="$15"]');
+    if (amt) { setMA(amt, '$25', '$17'); amt.textContent = '$25'; }
+    var note = [].slice.call(document.querySelectorAll('.annual-note')).filter(function(e){ return e.textContent.indexOf('$120') > -1; })[0];
+    if (note) note.textContent = 'Billed annually at $200/yr · Save 33%';
+    var cell = document.querySelector('td[data-m="$15 / mo"]');
+    if (cell) { setMA(cell, '$25 / mo', '$17 / mo'); cell.textContent = '$25 / mo'; }
+    [].slice.call(document.querySelectorAll('[data-m="price_1SeEv5BATYQXewwiQ5XO32PD"]')).forEach(function(a){
+      setMA(a, M, A); if (a.getAttribute('href')) a.setAttribute('href', '/signup?plan='+M);
+    });
+  })();
+
   var SUPA_URL = 'https://gsvccxhdgcshiwgjvgfi.supabase.co';
   var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdzdmNjeGhkZ2NzaGl3Z2p2Z2ZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjczOTY2NTIsImV4cCI6MjA4Mjk3MjY1Mn0.Sbb6YJjlQ_ig2LCcs9zz_Be1kU-iIHBx4Vu4nzCPyTM';
   var sb = window.supabase.createClient(SUPA_URL, SUPA_KEY);
