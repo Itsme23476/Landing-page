@@ -116,7 +116,7 @@ const CtaSection: React.FC = () => {
               marginBottom: '0.1em',
             }}
           >
-            Start finding,
+            Stop typing.
           </h2>
           <h2
             style={{
@@ -129,12 +129,12 @@ const CtaSection: React.FC = () => {
               marginBottom: '48px',
             }}
           >
-            stop looking.
+            Start talking.
           </h2>
 
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginBottom: '24px' }}>
             <motion.a
-              href="https://github.com/Itsme23476/App-interface/releases/download/v12.2.16/Filect.exe"
+              href="https://github.com/Itsme23476/App-interface/releases/download/v12.2.18/Filect-Setup-v12.2.18.exe"
               onClick={() => trackDownload('windows')}
               whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(176,102,255,0.6)' }}
               whileTap={{ scale: 0.97 }}

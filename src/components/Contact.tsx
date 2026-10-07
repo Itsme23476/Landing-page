@@ -170,8 +170,12 @@ export default function Contact() {
 
 const FAQS = [
   {
+    q: 'Can I control Filect with my voice?',
+    a: "Yes. On Mac you hold a key and talk: your words type into any app, you can search for a file by describing it out loud, and you can tell Filect how to organize a folder. Voice is unlimited on every plan. The AI file search and auto-organize also work by keyboard on Windows and Mac.",
+  },
+  {
     q: 'How does Filect organize my files?',
-    a: "Point it at a folder, tell it how you want things sorted, and it reads each file to figure out what it is, then moves it into the right place. You can review what it did and undo it if something looks off.",
+    a: "Point it at a folder, tell it how you want things sorted by voice or by typing, and it reads each file to figure out what it is, then moves it into the right place. You can review what it did and undo it if something looks off.",
   },
   {
     q: 'Will it move my files without asking?',
@@ -179,7 +183,7 @@ const FAQS = [
   },
   {
     q: 'How do I find a file later?',
-    a: "Open Filect with a shortcut and describe what you are looking for in plain language, like \"the invoice from March\" or \"my tax return\". It pulls it up without you needing the exact filename.",
+    a: "Open Filect with a shortcut and describe what you are looking for in plain language, like \"the invoice from March\" or \"my tax return\", by typing or, on Mac, by voice. It pulls it up without you needing the exact filename.",
   },
   {
     q: 'Is my data private?',
@@ -187,7 +191,11 @@ const FAQS = [
   },
   {
     q: 'Which devices does it work on?',
-    a: "Filect runs on both Mac and Windows. Your subscription follows your account, so you can log in on either one with the same email.",
+    a: "Filect runs on both Mac and Windows, and your subscription follows your account, so you can log in on either one with the same email. The voice features (dictate, voice search, voice organize) are on Mac; file search and auto-organize work on both.",
+  },
+  {
+    q: 'Do you offer refunds?',
+    a: "No. Every customer gets a full 10-day free trial to try Filect before paying, so all subscription payments are non-refundable. Cancel anytime before the trial ends and you are never charged.",
   },
   {
     q: 'I am having trouble logging in or installing.',

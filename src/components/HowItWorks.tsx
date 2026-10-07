@@ -10,18 +10,18 @@ const HowItWorks: React.FC = () => {
     },
     {
       number: "2",
-      title: "Select a folder",
-      description: "Point Filect at the folder you want organized."
+      title: "Hold a key and talk",
+      description: "Say what you want in plain words, then let go of the key."
     },
     {
       number: "3",
-      title: "Type your instructions",
-      description: 'Tell it how you want things sorted, like "by project" or "by file type".'
+      title: "It types, finds, or sorts",
+      description: "Your words land in any app, the file you described surfaces, or the folder organizes itself."
     },
     {
       number: "4",
-      title: "Folder gets organized",
-      description: "Filect sorts everything into place for you, automatically."
+      title: "Done in seconds",
+      description: "No dragging, no exact filenames, no menus. Just the result you asked for."
     }
   ];
 
@@ -37,6 +37,9 @@ const HowItWorks: React.FC = () => {
         <h2 style={{ fontSize: '2.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
           How it works
         </h2>
+        <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '16px auto 0', lineHeight: 1.6 }}>
+          Hold a key and talk on your Mac, or type if you prefer. The AI file search and auto-organize work on Windows too.
+        </p>
       </motion.div>
 
       <div style={{ position: 'relative', width: '100%', maxWidth: '1100px', margin: '0 auto' }}>

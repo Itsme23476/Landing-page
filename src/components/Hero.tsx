@@ -6,7 +6,6 @@ import ProductHuntBadge from './ProductHuntBadge';
 
 const Hero: React.FC = () => {
   return (
-    <>
     <section style={{
       display: 'grid',
       gridTemplateColumns: '1fr 1fr', 
@@ -35,8 +34,8 @@ const Hero: React.FC = () => {
           lineHeight: 1.1,
           letterSpacing: '-0.03em'
         }}>
-          Dictate anywhere.<br />
-          <span className="text-gradient">Find anything.</span>
+          Dictate and organize<br />
+          <span className="text-gradient">anything.</span>
         </h1>
 
         <p style={{
@@ -48,22 +47,9 @@ const Hero: React.FC = () => {
           Hold a key and talk. Your words type into any app, your files surface by voice, and your folders organize themselves. And when you are not talking, it is still the AI search that finds any file you describe.
         </p>
 
-        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-          {[
-            { k: 'Dictate', hold: 'Fn' },
-            { k: 'Voice search', hold: 'Fn + ⇧' },
-            { k: 'Voice organize', hold: 'Fn + ⌥' },
-          ].map((c) => (
-            <span key={c.k} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '7px 14px', borderRadius: '999px', border: '1px solid rgba(176,102,255,0.35)', background: 'rgba(176,102,255,0.08)', fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
-              <strong style={{ color: '#fff', fontWeight: 600 }}>{c.k}</strong>
-              <span style={{ color: 'var(--text-secondary)' }}>hold {c.hold}</span>
-            </span>
-          ))}
-        </div>
-        
-        <div style={{ display: 'flex', gap: '16px', marginTop: '16px', flexWrap: 'nowrap' }}>
+        <div style={{ display: 'flex', gap: '16px', marginTop: '8px', flexWrap: 'nowrap' }}>
           <motion.a
-            href="https://github.com/Itsme23476/App-interface/releases/download/v12.2.16/Filect.exe"
+            href="https://github.com/Itsme23476/App-interface/releases/download/v12.2.18/Filect-Setup-v12.2.18.exe"
             onClick={() => trackDownload('windows')}
             whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(176,102,255,0.6)' }}
             whileTap={{ scale: 0.97 }}
@@ -161,40 +147,35 @@ const Hero: React.FC = () => {
         }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DashboardMockup />
+
+          {/* Static voice pill resting in the empty lower area of the mockup */}
+          <div aria-hidden="true" style={{
+            position: 'absolute', bottom: '24%', left: '27%', transform: 'translateX(-50%)',
+            zIndex: 20, display: 'inline-flex', alignItems: 'center', gap: '14px',
+            padding: '18px 30px', borderRadius: '999px', whiteSpace: 'nowrap',
+            background: 'rgba(10,10,16,0.96)', border: '1px solid rgba(255,255,255,0.12)',
+            boxShadow: '0 24px 70px rgba(124,77,255,0.5)',
+          }}>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c89bff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+              {[0.4, 0.7, 0.5, 0.9, 0.55, 1, 0.5, 0.8, 0.45, 0.95, 0.6, 0.75, 0.5, 0.85, 0.45, 0.7, 0.5].map((h, i) => (
+                <span key={i} style={{
+                  display: 'block', width: '5px',
+                  height: `${Math.round(12 + h * 38)}px`, borderRadius: '5px',
+                  background: 'linear-gradient(180deg,#c89bff,#7c3aed)',
+                }} />
+              ))}
+            </div>
+          </div>
         </div>
 
       </motion.div>
-      </section>
-
-      {/* Big voice waveform underneath the hero: how dictation looks while you talk */}
-      <div style={{ display: 'flex', justifyContent: 'center', padding: '0 24px', marginTop: '-32px', marginBottom: '32px' }}>
-        <div aria-hidden="true" style={{
-          display: 'inline-flex', alignItems: 'center', gap: '18px', maxWidth: '100%',
-          padding: '26px 48px', borderRadius: '999px',
-          background: 'rgba(10,10,16,0.95)', border: '1px solid rgba(255,255,255,0.12)',
-          boxShadow: '0 26px 80px rgba(124,77,255,0.5)',
-        }}>
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#c89bff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-            <line x1="12" y1="19" x2="12" y2="23"></line>
-            <line x1="8" y1="23" x2="16" y2="23"></line>
-          </svg>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            {[0.4, 0.7, 0.5, 0.9, 0.6, 1, 0.5, 0.85, 0.45, 0.95, 0.6, 0.8, 0.5, 1, 0.55, 0.75, 0.4, 0.8, 0.6, 0.9, 0.5, 0.7].map((h, i) => (
-              <span key={i} style={{
-                display: 'block', width: '6px',
-                height: `${Math.round(18 + h * 58)}px`, borderRadius: '6px',
-                background: 'linear-gradient(180deg,#c89bff,#7c3aed)',
-                transformOrigin: 'center',
-                animation: `filectVoiceBar 1.1s ease-in-out ${(i * 0.06).toFixed(2)}s infinite`,
-              }} />
-            ))}
-          </div>
-          <style>{`@keyframes filectVoiceBar{0%,100%{transform:scaleY(0.3)}50%{transform:scaleY(1)}}`}</style>
-        </div>
-      </div>
-    </>
+    </section>
   );
 };
 

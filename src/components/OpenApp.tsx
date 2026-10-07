@@ -57,7 +57,7 @@ export default function OpenApp() {
         </h1>
 
         <p style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: '1.7', marginBottom: '24px' }}>
-          You're one step away from letting Filect organize your files automatically.
+          You're one step away from talking to Filect to dictate, find, and organize your files.
           Finish setting up your subscription below.
         </p>
 
@@ -68,11 +68,11 @@ export default function OpenApp() {
           borderRadius: '12px', padding: '20px', marginBottom: '28px',
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 600 }}>Starter plan</span>
+            <span style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 600 }}>Basic plan</span>
             <span style={{ color: '#B28BFF', fontSize: '16px', fontWeight: 700 }}>$15<span style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>/mo</span></span>
           </div>
           <p style={{ margin: '8px 0 0', fontSize: '13px', color: 'var(--text-secondary)', textAlign: 'left' }}>
-            Up to 1,000 media files organized automatically.
+            Unlimited voice control on Mac, AI file search, and auto-organize. Up to 1,000 image &amp; video files / month.
           </p>
         </div>
 

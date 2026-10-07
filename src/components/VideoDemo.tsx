@@ -28,7 +28,7 @@ const VideoDemo: React.FC = () => {
             See how Filect works <span className="text-gradient">in practice</span>
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
-            An 80-second look at how Filect organizes your files and finds anything you describe, so you stop wasting time searching for files and sorting folders by hand.
+            An 80-second look at talking to Filect to dictate, find, and organize your files, so you stop typing, searching, and sorting folders by hand.
           </p>
         </motion.div>
 
