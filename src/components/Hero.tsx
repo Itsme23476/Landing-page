@@ -34,7 +34,8 @@ const Hero: React.FC = () => {
           lineHeight: 1.1,
           letterSpacing: '-0.03em'
         }}>
-          Talk to <span className="text-gradient">Filect.</span>
+          Dictate anywhere.<br />
+          <span className="text-gradient">Find anything.</span>
         </h1>
 
         <p style={{
@@ -159,6 +160,30 @@ const Hero: React.FC = () => {
         }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <DashboardMockup />
+        </div>
+
+        {/* Floating voice pill: how dictation looks while you talk (hovers over any app) */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute', bottom: '14%', left: '34%', transform: 'translateX(-50%)',
+            zIndex: 3, display: 'flex', alignItems: 'center', gap: '4px',
+            padding: '15px 24px', borderRadius: '999px',
+            background: 'rgba(10,10,16,0.94)', border: '1px solid rgba(255,255,255,0.12)',
+            boxShadow: '0 16px 50px rgba(124,77,255,0.5), inset 0 0 0 4px rgba(0,0,0,0.3)',
+            backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)',
+          }}
+        >
+          {[0.5, 0.8, 0.4, 1, 0.6, 0.9, 0.5, 1, 0.7, 0.45, 0.85, 0.55].map((h, i) => (
+            <span key={i} style={{
+              display: 'block', width: '4px',
+              height: `${Math.round(10 + h * 22)}px`, borderRadius: '4px',
+              background: 'linear-gradient(180deg,#c89bff,#7c3aed)',
+              transformOrigin: 'center',
+              animation: `filectVoiceBar 1.1s ease-in-out ${(i * 0.08).toFixed(2)}s infinite`,
+            }} />
+          ))}
+          <style>{`@keyframes filectVoiceBar{0%,100%{transform:scaleY(0.3)}50%{transform:scaleY(1)}}`}</style>
         </div>
       </motion.div>
     </section>
