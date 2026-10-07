@@ -6,8 +6,9 @@ import ProductHuntBadge from './ProductHuntBadge';
 
 const Hero: React.FC = () => {
   return (
-    <section style={{ 
-      display: 'grid', 
+    <>
+    <section style={{
+      display: 'grid',
       gridTemplateColumns: '1fr 1fr', 
       gap: '60px',
       alignItems: 'center',
@@ -162,31 +163,38 @@ const Hero: React.FC = () => {
           <DashboardMockup />
         </div>
 
-        {/* Floating voice pill: how dictation looks while you talk (hovers over any app) */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'absolute', bottom: '14%', left: '34%', transform: 'translateX(-50%)',
-            zIndex: 3, display: 'flex', alignItems: 'center', gap: '4px',
-            padding: '15px 24px', borderRadius: '999px',
-            background: 'rgba(10,10,16,0.94)', border: '1px solid rgba(255,255,255,0.12)',
-            boxShadow: '0 16px 50px rgba(124,77,255,0.5), inset 0 0 0 4px rgba(0,0,0,0.3)',
-            backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)',
-          }}
-        >
-          {[0.5, 0.8, 0.4, 1, 0.6, 0.9, 0.5, 1, 0.7, 0.45, 0.85, 0.55].map((h, i) => (
-            <span key={i} style={{
-              display: 'block', width: '4px',
-              height: `${Math.round(10 + h * 22)}px`, borderRadius: '4px',
-              background: 'linear-gradient(180deg,#c89bff,#7c3aed)',
-              transformOrigin: 'center',
-              animation: `filectVoiceBar 1.1s ease-in-out ${(i * 0.08).toFixed(2)}s infinite`,
-            }} />
-          ))}
+      </motion.div>
+      </section>
+
+      {/* Big voice waveform underneath the hero: how dictation looks while you talk */}
+      <div style={{ display: 'flex', justifyContent: 'center', padding: '0 24px', marginTop: '-32px', marginBottom: '32px' }}>
+        <div aria-hidden="true" style={{
+          display: 'inline-flex', alignItems: 'center', gap: '18px', maxWidth: '100%',
+          padding: '26px 48px', borderRadius: '999px',
+          background: 'rgba(10,10,16,0.95)', border: '1px solid rgba(255,255,255,0.12)',
+          boxShadow: '0 26px 80px rgba(124,77,255,0.5)',
+        }}>
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#c89bff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="23"></line>
+            <line x1="8" y1="23" x2="16" y2="23"></line>
+          </svg>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            {[0.4, 0.7, 0.5, 0.9, 0.6, 1, 0.5, 0.85, 0.45, 0.95, 0.6, 0.8, 0.5, 1, 0.55, 0.75, 0.4, 0.8, 0.6, 0.9, 0.5, 0.7].map((h, i) => (
+              <span key={i} style={{
+                display: 'block', width: '6px',
+                height: `${Math.round(18 + h * 58)}px`, borderRadius: '6px',
+                background: 'linear-gradient(180deg,#c89bff,#7c3aed)',
+                transformOrigin: 'center',
+                animation: `filectVoiceBar 1.1s ease-in-out ${(i * 0.06).toFixed(2)}s infinite`,
+              }} />
+            ))}
+          </div>
           <style>{`@keyframes filectVoiceBar{0%,100%{transform:scaleY(0.3)}50%{transform:scaleY(1)}}`}</style>
         </div>
-      </motion.div>
-    </section>
+      </div>
+    </>
   );
 };
 
