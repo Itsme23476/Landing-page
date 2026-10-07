@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import Header from './Header';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPPORT_EMAIL = 'softwaregentofficial@gmail.com';
+const SUPPORT_EMAIL = 'team@filect.io';
 // Cloudflare Turnstile site key — public by design (it ships in the browser).
 // Env var overrides if set; otherwise the default below is used. When this has a
 // value the invisible captcha is shown and required.
