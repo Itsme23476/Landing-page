@@ -1,23 +1,37 @@
 import { useEffect, useState } from 'react';
 
 const SUPABASE_URL = 'https://gsvccxhdgcshiwgjvgfi.supabase.co';
-const STARTER_PRICE_ID = 'price_1SeEv5BATYQXewwiQ5XO32PD';
+const DEFAULT_PRICE_ID = 'price_1SeEv5BATYQXewwiQ5XO32PD';
+
+// Display label per price id, so the summary always matches the plan being checked out
+// (covers the $15/$25 A/B prices and Pro, instead of a hardcoded "$15").
+const PLAN_INFO: Record<string, { name: string; amount: string; period: string }> = {
+  price_1SeEv5BATYQXewwiQ5XO32PD: { name: 'Basic plan', amount: '$15', period: '/mo' },
+  price_1TbNhCBATYQXewwi6k6RJfAV: { name: 'Basic plan', amount: '$120', period: '/yr' },
+  price_1UNmblBATYQXewwi2HNpCcve: { name: 'Basic plan', amount: '$25', period: '/mo' },
+  price_1UNmgVBATYQXewwiluFS0lz8: { name: 'Basic plan', amount: '$200', period: '/yr' },
+  price_1SuJOxBATYQXewwiuqsqAcMJ: { name: 'Pro plan', amount: '$49', period: '/mo' },
+  price_1TbNhOBATYQXewwinVl6TOP1: { name: 'Pro plan', amount: '$399', period: '/yr' },
+};
 
 export default function OpenApp() {
   const [checkoutUrl, setCheckoutUrl] = useState<string | null>(null);
+  const [planId] = useState(() => {
+    try { return new URLSearchParams(window.location.search).get('plan') || DEFAULT_PRICE_ID; }
+    catch { return DEFAULT_PRICE_ID; }
+  });
+  const plan = PLAN_INFO[planId] || PLAN_INFO[DEFAULT_PRICE_ID];
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const uid = params.get('uid');
     const email = params.get('email');
-    // Bring them back to the plan they originally abandoned (falls back to Starter).
-    const plan = params.get('plan') || STARTER_PRICE_ID;
     if (uid) {
-      const q = new URLSearchParams({ user_id: uid, price_id: plan });
+      const q = new URLSearchParams({ user_id: uid, price_id: planId });
       if (email) q.set('email', email);
       setCheckoutUrl(`${SUPABASE_URL}/functions/v1/create-checkout-web?${q.toString()}`);
     }
-  }, []);
+  }, [planId]);
 
   const goToCheckout = () => {
     if (checkoutUrl) window.location.href = checkoutUrl;
@@ -68,11 +82,11 @@ export default function OpenApp() {
           borderRadius: '12px', padding: '20px', marginBottom: '28px',
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 600 }}>Basic plan</span>
-            <span style={{ color: '#B28BFF', fontSize: '16px', fontWeight: 700 }}>$15<span style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>/mo</span></span>
+            <span style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 600 }}>{plan.name}</span>
+            <span style={{ color: '#B28BFF', fontSize: '16px', fontWeight: 700 }}>{plan.amount}<span style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>{plan.period}</span></span>
           </div>
           <p style={{ margin: '8px 0 0', fontSize: '13px', color: 'var(--text-secondary)', textAlign: 'left' }}>
-            Unlimited voice control on Mac, AI file search, and auto-organize. Up to 1,000 image &amp; video files / month.
+            Unlimited voice control on Mac, plus AI file search and auto-organize on Windows and Mac.
           </p>
         </div>
 
