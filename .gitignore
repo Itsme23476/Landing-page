@@ -9,3 +9,4 @@ dist/
 
 # MCP config holds API keys — never commit
 .mcp.json
+scripts/seo/candidates.json
