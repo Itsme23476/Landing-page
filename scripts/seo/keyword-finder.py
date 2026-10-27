@@ -29,6 +29,9 @@ BING_KEY = os.environ.get("BING_API_KEY", "")
 
 def _sa_json():
     """Service-account dict from env (cloud) or local file (Mac fallback)."""
+    b64 = os.environ.get("GSC_SERVICE_ACCOUNT_B64")   # preferred: .env-safe single line
+    if b64:
+        return json.loads(base64.b64decode(b64))
     raw = os.environ.get("GSC_SERVICE_ACCOUNT_JSON")
     if raw:
         return json.loads(raw)
