@@ -50,5 +50,6 @@ human review is needed. If an article can't clear the QA gate, publish nothing.
 - Commit `public/blog/<slug>/`, the edited sitemap, the edited linking page, and
   `scripts/seo/targeted-keywords.txt` directly to `main` (Vercel auto-deploys).
   Commit message: `seo: add <slug> (daily auto-article)`.
-- After the push, ping IndexNow: `node scripts/indexnow.mjs https://filect.io/blog/<slug>/`.
+- After the push, best-effort ping IndexNow: `node scripts/indexnow.mjs https://filect.io/blog/<slug>/`.
+  The cloud sandbox blocks api.indexnow.org, so this ping will fail there. That is fine and NOT a QA failure: the page is already live on Vercel and gets crawled via the sitemap. Report it as a note, nothing more.
 - Do NOT open a PR. One article per run. Keep `candidates.json` out of commits.
