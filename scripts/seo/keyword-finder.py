@@ -51,7 +51,11 @@ def _sa_json():
 TOPIC = ["file", "folder", "document", "pdf", "search", "organiz", "organis", "sort",
          "spotlight", "finder", "voice", "dictat", "desktop", "index", "tag", "duplicate",
          "declutter", "clean up", "rename", "launcher", "hazel", "everything search",
-         "copernic", "listary", "sparkle", "devonthink", "scan", "ocr", "receipt", "screenshot"]
+         "copernic", "listary", "sparkle", "devonthink", "scan", "ocr", "receipt", "screenshot",
+         # voice-control / Jarvis / AI-assistant positioning
+         "jarvis", "assistant", "agent", "voice control", "hands-free", "hands free",
+         "speak", "speech", "transcrib", "claude code", "codex", "control your computer",
+         "control my computer", "control your pc", "control my pc"]
 BRAND = ["filect", "filec", "fliect", "filct", "fileio"]
 
 def b64url(b): return base64.urlsafe_b64encode(b).rstrip(b"=")

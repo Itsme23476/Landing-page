@@ -6,8 +6,19 @@ ranks (position ~8-40) but gets no clicks. Quality must be high enough that no
 human review is needed. If an article can't clear the QA gate, publish nothing.
 
 ## Facts you must get right (no guessing)
-- Product: **Filect** — local AI file search + organizer + unlimited voice
-  dictation for **Windows and macOS**. Audience is Windows-first.
+- Product: **Filect** — a voice-first AI assistant for **Windows and macOS**.
+  The selling point: **control your entire computer with just your voice.** When
+  explaining what that means, it (a) finds and organizes your files locally,
+  (b) drives AI agents (Claude Code and Codex) that do real work for you, and
+  (c) acts across the apps you have connected (Gmail, Calendar, Notion, Google
+  Drive, Zapier and more). Also unlimited voice dictation. The agents run on the
+  user's OWN Claude or ChatGPT plan (so there is no per-task fee from Filect).
+  Hands-free voice assistant is Mac-first with Windows in progress; the file
+  search/organize/dictation core is on both. Audience is Windows-first. Do not
+  overpromise: say what it does with concrete examples, not "it can do anything".
+- You MAY reference the founder's YouTube channel
+  (https://www.youtube.com/@softwaregent7443) for Jarvis/voice-assistant posts,
+  but NEVER invent a specific video URL, title, view count, or embed id.
 - Pricing: **Basic** and **Pro** (monthly/annual) and **Enterprise**
   (contact-gated). Voice dictation is unlimited on every plan. Verify current
   prices/features from `src/` or `public/pricing.html` before stating any — never
@@ -17,9 +28,15 @@ human review is needed. If an article can't clear the QA gate, publish nothing.
 - House copy rule: **no em-dashes and no double hyphens** in published prose.
 
 ## Steps
-1. `python3 scripts/seo/keyword-finder.py` → reads GSC/Bing (env creds) and writes
-   `scripts/seo/candidates.json`. Pick the top candidate NOT already in
-   `scripts/seo/targeted-keywords.txt`. If the list is empty, stop (commit nothing).
+1. Pick today's keyword:
+   a. SEED FIRST: read `scripts/seo/seed-keywords.txt` (ignore blank/`#` lines; the
+      keyword is the text before any inline ` #` comment). Take the FIRST seed not
+      already in `scripts/seo/targeted-keywords.txt`. If one exists, use it and skip
+      the finder, these are brand bets (voice-control / Jarvis / AI-assistant) we do
+      not rank for yet.
+   b. ELSE run `python3 scripts/seo/keyword-finder.py` → reads GSC/Bing (env creds)
+      and writes `scripts/seo/candidates.json`. Pick the top candidate NOT already in
+      `scripts/seo/targeted-keywords.txt`. If nothing qualifies, stop (commit nothing).
 2. Choose a clean slug (lowercase, hyphenated, no stop words, no year).
 3. Draft the article as `public/blog/<slug>/index.html`, mirroring the structure,
    `<head>` tags, and JSON-LD of an existing strong post

@@ -1,0 +1,18 @@
+# Priority seed keywords (voice-control / Jarvis / AI-assistant positioning).
+# The daily writer takes the FIRST line here not already in targeted-keywords.txt,
+# BEFORE falling back to the GSC striking-distance finder. These are deliberate
+# brand bets we do not rank for yet, so the finder cannot surface them.
+# Lines starting with # are ignored. One keyword per line, lowercased.
+# Semrush US volume / competition noted for context (pulled 2026-11-08).
+ai jarvis                        # 720 vol, 0.22 comp — the hook, pillar piece
+jarvis for pc                    # 110 vol, 0.24 comp
+how to make jarvis               # 90 vol, 0.20 comp — how-to intent
+jarvis ai assistant             # 590 vol, 0.40 comp
+ai that controls your computer   # 320 vol, 0.55 comp — literal tagline
+ai desktop assistant             # 320 vol, 0.27 comp
+personal ai assistant            # 2400 vol, 0.12 comp — category head
+best ai voice assistant          # 170 vol, 0.55 comp — buyer intent
+control computer with voice      # 50 vol, 0.10 comp
+voice control pc                 # 90 vol, 0.10 comp
+ai assistant for pc              # 90 vol, 0.26 comp
+build your own jarvis            # 30 vol — low search, strong YouTube tie-in
