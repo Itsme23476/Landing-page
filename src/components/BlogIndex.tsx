@@ -4,6 +4,14 @@ import Header from './Header';
 
 const ARTICLES = [
   {
+    id: 'ai-jarvis',
+    title: 'AI Jarvis: How to Actually Get One on Your PC',
+    excerpt: 'An AI Jarvis that runs your computer by voice is no longer science fiction. What one really is, the build-it-yourself route, and how to get one today.',
+    date: 'November 8, 2026',
+    readTime: '8 min read',
+    category: 'Voice AI',
+  },
+  {
     id: 'how-to-find-duplicate-files',
     title: 'How to Find and Delete Duplicate Files (Windows & Mac)',
     excerpt: 'Duplicate files waste space and clutter search. Here is how to find and delete them on Windows and Mac, using built-in tools and free apps.',
