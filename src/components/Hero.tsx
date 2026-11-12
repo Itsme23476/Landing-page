@@ -6,13 +6,7 @@ import ProductHuntBadge from './ProductHuntBadge';
 
 const Hero: React.FC = () => {
   return (
-    <section style={{
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr', 
-      gap: '60px',
-      alignItems: 'center',
-      padding: '96px 0 104px'
-    }}>
+    <section className="hero-grid">
       {/* Left: Text content */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
@@ -23,31 +17,32 @@ const Hero: React.FC = () => {
         <div>
           <span className="badge">
             <span style={{ marginRight: '6px' }}>✨</span>
-            NEW · TALK TO FILECT
+            NEW · RUN CLAUDE CODE &amp; CODEX BY VOICE
           </span>
         </div>
-        
+
         <h1 style={{
           margin: 0,
-          fontSize: '4.5rem',
+          fontSize: 'clamp(2.6rem, 5.4vw, 4.4rem)',
           fontWeight: 800,
-          lineHeight: 1.1,
+          lineHeight: 1.08,
           letterSpacing: '-0.03em'
         }}>
-          Dictate and organize<br />
-          <span className="text-gradient">anything.</span>
+          Control your entire computer{' '}
+          <span className="text-gradient">by voice.</span>
         </h1>
 
         <p style={{
-          fontSize: '1.25rem',
+          fontSize: '1.2rem',
           color: 'var(--text-secondary)',
           lineHeight: 1.6,
-          maxWidth: '500px'
+          maxWidth: '520px',
+          margin: 0
         }}>
-          Hold a key and talk. Your words type into any app, your files surface by voice, and your folders organize themselves. And when you are not talking, it is still the AI search that finds any file you describe.
+          Just say what you want. Filect finds and organizes your files, puts AI agents like Claude Code and Codex to work for you, and handles your email, calendar and docs. No typing. No clicking.
         </p>
 
-        <div style={{ display: 'flex', gap: '16px', marginTop: '8px', flexWrap: 'nowrap' }}>
+        <div className="dl-row">
           <motion.a
             href="https://github.com/Itsme23476/App-interface/releases/download/v12.2.20/Filect-Setup-v12.2.20.exe"
             onClick={() => trackDownload('windows')}
@@ -121,7 +116,7 @@ const Hero: React.FC = () => {
           Free download · 10-day free trial · card required · cancel anytime
         </p>
         <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0, opacity: 0.85 }}>
-          Voice features on Mac. File search and organize on Mac and Windows.
+          Every feature works on Windows and Mac.
         </p>
 
         <ProductHuntBadge />
@@ -129,6 +124,7 @@ const Hero: React.FC = () => {
 
       {/* Right: Dashboard UI Mockup */}
       <motion.div
+        className="hero-visual"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.3 }}
@@ -171,6 +167,26 @@ const Hero: React.FC = () => {
                 }} />
               ))}
             </div>
+          </div>
+
+          {/* Agent task card: shows "it does the work" at a glance */}
+          <div aria-hidden="true" className="hero-task-card" style={{
+            position: 'absolute', top: '7%', right: '-3%', zIndex: 21, width: '290px',
+            padding: '16px 18px', borderRadius: '16px', textAlign: 'left',
+            background: 'rgba(12,10,20,0.97)', border: '1px solid rgba(176,102,255,0.35)',
+            boxShadow: '0 24px 60px rgba(0,0,0,0.55), 0 0 40px rgba(124,77,255,0.25)',
+            fontSize: '0.82rem', lineHeight: 1.5,
+          }}>
+            <div style={{ color: '#fff', fontWeight: 600, marginBottom: '10px' }}>
+              &ldquo;Reply to the sponsor and attach the March invoice&rdquo;
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--purple-light)', fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '6px' }}>
+              <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#b066ff', boxShadow: '0 0 10px #b066ff' }} />
+              Claude Code
+            </div>
+            <div style={{ color: 'var(--text-secondary)' }}>✓ Found invoice_march.pdf</div>
+            <div style={{ color: 'var(--text-secondary)' }}>✓ Drafted the reply in Gmail</div>
+            <div style={{ color: '#34d399', fontWeight: 600, marginTop: '6px' }}>Done · Open in Gmail</div>
           </div>
         </div>
 

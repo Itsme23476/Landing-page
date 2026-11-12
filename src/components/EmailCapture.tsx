@@ -139,7 +139,7 @@ const EmailCapture: React.FC = () => {
             margin: '0 auto 32px',
           }}
         >
-          Drop your email and we'll send you a 20% discount code, plus monthly tips on file organization and productivity.
+          Drop your email and we'll send you a 20% discount code, plus monthly tips on getting more done with your voice and AI.
         </p>
 
         {/* Form / Success */}

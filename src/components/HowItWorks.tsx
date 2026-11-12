@@ -10,18 +10,18 @@ const HowItWorks: React.FC = () => {
     },
     {
       number: "2",
-      title: "Hold a key and talk",
-      description: "Say what you want in plain words, then let go of the key."
+      title: "Connect your AI",
+      description: "Link Claude Code or Codex in one click. They run on your own Claude or ChatGPT plan."
     },
     {
       number: "3",
-      title: "It types, finds, or sorts",
-      description: "Your words land in any app, the file you described surfaces, or the folder organizes itself."
+      title: "Just say it",
+      description: "Hold a key and talk, or go hands-free. Ask for a file, a fix, an email or a whole website."
     },
     {
       number: "4",
-      title: "Done in seconds",
-      description: "No dragging, no exact filenames, no menus. Just the result you asked for."
+      title: "Watch it get done",
+      description: "Follow every step live, approve what you want, and open the result in one click."
     }
   ];
 
@@ -38,13 +38,14 @@ const HowItWorks: React.FC = () => {
           How it works
         </h2>
         <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '16px auto 0', lineHeight: 1.6 }}>
-          Hold a key and talk on your Mac, or type if you prefer. The AI file search and auto-organize work on Windows too.
+          Set it up once, then just talk. It works the same on Windows and Mac.
         </p>
       </motion.div>
 
       <div style={{ position: 'relative', width: '100%', maxWidth: '1100px', margin: '0 auto' }}>
         {/* Background connecting line */}
-        <div 
+        <div
+          className="steps-line"
           style={{
             position: 'absolute',
             top: '24px', // Aligns with the vertical center of the 48px circle
@@ -56,12 +57,7 @@ const HowItWorks: React.FC = () => {
           }}
         />
 
-        <div style={{ 
-          display: 'flex', 
-          justifyContent: 'space-between',
-          position: 'relative',
-          zIndex: 1
-        }}>
+        <div className="steps-row">
           {steps.map((step, index) => (
             <motion.div 
               key={index}
