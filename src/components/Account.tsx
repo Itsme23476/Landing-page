@@ -7,8 +7,8 @@ const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-const MAC_URL = 'https://github.com/Itsme23476/Mac-version/releases/latest';
-const WIN_URL = 'https://github.com/Itsme23476/App-interface/releases/latest';
+const MAC_URL = '/download/mac';        // always the newest (vercel.json → the download function)
+const WIN_URL = '/download/windows';
 
 const PLAN_NAMES: Record<string, string> = {
   price_1SeEv5BATYQXewwiQ5XO32PD: 'Basic',   // monthly

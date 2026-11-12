@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { trackDownload } from '../utils/ads';
 
-const MAC_URL = 'https://github.com/Itsme23476/Mac-version/releases/latest';
-const WIN_URL = 'https://github.com/Itsme23476/App-interface/releases/latest';
+const MAC_URL = '/download/mac';        // always the newest (vercel.json → the download function)
+const WIN_URL = '/download/windows';
 
 export default function PaymentSuccess() {
   const [showConfetti, setShowConfetti] = useState(true);

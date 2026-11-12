@@ -138,7 +138,7 @@ const CtaSection: React.FC = () => {
 
           <div className="cta-dl-row" style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginBottom: '24px' }}>
             <motion.a
-              href="https://github.com/Itsme23476/App-interface/releases/download/v12.2.20/Filect-Setup-v12.2.20.exe"
+              href="/download/windows"
               onClick={() => trackDownload('windows')}
               whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(176,102,255,0.6)' }}
               whileTap={{ scale: 0.97 }}
@@ -163,7 +163,7 @@ const CtaSection: React.FC = () => {
             </motion.a>
 
             <motion.a
-              href="https://github.com/Itsme23476/Mac-version/releases/download/v14.5.2/Filect-14.5.2-mac.dmg"
+              href="/download/mac"
               onClick={() => trackDownload('mac')}
               whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(255,255,255,0.2)' }}
               whileTap={{ scale: 0.97 }}

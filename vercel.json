@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/download/mac",
+      "destination": "https://gsvccxhdgcshiwgjvgfi.supabase.co/functions/v1/download?os=mac",
+      "permanent": false
+    },
+    {
+      "source": "/download/windows",
+      "destination": "https://gsvccxhdgcshiwgjvgfi.supabase.co/functions/v1/download?os=windows",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.+)",
