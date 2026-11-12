@@ -26,19 +26,19 @@ const WIN = 'https://github.com/Itsme23476/App-interface/releases/latest';
 const MAC = 'https://github.com/Itsme23476/Mac-version/releases/latest';
 
 const FEATURES = [
-  ['Auto-Organize', 'Filect sorts your files into the right folders for you, automatically. No dragging, no naming, no guessing.'],
-  ['AI Analysis', "Advanced AI models read your documents to understand what's inside, so everything ends up where it belongs."],
-  ['Lightning Fast', 'Built on a high-performance Rust backend for instant results as you type.'],
-  ['Privacy First', 'Filect processes your files securely through OpenAI. Nothing is stored or shared, and only you can see your data.'],
-  ['Broad Compatibility', 'Indexes PDFs, Docs, Code, Images, and more across your entire drive.'],
-  ['Natural Language', "Don't remember the exact filename? Just describe what's inside and Filect finds it. It understands context."],
+  ['Find and organize your files', 'Describe a file by what is inside it and Filect finds it, even when you forgot the name. Tell it to tidy a folder and it sorts, renames and files everything for you.'],
+  ['Run AI agents by voice', 'Put Claude Code or Codex to work. They build websites, write and edit files, run commands and research the web, and you can watch every step live.'],
+  ['Work across your apps', 'Agents act inside the apps you connect, like Gmail, Calendar, Notion, Google Drive and Zapier. Email, schedule and update your docs just by saying so.'],
+  ['Dictate anywhere', 'Hold a key and talk. Your words type into any app, with punctuation added and filler words cleaned up as you go.'],
+  ['Hands-free Assistant', 'Click Start and just talk, no keys needed. It ignores conversations that are not meant for it, can look at your screen, and can answer out loud in a natural voice.'],
+  ['You stay in control', 'Choose Ask first to approve every action, or Full access to let it run. Only your speech is sent, never the silence, and your files are never stored or shared.'],
 ];
 
 const STEPS = [
   ['Install Filect', 'Download the lightweight app for Windows or Mac.'],
-  ['Select a folder', 'Point Filect at the folder you want organized.'],
-  ['Type your instructions', 'Tell it how you want things sorted, like "by project" or "by file type".'],
-  ['Folder gets organized', 'Filect sorts everything into place for you, automatically.'],
+  ['Connect your AI', 'Link Claude Code or Codex in one click. They run on your own Claude or ChatGPT plan.'],
+  ['Just say it', 'Hold a key and talk, or go hands-free. Ask for a file, a fix, an email or a whole website.'],
+  ['Watch it get done', 'Follow every step live, approve what you want, and open the result in one click.'],
 ];
 
 const TESTIMONIALS = [
@@ -53,11 +53,12 @@ const quotes = TESTIMONIALS.map(([n, q]) => `<figure><blockquote>${q}</blockquot
 // Static, crawler-facing snapshot. Mirrors the live homepage copy. React replaces
 // it on mount, so styling is intentionally minimal.
 const snapshot = `<div style="max-width:1100px;margin:0 auto;padding:64px 24px;color:#e2e8f0;font-family:Inter,sans-serif;">
-<h1 style="font-size:3rem;font-weight:800;color:#fff;line-height:1.1;">Find any file. Instantly.</h1>
-<p style="font-size:1.2rem;max-width:560px;">The smartest AI file manager. It organizes your files automatically, so you never have to sort your desktop again. And when you need to find one of your files you can just type what it is and it shows up. No more digging through folders.</p>
+<h1 style="font-size:3rem;font-weight:800;color:#fff;line-height:1.1;">Control your entire computer by voice.</h1>
+<p style="font-size:1.2rem;max-width:560px;">Just say what you want. Filect finds and organizes your files, puts AI agents like Claude Code and Codex to work for you, and handles your email, calendar and docs. No typing. No clicking.</p>
 <p><a href="${WIN}">Download for Windows</a> &nbsp; <a href="${MAC}">Download for Mac</a></p>
-<p>Free download · 10-day free trial · card required · cancel anytime</p>
-<section><h2>Features</h2><ul>${li(FEATURES)}</ul></section>
+<p>Free download · 10-day free trial · card required · cancel anytime. Every feature works on Windows and Mac.</p>
+<section><h2>Say it. Filect does the work.</h2><ul>${li(FEATURES)}</ul>
+<p>No per-task fees: agents run on your own Claude or ChatGPT plan. Run several tasks at once. Filect switches between Claude and Codex automatically, with one-click agent setup.</p></section>
 <section><h2>How it works</h2><ol>${li(STEPS)}</ol></section>
 <section><h2>Loved by people who hate clutter</h2>${quotes}</section>
 </div>`;

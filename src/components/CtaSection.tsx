@@ -116,7 +116,7 @@ const CtaSection: React.FC = () => {
               marginBottom: '0.1em',
             }}
           >
-            Stop typing.
+            Stop clicking.
           </h2>
           <h2
             style={{
@@ -126,13 +126,17 @@ const CtaSection: React.FC = () => {
               lineHeight: 1.1,
               letterSpacing: '-0.03em',
               color: '#b066ff',
-              marginBottom: '48px',
+              marginBottom: '20px',
             }}
           >
             Start talking.
           </h2>
 
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginBottom: '24px' }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '1.15rem', color: 'rgba(226,232,240,0.8)', maxWidth: '560px', margin: '0 auto 40px', lineHeight: 1.6 }}>
+            Control your entire computer by voice. Find files, run AI agents, and get real work done on Windows and Mac.
+          </p>
+
+          <div className="cta-dl-row" style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginBottom: '24px' }}>
             <motion.a
               href="https://github.com/Itsme23476/App-interface/releases/download/v12.2.20/Filect-Setup-v12.2.20.exe"
               onClick={() => trackDownload('windows')}

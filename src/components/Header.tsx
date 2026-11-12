@@ -32,7 +32,7 @@ const Header: React.FC = () => {
         <span style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Filect</span>
       </a>
 
-      <nav style={{ display: 'flex', gap: '32px', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
+      <nav className="site-nav" style={{ display: 'flex', gap: '32px', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
         <a href="/#features" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Features</a>
         <a href="/#how-it-works" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>How it works</a>
         <a href="/blog" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = '#fff'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Blog</a>
