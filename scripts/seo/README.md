@@ -11,16 +11,19 @@ human review is needed. If an article can't clear the QA gate, publish nothing.
   explaining what that means, it (a) finds and organizes your files locally,
   (b) drives AI agents (Claude Code and Codex) that do real work for you, and
   (c) acts across the apps you have connected (Gmail, Calendar, Notion, Google
-  Drive, Zapier and more). Also unlimited voice dictation. The agents run on the
-  user's OWN Claude or ChatGPT plan (so there is no per-task fee from Filect).
-  Hands-free voice assistant is Mac-first with Windows in progress; the file
-  search/organize/dictation core is on both. Audience is Windows-first. Do not
+  Drive, Zapier and more). Also voice dictation into any app and a hands-free
+  voice Assistant. The agents run on the user's OWN Claude or ChatGPT plan (so
+  there is no per-task fee from Filect). EVERY feature (dictation, voice search,
+  hands-free Assistant, agents, file search/organize) works on BOTH Windows and
+  Mac. Never say voice is Mac-only. Audience is Windows-first. Do not
   overpromise: say what it does with concrete examples, not "it can do anything".
 - You MAY reference the founder's YouTube channel
   (https://www.youtube.com/@softwaregent7443) for Jarvis/voice-assistant posts,
   but NEVER invent a specific video URL, title, view count, or embed id.
 - Pricing: **Basic** and **Pro** (monthly/annual) and **Enterprise**
-  (contact-gated). Voice dictation is unlimited on every plan. Verify current
+  (contact-gated). AI agents are on every plan. Voice (dictation, voice search
+  and the Assistant share one allowance): Basic 90 minutes of talking a day,
+  Pro unlimited with fair use. Do NOT call Basic voice "unlimited". Verify current
   prices/features from `src/` or `public/pricing.html` before stating any — never
   invent a number. If unsure of a fact, write around it; do not fabricate.
 - Never claim features Filect doesn't have. Never disparage competitors with
