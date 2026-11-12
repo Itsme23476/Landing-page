@@ -70,11 +70,32 @@ export default function Account() {
     window.location.href = '/';
   };
 
-  const manage = () => {
-    if (userId) window.open(`${SUPABASE_URL}/functions/v1/create-portal-session?user_id=${userId}`, '_blank', 'noopener');
+  const fn = (name: string) => `${SUPABASE_URL}/functions/v1/${name}`;
+
+  // Billing calls say WHO it is with the website sign-in, never with a user id (2026-11-12 security fix).
+  const signedIn = async (): Promise<Record<string, string>> => {
+    const { data } = await supabase.auth.getSession();
+    const t = data.session?.access_token;
+    return t ? { Authorization: `Bearer ${t}` } : {};
   };
 
-  const fn = (name: string) => `${SUPABASE_URL}/functions/v1/${name}`;
+  const manage = async () => {
+    // The tab opens on the click itself (so no popup blocker stops it), then goes to the billing page once it's ready.
+    const tab = window.open('', '_blank');
+    try {
+      const r = await fetch(fn('create-portal-session'), { method: 'POST', headers: await signedIn() });
+      const j = await r.json();
+      if (j.ok && j.url) {
+        if (tab) { tab.opener = null; tab.location.href = j.url; } else { window.location.href = j.url; }
+        return;
+      }
+      tab?.close();
+      alert(r.status === 401 ? 'Please sign in again to manage billing.' : "We couldn't open billing right now. Please try again or contact support.");
+    } catch {
+      tab?.close();
+      alert("We couldn't open billing right now. Please try again or contact support.");
+    }
+  };
 
   // Continue from the reason step: show the one-time offer, or (if already used)
   // go straight to confirming the cancellation.
@@ -88,11 +109,12 @@ export default function Account() {
     setBusy(true); setFlowErr('');
     try {
       const r = await fetch(fn('apply-retention-offer'), {
-        method: 'POST', headers: { 'content-type': 'application/json' },
+        method: 'POST', headers: { 'content-type': 'application/json', ...(await signedIn()) },
         body: JSON.stringify({ user_id: userId, reason: reason.trim() }),
       });
       const j = await r.json();
       if (j.ok) setCancelStep('stayed');
+      else if (j.error === 'signin') setFlowErr('Please sign in again, then try once more.');
       else setFlowErr('Could not apply the discount. Please try again.');
     } catch { setFlowErr('Something went wrong. Please try again.'); }
     finally { setBusy(false); }
@@ -102,12 +124,13 @@ export default function Account() {
     setBusy(true); setFlowErr('');
     try {
       const r = await fetch(fn('cancel-subscription'), {
-        method: 'POST', headers: { 'content-type': 'application/json' },
+        method: 'POST', headers: { 'content-type': 'application/json', ...(await signedIn()) },
         body: JSON.stringify({ user_id: userId, reason: reason.trim() }),
       });
       const j = await r.json();
       if (j.ok) { setEndsDate(j.ends || null); setCancelStep('canceled'); }
       else if (j.error === 'reason_too_short') setFlowErr('Please tell us a bit more (at least 30 characters).');
+      else if (j.error === 'signin') setFlowErr('Please sign in again, then try once more.');
       else setFlowErr('Could not cancel right now. Please try again.');
     } catch { setFlowErr('Something went wrong. Please try again.'); }
     finally { setBusy(false); }

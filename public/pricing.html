@@ -382,6 +382,13 @@
   var APP_EMAIL = P.get('email');
   var APP_SOURCE = P.get('source');  // 'app' when opened from the desktop app
   var APP_CURRENT = P.get('current'); // current price_id when handed off for an UPGRADE
+  // Who switches plans comes from a sign-in, never from an id in the link (2026-11-12 security fix): the app hands
+  // over its sign-in in the link's #part (never sent to any server, and wiped from the address bar right here);
+  // on the website it's the website's own sign-in.
+  var APP_TOKEN = new URLSearchParams(location.hash.slice(1)).get('at');
+  if (APP_TOKEN) { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} }
+  var FILECT_TOKEN = null;
+  sb.auth.getSession().then(function (r) { var s = r && r.data && r.data.session; if (s) FILECT_TOKEN = s.access_token; });
 
   // Soft trial-abuse nudge (UX only, NOT enforcement, the real gate is the
   // server-side card-fingerprint check). If this browser already used a free
@@ -414,10 +421,20 @@
     return '/signup?plan=' + priceId;
   }
 
-  // Switch an existing subscription to a different plan (upgrade / downgrade).
-  function changeHref(priceId) {
-    var q = new URLSearchParams({ user_id: FILECT_USER.id, price_id: priceId });
-    return SUPA_URL + '/functions/v1/change-plan?' + q.toString();
+  // Switch an existing subscription to a different plan (upgrade / downgrade), as the signed-in user.
+  function switchPlan(el) {
+    if (!confirm('Switch to this plan? Your subscription changes right away and billing is prorated.')) return false;
+    var token = APP_TOKEN || FILECT_TOKEN;
+    if (!token) { location.href = '/signup?mode=login&next=%2Fpricing.html'; return false; }
+    el.style.pointerEvents = 'none'; el.textContent = 'Switching…';
+    fetch(SUPA_URL + '/functions/v1/change-plan', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + token },
+      body: JSON.stringify({ price_id: el.getAttribute('data-switch-to') })
+    }).then(function (r) { return r.json(); })
+      .then(function (j) { location.href = j.redirect || '/account?planChange=error'; })
+      .catch(function () { location.href = '/account?planChange=error'; });
+    return false;
   }
 
   function applyBilling(mode) {
@@ -433,9 +450,10 @@
         el.removeAttribute('onclick');
         el.style.opacity = '0.55'; el.style.pointerEvents = 'none';
       } else if (FILECT_SUB) {
-        el.setAttribute('href', changeHref(val));
+        el.setAttribute('href', '#switch');
+        el.setAttribute('data-switch-to', val);
         el.textContent = el.classList.contains('mini-cta') ? 'Switch' : 'Switch to this plan';
-        el.setAttribute('onclick', "return confirm('Switch to this plan? Your subscription changes right away and billing is prorated.');");
+        el.setAttribute('onclick', 'return switchPlan(this)');
         el.style.opacity = ''; el.style.pointerEvents = '';
       } else {
         el.setAttribute('href', ctaHref(val));

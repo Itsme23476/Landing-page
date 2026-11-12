@@ -1,16 +1,32 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const supabase = createClient(SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY);
 
 // Standalone cancellation/retention flow opened from the desktop app
-// (filect.io/cancel?uid=…&email=…). Runs the same flow as the account page:
-// reason (30-char min) -> "stay for 50% off" -> claim or cancel. Identity comes
-// from the URL, so no separate web login is needed.
+// (filect.io/cancel?source=app#at=…). Runs the same flow as the account page:
+// reason (30-char min) -> "stay for 50% off" -> claim or cancel.
+// WHO it is comes from a sign-in, never from an id in the link (2026-11-12 security fix): the app hands over its
+// sign-in in the link's #part (never sent to any server, wiped from the address bar on arrival); otherwise the
+// website's own sign-in; with neither (an older app version), the person is asked to sign in.
 type Step = 'reason' | 'offer' | 'stayed' | 'canceled';
 
 export default function Cancel() {
   const params = new URLSearchParams(window.location.search);
   const uid = params.get('uid');
+  const [handed] = useState(() => {
+    const t = new URLSearchParams(window.location.hash.slice(1)).get('at');
+    if (t) history.replaceState(null, '', window.location.pathname + window.location.search);
+    return t;
+  });
+  const [token, setToken] = useState<string | null>(handed);
+  const [checked, setChecked] = useState(!!handed);
+  useEffect(() => {
+    if (handed) return;
+    supabase.auth.getSession().then(({ data }) => { setToken(data.session?.access_token ?? null); setChecked(true); });
+  }, [handed]);
+  const signedIn = (): Record<string, string> => (token ? { Authorization: `Bearer ${token}` } : {});
 
   const [step, setStep] = useState<Step>('reason');
   const [reason, setReason] = useState('');
@@ -31,12 +47,13 @@ export default function Cancel() {
     setBusy(true); setErr('');
     try {
       const r = await fetch(fn('apply-retention-offer'), {
-        method: 'POST', headers: { 'content-type': 'application/json' },
+        method: 'POST', headers: { 'content-type': 'application/json', ...signedIn() },
         body: JSON.stringify({ user_id: uid, reason: reason.trim() }),
       });
       const j = await r.json();
       if (j.ok) setStep('stayed');
       else if (j.error === 'already_used') { setOfferUsed(true); setErr("You've already used this offer."); }
+      else if (j.error === 'signin') { setToken(null); }
       else setErr('Could not apply the discount. Please try again.');
     } catch { setErr('Something went wrong. Please try again.'); }
     finally { setBusy(false); }
@@ -46,12 +63,13 @@ export default function Cancel() {
     setBusy(true); setErr('');
     try {
       const r = await fetch(fn('cancel-subscription'), {
-        method: 'POST', headers: { 'content-type': 'application/json' },
+        method: 'POST', headers: { 'content-type': 'application/json', ...signedIn() },
         body: JSON.stringify({ user_id: uid, reason: reason.trim() }),
       });
       const j = await r.json();
       if (j.ok) { setEndsDate(j.ends || null); setStep('canceled'); }
       else if (j.error === 'reason_too_short') setErr('Please tell us a bit more (at least 30 characters).');
+      else if (j.error === 'signin') setToken(null);
       else setErr('Could not cancel right now. Please try again.');
     } catch { setErr('Something went wrong. Please try again.'); }
     finally { setBusy(false); }
@@ -68,8 +86,14 @@ export default function Cancel() {
         border: '1px solid var(--border-light)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
         borderRadius: '20px', padding: '32px', position: 'relative', zIndex: 1,
       }}>
-        {!uid ? (
-          <p style={txt}>This link is missing your account info. Please open it from the Filect app.</p>
+        {!checked ? (
+          <p style={txt}>One moment…</p>
+        ) : !token ? (
+          <>
+            <h1 style={title}>Please sign in</h1>
+            <p style={txt}>To change your subscription, sign in to your Filect account first.</p>
+            <a href="/signup?mode=login&next=%2Faccount" style={{ ...txt, color: 'var(--accent, #7C4DFF)' }}>Sign in</a>
+          </>
         ) : step === 'reason' ? (
           <>
             <h1 style={title}>Before you go</h1>
