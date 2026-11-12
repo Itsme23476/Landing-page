@@ -18,7 +18,7 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
     {"@type":"Question","name":"Does Spotlight search inside files?","acceptedAnswer":{"@type":"Answer","text":"Partly. Spotlight indexes the text of many common document types, but it matches your keywords literally. If you do not remember the exact words in the file, or the file is a scanned PDF with no text layer, Spotlight usually cannot surface it. Filect reads content with AI and finds files by meaning, including scanned documents through OCR."}},
-    {"@type":"Question","name":"Is Filect a replacement for Spotlight?","acceptedAnswer":{"@type":"Answer","text":"Not exactly. Spotlight is also an app launcher and system search, and it is excellent at that. Filect focuses on finding and organizing your local files by meaning. Many Mac users keep Spotlight for launching apps and use Filect when they cannot remember a file's name."}},
+    {"@type":"Question","name":"Is Filect a replacement for Spotlight?","acceptedAnswer":{"@type":"Answer","text":"Not exactly. Spotlight is also an app launcher and system search, and it is excellent at that. Filect is a voice-first assistant built around finding and organizing your local files by meaning. Many Mac users keep Spotlight for launching apps and use Filect when they cannot remember a file's name."}},
     {"@type":"Question","name":"Why can Spotlight not find my file even though it exists?","acceptedAnswer":{"@type":"Answer","text":"Common reasons are that the file type is not fully indexed, the index broke after a macOS update, the document is a scanned image with no text layer, or your search words do not appear in the file. Rebuilding the Spotlight index can help. To find files by what they contain rather than exact keywords, Filect is built for that case."}}
   ]}
   </script>
@@ -33,17 +33,18 @@
     <a class="back-link" href="/blog">&larr; Back to Articles</a>
     <div class="vs-badge">Comparison</div>
     <h1>Filect vs Spotlight</h1>
-    <div class="meta"><span>Updated June 2026</span></div>
+    <div class="meta"><span>Updated November 13, 2026</span></div>
 
     <div class="tldr"><p class="tldr-title">Summary</p>
-      <p style="margin-bottom:0"><strong>Spotlight</strong> is the search and app launcher built into macOS. It is fast, free, and it even indexes the text inside many documents, but it matches keywords literally and struggles when you cannot remember a file's name or exact words. <strong>Filect</strong> reads your files with AI and finds them by meaning, runs OCR on scanned documents, and organizes folders automatically. They are good at different jobs, and many people run both.</p>
+      <p style="margin-bottom:0"><strong>Spotlight</strong> is the search and app launcher built into macOS. It is fast, free, and it even indexes the text inside many documents, but it matches keywords literally and struggles when you cannot remember a file's name or exact words. <strong>Filect</strong> is a voice-first assistant that reads your files with AI and finds them by meaning, runs OCR on scanned documents, and organizes folders automatically. They are good at different jobs, and many people run both.</p>
     </div>
 
     <h2>Quick Comparison</h2>
     <div class="table-wrap"><table>
       <thead><tr><th>Feature</th><th>Filect</th><th>Spotlight</th></tr></thead>
       <tbody>
-        <tr><td>Voice control (dictate, search &amp; organize)</td><td class="yes">Yes, on Mac</td><td class="no">No</td></tr>
+        <tr><td>Voice control (dictate, search &amp; organize)</td><td class="yes">Yes, Windows &amp; Mac</td><td class="no">No</td></tr>
+        <tr><td>AI agents by voice (Claude Code &amp; Codex)</td><td class="yes">Yes</td><td class="no">No</td></tr>
         <tr><td>Search type</td><td>AI semantic content search</td><td>Keyword and metadata search</td></tr>
         <tr><td>Searches file contents</td><td class="yes">Yes</td><td>Partial, keyword only</td></tr>
         <tr><td>Finds files by meaning</td><td class="yes">Yes</td><td class="no">No</td></tr>
@@ -55,7 +56,7 @@
         <tr><td>Price</td><td>$15/month</td><td>Free, built in</td></tr>
       </tbody>
     </table></div>
-    <p><strong>And Filect talks.</strong> Unlike Spotlight, Filect also lets you control your files by voice on Mac: hold a key and dictate into any app, describe a file out loud and have it surface, or say how you want a folder organized. Voice dictation, voice search, and voice organize are unlimited on every plan.</p>
+    <p><strong>And Filect talks.</strong> You type into Spotlight. Filect also listens, on Mac and Windows alike. Hold a key and describe the file you need, dictate into any app, or say how a folder should be organized.</p>
 
     <h2>What Spotlight Does Well</h2>
     <p>Spotlight is the system search you open with Command and Space. It indexes filenames, file metadata, and the text of many common document types through small plugins called Spotlight importers. It also launches apps, does quick calculations, shows dictionary definitions, and returns web results. For anything where you remember the name or the exact wording, Spotlight is fast and convenient, and it is already on every Mac.</p>
@@ -64,14 +65,15 @@
 
     <h2>What Filect Does Differently</h2>
     <p>Filect reads the actual content of your documents and builds a semantic index, so you can describe a file the way you remember it. A search like "the invoice from the electrician in March" returns the right file even when none of those words are in the filename and the document words things its own way. Filect also runs OCR on scanned PDFs and images, so a photographed receipt becomes searchable. Beyond search, it can sort your files into clean folders by topic automatically.</p>
-    <p>The trade off is focus and price. Filect is about your local files, not launching apps or web results, and it is a paid app. It also needs to index your files once before search feels instant, which usually takes ten to thirty minutes. In return it works the same way on both Mac and Windows.</p>
+    <p>Filect is also a voice assistant. Start the hands-free Assistant and you can talk to it without any shortcut; it can look at your screen when you ask "what's this error?" and read its answers aloud in a natural voice. When you find what you need, AI agents (Claude Code and Codex) can act on it inside apps you connect, such as Gmail and Google Drive: "email that photographed receipt to the office manager." In Ask first mode you approve each action before it happens, or switch to Full access and let it run.</p>
+    <p>The trade off is focus and price. Filect's search is about your local files, not launching apps or web results, and it is a paid app; the agents and hands-free Assistant also need your own Claude or ChatGPT plan. It also needs to index your files once before search feels instant, which usually takes ten to thirty minutes. In return it works the same way on both Mac and Windows.</p>
 
     <h2>When to Use Which</h2>
     <div class="verdict"><h3>Use Spotlight when:</h3>
       <ul><li>You want to launch an app or open a setting</li><li>You remember the filename or the exact text inside</li><li>You want something free that is already on your Mac</li><li>You need a quick calculation, definition, or web result</li></ul>
     </div>
     <div class="verdict"><h3>Use Filect when:</h3>
-      <ul><li>You forgot the filename or it is meaningless, like scan_004.pdf</li><li>You want to search by describing what a file is about</li><li>You need scanned receipts and photographed documents to be findable</li><li>You want files sorted into folders automatically</li></ul>
+      <ul><li>You forgot the filename or it is meaningless, like scan_004.pdf</li><li>You want to search by describing what a file is about</li><li>You need scanned receipts and photographed documents to be findable</li><li>You want files sorted into folders automatically</li><li>You want the follow-up handled too, like emailing the file you just found</li></ul>
     </div>
     <div class="verdict"><h3>Best setup: use both</h3>
       <p style="margin-bottom:0">Keep Spotlight for launching apps and fast known lookups. Add Filect for finding everything you cannot name and for keeping folders organized. They do not conflict, and together they cover far more than Spotlight alone.</p>

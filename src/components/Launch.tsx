@@ -12,6 +12,8 @@ const ACTIONS: Record<string, { verb: string; noun: string }> = {
   organize: { verb: 'start organizing', noun: 'your first folder' },
   search: { verb: 'try search', noun: 'in plain English' },
   'auto-organize': { verb: 'turn on Auto-organize', noun: 'and set it once' },
+  agents: { verb: 'give an AI agent', noun: 'its first task' },
+  assistant: { verb: 'try', noun: 'the hands-free Assistant' },
 };
 
 export default function Launch() {

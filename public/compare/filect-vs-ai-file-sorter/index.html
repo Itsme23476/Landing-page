@@ -32,7 +32,7 @@
     <a class="back-link" href="/blog">← Back to Articles</a>
     <div class="vs-badge">Comparison</div>
     <h1>Filect vs AI File Sorter</h1>
-    <div class="meta"><span>Updated May 2026</span></div>
+    <div class="meta"><span>Updated November 13, 2026</span></div>
 
     <div class="tldr"><p class="tldr-title">Summary</p>
       <p style="margin-bottom:0"><strong>AI File Sorter</strong> (filesorter.app) is an open-source, privacy-first file organizer that runs local AI models on your computer. <strong>Filect</strong> uses cloud-based AI for deep semantic search and auto-organization. AI File Sorter is free and fully local. Filect is more powerful but requires an internet connection and subscription.</p>
@@ -42,7 +42,8 @@
     <div class="table-wrap"><table>
       <thead><tr><th>Feature</th><th>Filect</th><th>AI File Sorter</th></tr></thead>
       <tbody>
-        <tr><td>Voice control (dictate, search &amp; organize)</td><td class="yes">Yes, on Mac</td><td class="no">No</td></tr>
+        <tr><td>Voice control (dictate, search &amp; organize)</td><td class="yes">Yes, Windows &amp; Mac</td><td class="no">No</td></tr>
+        <tr><td>Runs AI agents by voice (Claude Code &amp; Codex)</td><td class="yes">Yes</td><td class="no">No</td></tr>
         <tr><td>AI processing</td><td>Cloud API</td><td>Fully local</td></tr>
         <tr><td>Natural language search</td><td class="yes">Yes</td><td class="no">No</td></tr>
         <tr><td>File categorization</td><td class="yes">Yes - automatic</td><td class="yes">Yes - with review</td></tr>
@@ -56,7 +57,7 @@
         <tr><td>Price</td><td>$15/month</td><td>Free (open source)</td></tr>
       </tbody>
     </table></div>
-    <p><strong>And Filect talks.</strong> Unlike AI File Sorter, Filect also lets you control your files by voice on Mac: hold a key and dictate into any app, describe a file out loud and have it surface, or say how you want a folder organized. Voice dictation, voice search, and voice organize are unlimited on every plan.</p>
+    <p><strong>And Filect talks.</strong> AI File Sorter has no voice input. In Filect you can say "sort my Downloads by file type", hold a key to dictate into any app, or find a file by saying what is in it, on Windows and Mac.</p>
 
     <h2>What AI File Sorter Does</h2>
     <p>AI File Sorter is an open-source desktop app that uses local LLMs (LLaMA, Mistral) and visual models (LLaVA) to analyze files and suggest organization. Everything runs on your machine. No data leaves your computer.</p>
@@ -65,17 +66,19 @@
 
     <h2>What Filect Does</h2>
     <p>Filect reads your file contents, sends them through a secure cloud API for semantic analysis, and builds a searchable index. You search by describing what you're looking for in natural language and find files in seconds. It also auto-categorizes files and applies AI tags.</p>
+    <p>Filect is also more than an organizer. It is a voice-first assistant with a hands-free mode, so you can talk to it without holding any key. For bigger jobs it runs AI agents, Claude Code from Anthropic and Codex from OpenAI, that write and edit files, run commands, research the web and can work in connected apps like Gmail and Notion. As with Filect's search, the heavy AI work happens in the cloud, not on your GPU. The agents and the hands-free Assistant use your own Claude or ChatGPT subscription; search, organizing and dictation work without one.</p>
     <p>The tradeoff: files are processed through an API (encrypted in transit, not stored or used for training). You need an internet connection, and the service costs $15/month.</p>
 
     <h2>The Privacy Question</h2>
     <p>This is the core decision point. AI File Sorter processes everything locally. Zero data leaves your machine. If you work with genuinely sensitive documents (legal, medical, classified), this matters.</p>
     <p>Filect processes files through encrypted API calls. Contents are not stored after processing and aren't used for training. For most personal and professional use, this is sufficient. But for maximum privacy, local processing wins.</p>
+    <p>For voice, only your speech is sent, never silence. The AI agents are optional and run through your own Anthropic or OpenAI account, and in "Ask first" mode you approve each action before it happens.</p>
 
     <div class="verdict"><h3>Choose AI File Sorter if:</h3>
       <ul><li>Privacy is your top priority (no cloud processing)</li><li>You have a GPU and don't mind local model setup</li><li>You prefer open-source software</li><li>You want a free tool and don't need search</li></ul>
     </div>
     <div class="verdict"><h3>Choose Filect if:</h3>
-      <ul><li>You want powerful natural language search across all files</li><li>You don't want to deal with local model installation</li><li>You need AI tagging and auto-categorization</li><li>You want it working in 2 minutes, not 30</li></ul>
+      <ul><li>You want powerful natural language search across all files</li><li>You don't want to deal with local model installation</li><li>You need AI tagging and auto-categorization</li><li>You want it working in 2 minutes, not 30</li><li>You want more than sorting: dictation, voice search and AI agents in the same app</li></ul>
     </div>
 
     <div class="cta-box">
