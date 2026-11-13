@@ -141,6 +141,9 @@ html {
 
 /* Homepage layout. Lives here (not inline) so it can respond to screen size. */
 .hero-grid { display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); gap: 48px; align-items: center; padding: 96px 0 104px; }
+/* Nudge the product visual into the side margin on wide screens only (0px at <=1312px wide, max 80px),
+   so it never gets clipped. Uses `left`, not transform, because framer-motion owns the transform. */
+.hero-visual { left: clamp(0px, calc((100vw - 1312px) / 2), 80px); }
 .dl-row { display: flex; gap: 16px; margin-top: 8px; flex-wrap: wrap; }
 .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(220px, auto); gap: 24px; }
 .steps-row { display: flex; justify-content: space-between; position: relative; z-index: 1; }
