@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
 
         <h1 style={{
           margin: 0,
-          fontSize: 'clamp(2.4rem, 4.8vw, 3.9rem)',
+          fontSize: 'clamp(2.4rem, 4.4vw, 3.5rem)',
           fontWeight: 800,
           lineHeight: 1.08,
           letterSpacing: '-0.03em'
@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
               color: '#ffffff',
               border: 'none',
               borderRadius: '8px',
-              padding: '16px 32px',
+              padding: '16px 28px',
               fontSize: '1rem',
               fontWeight: 600,
               fontFamily: "'Inter', sans-serif",
@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
               color: '#ffffff',
               border: '1px solid rgba(255, 255, 255, 0.1)',
               borderRadius: '8px',
-              padding: '16px 32px',
+              padding: '16px 28px',
               fontSize: '1rem',
               fontWeight: 600,
               fontFamily: "'Inter', sans-serif",
