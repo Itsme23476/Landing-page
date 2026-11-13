@@ -149,7 +149,13 @@
     .faq-title { font-size: 1.6rem; font-weight: 700; text-align: center; margin-bottom: 40px; }
     .faq-item { border-bottom: 1px solid var(--border-light); padding-bottom: 20px; margin-bottom: 20px; }
     .faq-item:last-child { border-bottom: none; }
-    .faq-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+    .faq-item h3 { font-size: 1rem; font-weight: 600; margin: 0; }
+    .faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: var(--purple-light); font-size: 1.5rem; font-weight: 400; line-height: 1; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item[open] summary { margin-bottom: 10px; }
+    .faq-item summary:hover h3 { color: var(--purple-light); }
     .faq-item p { color: var(--text-secondary); font-size: 0.92rem; margin: 0; }
     .faq-item a { color: var(--purple-light); text-decoration: none; }
     .faq-item a:hover { text-decoration: underline; }
@@ -298,60 +304,60 @@
       <section class="faq-section">
         <h2 class="faq-title">Frequently Asked Questions</h2>
 
-        <div class="faq-item">
-          <h3>How does the free trial work?</h3>
+        <details class="faq-item">
+          <summary><h3>How does the free trial work?</h3></summary>
           <p>You pick a plan and start a 10-day free trial. We collect your card to start the trial, but you are not charged until day 10. Cancel anytime before then and you won't pay anything.</p>
-        </div>
+        </details>
 
-        <div class="faq-item">
-          <h3>How much can I use voice?</h3>
+        <details class="faq-item">
+          <summary><h3>How much can I use voice?</h3></summary>
           <p>Basic includes 90 minutes of talking a day, shared between dictation, voice search and the hands-free Assistant, plus 10,000 characters of spoken replies a day in a natural voice. Only your speech counts: silence and background noise are never sent, so most people never get close. If you do reach it, voice pauses until the next day and Filect tells you right away, and spoken replies switch to your computer's built-in voice, which has no limit. Pro is unlimited for normal use (fair use applies). Your allowance resets every day.</p>
-        </div>
+        </details>
 
-        <div class="faq-item">
-          <h3>Do I need a Claude or ChatGPT subscription?</h3>
+        <details class="faq-item">
+          <summary><h3>Do I need a Claude or ChatGPT subscription?</h3></summary>
           <p>Only for the AI agents and the hands-free Assistant, which run on Claude Code (from Anthropic) or Codex (from OpenAI). They use your own Claude or ChatGPT plan, so Filect never charges you per task. If neither is installed yet, Filect sets it up in one click. Dictation, voice search, and file search and organizing work without one.</p>
-        </div>
+        </details>
 
-        <div class="faq-item">
-          <h3>Can the agents do things without my permission?</h3>
+        <details class="faq-item">
+          <summary><h3>Can the agents do things without my permission?</h3></summary>
           <p>Only if you let them. Choose Ask first and you approve each action before it happens, or choose Full access to let the agent work on its own. Either way you can follow every step live and see exactly what it did.</p>
-        </div>
+        </details>
 
-        <div class="faq-item">
-          <h3>Does Filect work on Windows and Mac?</h3>
+        <details class="faq-item">
+          <summary><h3>Does Filect work on Windows and Mac?</h3></summary>
           <p>Yes. Every feature works on both: voice dictation, voice search, the hands-free Assistant, AI agents, and AI file search and organizing.</p>
-        </div>
+        </details>
 
-        <div class="faq-item">
-          <h3>What happens after the 10-day trial?</h3>
+        <details class="faq-item">
+          <summary><h3>What happens after the 10-day trial?</h3></summary>
           <p>Your plan begins and your card is charged for the first month. If you cancel before the trial ends, you're never billed and the app simply stops processing new files, nothing is deleted.</p>
-        </div>
+        </details>
 
-        <div class="faq-item">
-          <h3>Do you offer refunds?</h3>
+        <details class="faq-item">
+          <summary><h3>Do you offer refunds?</h3></summary>
           <p>No. Every customer gets a full 10-day free trial to try Filect before paying, so all subscription payments are non-refundable, including partial periods, unused time, or change of mind. Cancel anytime before the trial ends and you're never charged.</p>
-        </div>
+        </details>
 
-        <div class="faq-item">
-          <h3>Can I cancel anytime?</h3>
+        <details class="faq-item">
+          <summary><h3>Can I cancel anytime?</h3></summary>
           <p>Yes. There are no contracts. Cancel during the trial to avoid any charge, or later from inside the app, your subscription stays active until the end of the period you've paid for.</p>
-        </div>
+        </details>
 
-        <div class="faq-item">
-          <h3>Can I switch plans?</h3>
+        <details class="faq-item">
+          <summary><h3>Can I switch plans?</h3></summary>
           <p>Yes. You can upgrade or downgrade between Basic and Pro at any time from your account. For Enterprise, just reach out and we'll set it up with you.</p>
-        </div>
+        </details>
 
-        <div class="faq-item">
-          <h3>What payment methods do you accept?</h3>
+        <details class="faq-item">
+          <summary><h3>What payment methods do you accept?</h3></summary>
           <p>All major credit and debit cards, processed securely through Stripe. Filect never sees or stores your card details.</p>
-        </div>
+        </details>
 
-        <div class="faq-item">
-          <h3>Is my data safe?</h3>
+        <details class="faq-item">
+          <summary><h3>Is my data safe?</h3></summary>
           <p>Yes. For voice, only your speech is sent, never the silence or background noise. File processing is handled securely via OpenAI's enterprise API. Your data is never stored by Filect and is never used to train public AI models. Read our full <a href="/privacy.html">Privacy Policy</a> for details.</p>
-        </div>
+        </details>
       </section>
     </main>
 
