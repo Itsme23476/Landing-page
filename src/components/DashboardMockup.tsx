@@ -210,24 +210,24 @@ const DashboardMockup: React.FC = () => {
             />
           </section>
 
-          {/* ── Right: Statistics ─────────────────────────────────────────── */}
+          {/* ── Right: the Assistant at work ─────────────────────────────────────────── */}
           <section className="w-full md:w-1/2 p-10 flex flex-col">
             {/* Top stats */}
             <div className="space-y-6 mb-12">
               <div>
                 <h3 className="text-xs tracking-widest mb-1 font-mono uppercase" style={{ color: '#94a3b8', letterSpacing: '0.2em' }}>
-                  System Process
+                  Filect Assistant
                 </h3>
-                <p className="text-2xl font-light tracking-wide" style={{ color: '#e2e8f0' }}>
-                  1.8M Files Processed
+                <p className="text-xl font-light tracking-wide" style={{ color: '#e2e8f0' }}>
+                  &ldquo;Sort my Downloads by type&rdquo;
                 </p>
               </div>
               <div>
                 <h3 className="text-xs tracking-widest mb-1 font-mono uppercase" style={{ color: '#94a3b8', letterSpacing: '0.2em' }}>
-                  Access Video
+                  Reply
                 </h3>
-                <p className="text-xl font-light tracking-wide" style={{ color: '#e2e8f0' }}>
-                  0.03s Query Time
+                <p className="text-lg font-light tracking-wide" style={{ color: '#e2e8f0' }}>
+                  Sorting them into folders now.
                 </p>
               </div>
             </div>
@@ -264,27 +264,27 @@ const DashboardMockup: React.FC = () => {
               {/* AI Analysis */}
               <div className="space-y-2">
                 <div className="flex justify-between text-sm" style={{ color: '#e2e8f0' }}>
-                  <span>AI Analysis: <strong>80%</strong></span>
+                  <span>Heard you: <strong>done</strong></span>
                 </div>
                 <div className="h-2.5 w-full rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.05)' }}>
-                  <div className="h-full rounded-full" style={{ width: '80%', background: '#b066ff', boxShadow: '0 0 20px rgba(176,102,255,0.4)' }} />
+                  <div className="h-full rounded-full" style={{ width: '100%', background: '#b066ff', boxShadow: '0 0 20px rgba(176,102,255,0.4)' }} />
                 </div>
               </div>
 
               {/* Files Indexed */}
               <div className="space-y-2">
                 <div className="flex justify-between text-sm" style={{ color: '#e2e8f0' }}>
-                  <span>Files Indexed: <strong>2.1M</strong></span>
+                  <span>Sorting files: <strong>80%</strong></span>
                 </div>
                 <div className="h-2.5 w-full rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.05)' }}>
-                  <div className="h-full rounded-full" style={{ width: '90%', background: '#b066ff', opacity: 0.8, boxShadow: '0 0 20px rgba(176,102,255,0.4)' }} />
+                  <div className="h-full rounded-full" style={{ width: '80%', background: '#b066ff', opacity: 0.8, boxShadow: '0 0 20px rgba(176,102,255,0.4)' }} />
                 </div>
               </div>
 
               {/* Speed indicator */}
               <div className="space-y-2">
                 <div className="text-sm" style={{ color: '#e2e8f0' }}>
-                  Speed: <strong>0.02s</strong>
+                  Speaking the reply
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: '#b066ff', boxShadow: '0 0 20px rgba(176,102,255,0.4)' }} />
