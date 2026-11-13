@@ -60,7 +60,7 @@ const snapshot = `<div style="max-width:1100px;margin:0 auto;padding:64px 24px;c
 <section><h2>Say it. Filect does the work.</h2><ul>${li(FEATURES)}</ul>
 <p>No per-task fees: agents run on your own Claude or ChatGPT plan. Run several tasks at once. Filect switches between Claude and Codex automatically, with one-click agent setup.</p></section>
 <section><h2>How it works</h2><ol>${li(STEPS)}</ol></section>
-<section><h2>Loved by people who hate clutter</h2>${quotes}</section>
+<section><h2>Loved by people who hate busywork</h2><p>Find a file, tidy a folder, or hand a whole task to an AI agent. Just say it.</p>${quotes}</section>
 </div>`;
 
 const ROOT_EMPTY = '<div id="root"></div>';

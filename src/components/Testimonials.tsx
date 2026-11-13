@@ -61,8 +61,11 @@ const Testimonials: React.FC = () => {
               margin: '20px 0 0',
             }}
           >
-            Loved by people who <span className="text-gradient">hate clutter</span>
+            Loved by people who <span className="text-gradient">hate busywork</span>
           </h2>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', maxWidth: '700px', margin: '16px auto 0', lineHeight: 1.6 }}>
+            Find a file, tidy a folder, or hand a whole task to an AI agent. Just say it.
+          </p>
         </motion.div>
 
         <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap' }}>
