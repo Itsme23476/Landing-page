@@ -22,8 +22,8 @@ const dist = join(dirname(fileURLToPath(import.meta.url)), '..', 'dist');
 const indexPath = join(dist, 'index.html');
 const shellPath = join(dist, 'app.html');
 
-const WIN = 'https://github.com/Itsme23476/App-interface/releases/latest';
-const MAC = 'https://github.com/Itsme23476/Mac-version/releases/latest';
+const WIN = '/download/windows';   // always the newest (vercel.json → the download function)
+const MAC = '/download/mac';
 
 const FEATURES = [
   ['Find and organize your files', 'Describe a file by what is inside it and Filect finds it, even when you forgot the name. Tell it to tidy a folder and it sorts, renames and files everything for you.'],
