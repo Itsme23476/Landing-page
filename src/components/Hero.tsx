@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
         <div>
           <span className="badge">
             <span style={{ marginRight: '6px' }}>✨</span>
-            NEW · RUN CLAUDE CODE &amp; CODEX BY VOICE
+            NEW · AI VOICE ASSISTANT &amp; AGENTS
           </span>
         </div>
 
@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
           maxWidth: '520px',
           margin: 0
         }}>
-          Just say what you want. Filect finds and organizes your files, puts AI agents like Claude Code and Codex to work for you, and handles your email, calendar and docs. No typing. No clicking.
+          Just say what you want. Talk to a hands-free AI Assistant, put agents like Claude Code and Codex to work in your email, calendar and docs, and find or organize any file. No typing. No clicking.
         </p>
 
         <div className="dl-row">

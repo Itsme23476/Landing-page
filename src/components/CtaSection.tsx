@@ -133,7 +133,7 @@ const CtaSection: React.FC = () => {
           </h2>
 
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '1.15rem', color: 'rgba(226,232,240,0.8)', maxWidth: '560px', margin: '0 auto 40px', lineHeight: 1.6 }}>
-            Control your entire computer by voice. Find files, run AI agents, and get real work done on Windows and Mac.
+            Control your entire computer by voice. Talk to the AI Assistant, run AI agents and find any file, on Windows and Mac.
           </p>
 
           <div className="cta-dl-row" style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginBottom: '24px' }}>

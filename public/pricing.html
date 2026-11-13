@@ -121,17 +121,7 @@
     .feature-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.4; }
     .check { flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; }
     .feature-list li strong { color: var(--text-primary); font-weight: 600; }
-    /* ── Every plan includes ── */
-    .included { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; padding: 0 24px 80px; text-align: center; }
-    .included h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
-    .included .sub { color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 40px; }
-    .included-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; text-align: left; }
-    .inc-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border-light); border-radius: 16px; padding: 28px; }
-    .inc-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(178,139,255,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
-    .inc-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
-    .inc-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0; }
     .compare tr.group td { text-align: left; color: var(--purple-light); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 30px 24px 10px; border-bottom: 1px solid rgba(176,102,255,0.25); background: transparent; }
-    @media (max-width: 800px) { .included-grid { grid-template-columns: 1fr; } }
     .fine { color: var(--text-secondary); font-size: 0.78rem; margin-top: 16px; opacity: 0.85; }
 
     /* ── Compare table ── */
@@ -264,28 +254,6 @@
 
       </section>
 
-      <section class="included">
-        <h2>Every plan includes</h2>
-        <p class="sub">One app that listens, acts and keeps your files in order. On Windows and Mac.</p>
-        <div class="included-grid">
-        <div class="inc-card">
-          <div class="inc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line></svg></div>
-          <h3>AI voice Assistant</h3>
-          <p>Click Start and just talk, no keys. Ask &ldquo;what&rsquo;s this error?&rdquo; and it looks at your screen, then answers out loud in a natural voice.</p>
-        </div>
-        <div class="inc-card">
-          <div class="inc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="6 10 9 12.5 6 15"></polyline><line x1="12" y1="15" x2="17" y2="15"></line></svg></div>
-          <h3>AI agents</h3>
-          <p>Say a task and Claude Code or Codex does it: build a page, research a topic, draft a reply in Gmail. They run on your own Claude or ChatGPT plan.</p>
-        </div>
-        <div class="inc-card">
-          <div class="inc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"></path></svg></div>
-          <h3>Find &amp; organize files</h3>
-          <p>Ask for a file by what is inside it and it appears. Say &ldquo;organize my Downloads by type&rdquo; and it is done, or let Auto-organize keep folders clean.</p>
-        </div>
-        </div>
-      </section>
-
       <section class="compare">
         <h2>Compare plans</h2>
         <p class="sub">Basic and Pro start with a 10-day free trial. Enterprise is tailored to your team.</p>
@@ -299,7 +267,7 @@
               <tr class="group"><td colspan="4">AI voice Assistant</td></tr>
               <tr><td>Hands-free Assistant (sees your screen, talks back)</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
               <tr><td>Talking time (Assistant, dictation &amp; voice search)</td><td>90 min / day</td><td class="col-pop">Unlimited*</td><td>Unlimited*</td></tr>
-              <tr><td>Spoken replies in natural voices</td><td>About 10 min / day</td><td class="col-pop">Unlimited*</td><td>Unlimited*</td></tr>
+              <tr><td>Spoken replies in natural voices</td><td>10,000 characters / day</td><td class="col-pop">Unlimited*</td><td>Unlimited*</td></tr>
               <tr><td>Dictation into any app</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
               <tr class="group"><td colspan="4">AI agents</td></tr>
               <tr><td>Claude Code &amp; Codex by voice</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
@@ -337,7 +305,7 @@
 
         <div class="faq-item">
           <h3>How much can I use voice?</h3>
-          <p>Basic includes 90 minutes of talking a day, shared between dictation, voice search and the hands-free Assistant, plus about 10 minutes of spoken replies in a natural voice. Only your speech counts: silence and background noise are never sent, so most people never get close. If you do reach it, voice pauses until the next day and Filect tells you right away, and spoken replies switch to your computer's built-in voice, which has no limit. Pro is unlimited for normal use (fair use applies). Your allowance resets every day.</p>
+          <p>Basic includes 90 minutes of talking a day, shared between dictation, voice search and the hands-free Assistant, plus 10,000 characters of spoken replies a day in a natural voice. Only your speech counts: silence and background noise are never sent, so most people never get close. If you do reach it, voice pauses until the next day and Filect tells you right away, and spoken replies switch to your computer's built-in voice, which has no limit. Pro is unlimited for normal use (fair use applies). Your allowance resets every day.</p>
         </div>
 
         <div class="faq-item">
