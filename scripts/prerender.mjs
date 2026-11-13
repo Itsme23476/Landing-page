@@ -54,8 +54,8 @@ const quotes = TESTIMONIALS.map(([n, q]) => `<figure><blockquote>${q}</blockquot
 // Static, crawler-facing snapshot. Mirrors the live homepage copy. React replaces
 // it on mount, so styling is intentionally minimal.
 const snapshot = `<div style="max-width:1100px;margin:0 auto;padding:64px 24px;color:#e2e8f0;font-family:Inter,sans-serif;">
-<h1 style="font-size:3rem;font-weight:800;color:#fff;line-height:1.1;">Control your entire computer by voice.</h1>
-<p style="font-size:1.2rem;max-width:560px;">Just say what you want. Talk to a hands-free AI Assistant, put agents like Claude Code and Codex to work in your email, calendar and docs, and find or organize any file. No typing. No clicking.</p>
+<h1 style="font-size:3rem;font-weight:800;color:#fff;line-height:1.1;">The AI assistant that controls your entire computer.</h1>
+<p style="font-size:1.2rem;max-width:560px;">Just talk. It sees your screen, puts agents like Claude Code and Codex to work, and finds or organizes any file. No typing. No clicking.</p>
 <p><a href="${WIN}">Download for Windows</a> &nbsp; <a href="${MAC}">Download for Mac</a></p>
 <p>Free download · 10-day free trial · card required · cancel anytime. Every feature works on Windows and Mac.</p>
 <section><h2>Say it. Filect does the work.</h2><ul>${li(FEATURES)}</ul>

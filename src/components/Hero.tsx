@@ -23,13 +23,13 @@ const Hero: React.FC = () => {
 
         <h1 style={{
           margin: 0,
-          fontSize: 'clamp(2.6rem, 5.4vw, 4.4rem)',
+          fontSize: 'clamp(2.4rem, 4.8vw, 3.9rem)',
           fontWeight: 800,
           lineHeight: 1.08,
           letterSpacing: '-0.03em'
         }}>
-          Control your entire computer{' '}
-          <span className="text-gradient">by voice.</span>
+          The AI assistant that controls{' '}
+          <span className="text-gradient">your entire computer.</span>
         </h1>
 
         <p style={{
@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
           maxWidth: '520px',
           margin: 0
         }}>
-          Just say what you want. Talk to a hands-free AI Assistant, put agents like Claude Code and Codex to work in your email, calendar and docs, and find or organize any file. No typing. No clicking.
+          Just talk. It sees your screen, puts agents like Claude Code and Codex to work, and finds or organizes any file. No typing. No clicking.
         </p>
 
         <div className="dl-row">
