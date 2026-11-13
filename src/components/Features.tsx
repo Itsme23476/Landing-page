@@ -4,23 +4,25 @@ import { motion } from 'framer-motion';
 const iconProps = { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'var(--purple-light)', strokeWidth: 2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
 
 const Features: React.FC = () => {
-  // First row = the three jobs (each with a real spoken example). Second row = how you use it.
+  // Top row = the three main selling points, in priority order (Assistant, agents, files),
+  // each with a real spoken example. Second row = supporting features.
   const cards = [
     {
-      title: "Find and organize your files",
-      description: "Describe a file by what is inside it and Filect finds it, even when you forgot the name. Tell it to tidy a folder and it sorts everything into place for you.",
-      example: "“Find the contract I signed last week”",
+      title: "AI voice Assistant",
+      description: "Click Start and just talk, no keys needed. It ignores conversations that are not meant for it, looks at your screen when you ask, and answers out loud in a natural voice.",
+      example: "\u201CWhat's this error, and how do I fix it?\u201D",
+      main: true,
       icon: (
         <svg {...iconProps}>
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
         </svg>
       )
     },
     {
-      title: "Run AI agents by voice",
-      description: "Put Claude Code or Codex to work. They build websites, write and edit files, run commands and research the web, and you can watch every step live.",
-      example: "“Build me a landing page for the new feature”",
+      title: "AI agents",
+      description: "Say a task and Claude Code or Codex does it. They build websites, write and edit files, run commands and research the web, and you can watch every step live.",
+      example: "\u201CBuild me a landing page for the new feature\u201D",
+      main: true,
       icon: (
         <svg {...iconProps}>
           <rect x="2" y="4" width="20" height="16" rx="2"></rect>
@@ -30,9 +32,20 @@ const Features: React.FC = () => {
       )
     },
     {
-      title: "Work across your apps",
+      title: "Find and organize files",
+      description: "Describe a file by what is inside it and Filect finds it, even when you forgot the name. Tell it how to tidy a folder and it sorts everything into place.",
+      example: "\u201COrganize my Downloads by type\u201D",
+      main: true,
+      icon: (
+        <svg {...iconProps}>
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      )
+    },
+    {
+      title: "Works in your apps",
       description: "Agents act inside the apps you connect, like Gmail, Calendar, Notion, Google Drive and Zapier. Email, schedule and update your docs just by saying so.",
-      example: "“Reply to the sponsor and shorten the second paragraph”",
       icon: (
         <svg {...iconProps}>
           <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
@@ -51,15 +64,6 @@ const Features: React.FC = () => {
           <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
           <line x1="12" y1="19" x2="12" y2="23"></line>
           <line x1="8" y1="23" x2="16" y2="23"></line>
-        </svg>
-      )
-    },
-    {
-      title: "Hands-free Assistant",
-      description: "Click Start and just talk, no keys needed. It ignores conversations that are not meant for it, can look at your screen, and can answer out loud in a natural voice.",
-      icon: (
-        <svg {...iconProps}>
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
         </svg>
       )
     },
@@ -95,7 +99,7 @@ const Features: React.FC = () => {
           Say it. Filect does the work.
         </h2>
         <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', maxWidth: '640px', margin: '0 auto', lineHeight: 1.6 }}>
-          Not another chatbot. Filect takes action on your computer: it finds your files, runs AI agents, and works across your apps, all from your voice. On Windows and Mac.
+          Not another chatbot. Talk to the AI Assistant, hand real work to AI agents, and find or organize any file, all from your voice. On Windows and Mac.
         </p>
       </motion.div>
 
@@ -113,8 +117,8 @@ const Features: React.FC = () => {
               padding: '36px',
               display: 'flex',
               flexDirection: 'column',
-              background: 'rgba(255, 255, 255, 0.02)',
-              border: '1px solid rgba(255, 255, 255, 0.05)'
+              background: card.main ? 'rgba(176, 102, 255, 0.05)' : 'rgba(255, 255, 255, 0.02)',
+              border: card.main ? '1px solid rgba(176, 102, 255, 0.28)' : '1px solid rgba(255, 255, 255, 0.05)'
             }}
           >
             <div style={{ width: '40px', height: '40px', background: 'rgba(178, 139, 255, 0.08)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '24px' }}>
