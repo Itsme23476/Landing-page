@@ -8,7 +8,7 @@ const Features: React.FC = () => {
   const cards = [
     {
       title: "Find and organize your files",
-      description: "Describe a file by what is inside it and Filect finds it, even when you forgot the name. Tell it to tidy a folder and it sorts, renames and files everything for you.",
+      description: "Describe a file by what is inside it and Filect finds it, even when you forgot the name. Tell it to tidy a folder and it sorts everything into place for you.",
       example: "“Find the contract I signed last week”",
       icon: (
         <svg {...iconProps}>

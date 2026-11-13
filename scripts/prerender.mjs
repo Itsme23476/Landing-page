@@ -26,7 +26,7 @@ const WIN = '/download/windows';   // always the newest (vercel.json → the dow
 const MAC = '/download/mac';
 
 const FEATURES = [
-  ['Find and organize your files', 'Describe a file by what is inside it and Filect finds it, even when you forgot the name. Tell it to tidy a folder and it sorts, renames and files everything for you.'],
+  ['Find and organize your files', 'Describe a file by what is inside it and Filect finds it, even when you forgot the name. Tell it to tidy a folder and it sorts everything into place for you.'],
   ['Run AI agents by voice', 'Put Claude Code or Codex to work. They build websites, write and edit files, run commands and research the web, and you can watch every step live.'],
   ['Work across your apps', 'Agents act inside the apps you connect, like Gmail, Calendar, Notion, Google Drive and Zapier. Email, schedule and update your docs just by saying so.'],
   ['Dictate anywhere', 'Hold a key and talk. Your words type into any app, with punctuation added and filler words cleaned up as you go.'],
