@@ -12,6 +12,12 @@ type Testimonial = {
 
 const TESTIMONIALS: Testimonial[] = [
   {
+    name: 'Melisa',
+    initial: 'M',
+    quote: "Filect's AI Assistant automates all of my coding work for me.",
+    gradient: 'linear-gradient(135deg, #c084fc 0%, #7c3aed 100%)',
+  },
+  {
     name: 'Mark',
     initial: 'M',
     quote: 'Filect saves me over 2 hours every single week organizing my files.',
@@ -68,7 +74,7 @@ const Testimonials: React.FC = () => {
           </p>
         </motion.div>
 
-        <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
           {TESTIMONIALS.map((t, idx) => (
             <motion.figure
               key={t.name}
@@ -78,8 +84,6 @@ const Testimonials: React.FC = () => {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               whileHover={{ y: -6 }}
               style={{
-                flex: '1 1 320px',
-                maxWidth: '360px',
                 margin: 0,
                 display: 'flex',
                 flexDirection: 'column',

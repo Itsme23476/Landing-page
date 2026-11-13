@@ -42,6 +42,7 @@ const STEPS = [
 ];
 
 const TESTIMONIALS = [
+  ['Melisa', "Filect's AI Assistant automates all of my coding work for me."],
   ['Mark', 'Filect saves me over 2 hours every single week organizing my files.'],
   ['Marie', 'I can find any file stored on my PC in just a few seconds.'],
   ['Robert', 'Filect lets me focus on the important work instead of organizing and managing files.'],
