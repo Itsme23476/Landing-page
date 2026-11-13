@@ -121,6 +121,17 @@
     .feature-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.4; }
     .check { flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; }
     .feature-list li strong { color: var(--text-primary); font-weight: 600; }
+    /* ── Every plan includes ── */
+    .included { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; padding: 0 24px 80px; text-align: center; }
+    .included h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .included .sub { color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 40px; }
+    .included-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; text-align: left; }
+    .inc-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border-light); border-radius: 16px; padding: 28px; }
+    .inc-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(178,139,255,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+    .inc-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+    .inc-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0; }
+    .compare tr.group td { text-align: left; color: var(--purple-light); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 30px 24px 10px; border-bottom: 1px solid rgba(176,102,255,0.25); background: transparent; }
+    @media (max-width: 800px) { .included-grid { grid-template-columns: 1fr; } }
     .fine { color: var(--text-secondary); font-size: 0.78rem; margin-top: 16px; opacity: 0.85; }
 
     /* ── Compare table ── */
@@ -209,16 +220,12 @@
           <p class="annual-note annual-only" style="display:none">Billed annually at $120/yr · Save 33%</p>
           <a class="cta-btn cta-secondary" data-m="price_1SeEv5BATYQXewwiQ5XO32PD" data-a="price_1TbNhCBATYQXewwi6k6RJfAV" href="/signup?plan=price_1SeEv5BATYQXewwiQ5XO32PD">Start Free Trial</a>
           <ul class="feature-list">
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>AI agents by voice:</strong> Claude Code &amp; Codex build, write &amp; research for you</span></li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Works in the apps you connect:</strong> Gmail, Calendar, Notion, Google Drive &amp; more</span></li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Hands-free Assistant</strong> that can see your screen and talk back</span></li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Dictate into any app</strong>, with punctuation added for you</span></li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Find &amp; organize files</strong> by voice or typing (AI search + auto-organize)</span></li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>90 minutes of talking a day</strong> for dictation, voice search &amp; the hands-free Assistant (more than most people use)</span></li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>About 10 minutes of spoken replies a day in natural voices</li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Unlimited text &amp; audio categorization</li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>1,000 image &amp; video categorizations / month</li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Windows &amp; Mac</li>
+            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>AI voice Assistant:</strong> talk hands-free, it sees your screen and talks back</span></li>
+            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>AI agents:</strong> Claude Code &amp; Codex do real work in your apps</span></li>
+            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Find &amp; organize files</strong> by voice or typing</span></li>
+            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Dictate into any app</span></li>
+            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>90 minutes of talking a day, more than most people use</span></li>
+            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Windows &amp; Mac</span></li>
           </ul>
         </div>
 
@@ -231,11 +238,11 @@
           <p class="annual-note annual-only" style="display:none">Billed annually at $399/yr · Save 33%</p>
           <a class="cta-btn cta-primary" data-m="price_1SuJOxBATYQXewwiuqsqAcMJ" data-a="price_1TbNhOBATYQXewwinVl6TOP1" href="/signup?plan=price_1SuJOxBATYQXewwiuqsqAcMJ">Start Free Trial</a>
           <ul class="feature-list">
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><strong>Everything in Basic, plus:</strong></li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Unlimited talking*</strong> for dictation, voice search &amp; the hands-free Assistant</span></li>
+            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Everything in Basic, plus:</strong></span></li>
+            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Unlimited talking*</strong> with the Assistant, dictation &amp; voice search</span></li>
             <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Unlimited spoken replies*</strong> in natural voices</span></li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>5,000 image &amp; video categorizations / month</li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Priority email support</li>
+            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>5x the image &amp; video organizing</span></li>
+            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Priority email support</span></li>
           </ul>
           <p class="fine">*Fair use applies.</p>
         </div>
@@ -248,15 +255,35 @@
           <p class="annual-note" style="color:var(--text-secondary);font-size:0.85rem;">Tailored volume, licensing &amp; support. Let's talk.</p>
           <a class="cta-btn cta-secondary enterprise-cta" href="/signup?next=%2Fcontact%3Ftopic%3Denterprise">Contact Us</a>
           <ul class="feature-list">
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Everything in Pro</li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Custom categorization volume</li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Team &amp; volume licensing</li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>1-on-1 personalized onboarding</li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Suggest features for the app</li>
-            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Dedicated priority support</li>
+            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Everything in Pro</span></li>
+            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Team &amp; volume licensing</span></li>
+            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>1-on-1 personalized onboarding</span></li>
+            <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Dedicated priority support</span></li>
           </ul>
         </div>
 
+      </section>
+
+      <section class="included">
+        <h2>Every plan includes</h2>
+        <p class="sub">One app that listens, acts and keeps your files in order. On Windows and Mac.</p>
+        <div class="included-grid">
+        <div class="inc-card">
+          <div class="inc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line></svg></div>
+          <h3>AI voice Assistant</h3>
+          <p>Click Start and just talk, no keys. Ask &ldquo;what&rsquo;s this error?&rdquo; and it looks at your screen, then answers out loud in a natural voice.</p>
+        </div>
+        <div class="inc-card">
+          <div class="inc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="6 10 9 12.5 6 15"></polyline><line x1="12" y1="15" x2="17" y2="15"></line></svg></div>
+          <h3>AI agents</h3>
+          <p>Say a task and Claude Code or Codex does it: build a page, research a topic, draft a reply in Gmail. They run on your own Claude or ChatGPT plan.</p>
+        </div>
+        <div class="inc-card">
+          <div class="inc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B28BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"></path></svg></div>
+          <h3>Find &amp; organize files</h3>
+          <p>Ask for a file by what is inside it and it appears. Say &ldquo;organize my Downloads by type&rdquo; and it is done, or let Auto-organize keep folders clean.</p>
+        </div>
+        </div>
       </section>
 
       <section class="compare">
@@ -269,21 +296,25 @@
             </thead>
             <tbody>
               <tr><td>Price</td><td data-m="$15 / mo" data-a="$10 / mo">$15 / mo</td><td class="col-pop" data-m="$49 / mo" data-a="$33 / mo">$49 / mo</td><td>Custom</td></tr>
-              <tr><td>AI agents by voice (Claude Code &amp; Codex)</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
-              <tr><td>Works in the apps you connect (Gmail, Calendar, Notion, Drive)</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
+              <tr class="group"><td colspan="4">AI voice Assistant</td></tr>
               <tr><td>Hands-free Assistant (sees your screen, talks back)</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
-              <tr><td>Dictation into any app</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
-              <tr><td>Run several tasks at once</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
-              <tr><td>Talking time (dictation, voice search &amp; hands-free Assistant)</td><td>90 min / day</td><td class="col-pop">Unlimited*</td><td>Unlimited*</td></tr>
+              <tr><td>Talking time (Assistant, dictation &amp; voice search)</td><td>90 min / day</td><td class="col-pop">Unlimited*</td><td>Unlimited*</td></tr>
               <tr><td>Spoken replies in natural voices</td><td>About 10 min / day</td><td class="col-pop">Unlimited*</td><td>Unlimited*</td></tr>
+              <tr><td>Dictation into any app</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
+              <tr class="group"><td colspan="4">AI agents</td></tr>
+              <tr><td>Claude Code &amp; Codex by voice</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Works in the apps you connect (Gmail, Calendar, Notion, Drive)</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Run several tasks at once</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
+              <tr class="group"><td colspan="4">Files</td></tr>
               <tr><td>AI file search &amp; auto-organize</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
               <tr><td>Text &amp; audio categorization</td><td>Unlimited</td><td class="col-pop">Unlimited</td><td>Unlimited</td></tr>
               <tr><td>Image &amp; video categorization</td><td>1,000 / month</td><td class="col-pop">5,000 / month</td><td>Custom</td></tr>
+              <tr class="group"><td colspan="4">Plan</td></tr>
               <tr><td>Windows &amp; Mac</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td class="yes">✓</td></tr>
               <tr><td>10-day free trial</td><td class="yes">✓</td><td class="col-pop yes">✓</td><td>Talk to us</td></tr>
               <tr><td>Support</td><td>Standard</td><td class="col-pop">Priority email</td><td>Dedicated support</td></tr>
-              <tr><td>Suggest features for the app</td><td class="no">—</td><td class="col-pop no">—</td><td class="yes">✓</td></tr>
-              <tr><td>1-on-1 personalized onboarding</td><td class="no">—</td><td class="col-pop no">—</td><td class="yes">✓</td></tr>
+              <tr><td>Suggest features for the app</td><td class="no">✕</td><td class="col-pop no">✕</td><td class="yes">✓</td></tr>
+              <tr><td>1-on-1 personalized onboarding</td><td class="no">✕</td><td class="col-pop no">✕</td><td class="yes">✓</td></tr>
               <tr class="cta-row">
                 <td></td>
                 <td><a class="mini-cta" data-m="price_1SeEv5BATYQXewwiQ5XO32PD" data-a="price_1TbNhCBATYQXewwi6k6RJfAV" href="/signup?plan=price_1SeEv5BATYQXewwiQ5XO32PD">Start trial</a></td>
