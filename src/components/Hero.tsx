@@ -168,26 +168,6 @@ const Hero: React.FC = () => {
               ))}
             </div>
           </div>
-
-          {/* Agent task card: shows "it does the work" at a glance */}
-          <div aria-hidden="true" className="hero-task-card" style={{
-            position: 'absolute', top: '7%', right: '-3%', zIndex: 21, width: '290px',
-            padding: '16px 18px', borderRadius: '16px', textAlign: 'left',
-            background: 'rgba(12,10,20,0.97)', border: '1px solid rgba(176,102,255,0.35)',
-            boxShadow: '0 24px 60px rgba(0,0,0,0.55), 0 0 40px rgba(124,77,255,0.25)',
-            fontSize: '0.82rem', lineHeight: 1.5,
-          }}>
-            <div style={{ color: '#fff', fontWeight: 600, marginBottom: '10px' }}>
-              &ldquo;Reply to the sponsor and attach the March invoice&rdquo;
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--purple-light)', fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '6px' }}>
-              <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#b066ff', boxShadow: '0 0 10px #b066ff' }} />
-              Claude Code
-            </div>
-            <div style={{ color: 'var(--text-secondary)' }}>✓ Found invoice_march.pdf</div>
-            <div style={{ color: 'var(--text-secondary)' }}>✓ Drafted the reply in Gmail</div>
-            <div style={{ color: '#34d399', fontWeight: 600, marginTop: '6px' }}>Done · Open in Gmail</div>
-          </div>
         </div>
 
       </motion.div>
