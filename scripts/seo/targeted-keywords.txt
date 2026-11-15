@@ -14,3 +14,4 @@ how to make jarvis
 jarvis ai assistant
 ai that controls your computer
 ai desktop assistant
+personal ai assistant
