@@ -16,3 +16,4 @@ ai that controls your computer
 ai desktop assistant
 personal ai assistant
 best ai voice assistant
+control computer with voice
