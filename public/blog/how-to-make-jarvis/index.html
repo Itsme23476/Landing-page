@@ -177,6 +177,7 @@ if __name__ == "__main__":
     </table></div>
 
     <h2>Upgrades, in the order worth doing them</h2>
+    <p>For help choosing each part, from wake word engines to memory, see our <a href="/blog/build-your-own-jarvis/">build your own Jarvis parts guide</a>, which includes code for silence detection and a simple memory tool.</p>
     <ol>
       <li><strong>Add a wake word.</strong> <a href="https://github.com/dscripka/openWakeWord" target="_blank" rel="noopener">openWakeWord</a> includes a pre-trained "hey jarvis" model and replaces the Enter key. It runs a small detector on the audio, so you avoid transcribing everything you say. The code is Apache 2.0, but the included models are licensed for non-commercial use only, which matters if you plan to sell what you build.</li>
       <li><strong>Stop recording when you stop talking.</strong> Replace the five second window with silence detection. This does more for the feel of the assistant than a better model.</li>
@@ -221,6 +222,7 @@ if __name__ == "__main__":
     <div style="margin:56px 0 0;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);">
       <h2 style="margin-top:0;">Related articles</h2>
       <ul>
+        <li><a href="/blog/build-your-own-jarvis/">Build Your Own Jarvis: Pick the Parts, Then Wire Them</a></li>
         <li><a href="/blog/ai-jarvis/">AI Jarvis: How to Actually Get One on Your PC</a></li>
         <li><a href="/blog/jarvis-for-pc/">Jarvis for PC: The Real Options on Windows Today</a></li>
         <li><a href="/blog/search-files-by-content/">How to Search Files by Content on Windows and Mac</a></li>
