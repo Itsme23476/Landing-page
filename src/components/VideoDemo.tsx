@@ -28,7 +28,7 @@ const VideoDemo: React.FC = () => {
             See how Filect works <span className="text-gradient">in practice</span>
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
-            An 80-second look at talking to Filect to dictate, find, and organize your files, so you stop typing, searching, and sorting folders by hand.
+            Under a minute of Filect in action: talk to the AI Assistant, hand real work to Claude Code or Codex, and find or organize any file, all by voice.
           </p>
         </motion.div>
 
@@ -60,7 +60,7 @@ const VideoDemo: React.FC = () => {
             >
               <img
                 src="/filect-demo-poster.jpg"
-                alt="Filect organizing files into clean folders"
+                alt="Filect demo: control your entire computer by voice"
                 loading="lazy"
                 decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}

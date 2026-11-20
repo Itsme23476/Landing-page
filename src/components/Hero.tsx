@@ -109,7 +109,7 @@ const Hero: React.FC = () => {
           <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px', borderRadius: '50%', background: 'rgba(176,102,255,0.18)', border: '1px solid rgba(176,102,255,0.5)' }}>
             <svg width="9" height="11" viewBox="0 0 24 28" fill="#b066ff" aria-hidden="true"><path d="M2 2l20 12L2 26V2z" /></svg>
           </span>
-          Watch the 80-second demo
+          Watch the 54-second demo
         </button>
 
         <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0 }}>
