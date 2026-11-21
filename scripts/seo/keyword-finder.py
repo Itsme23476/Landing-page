@@ -89,7 +89,7 @@ def gsc_queries(token, days=90):
     url = ("https://searchconsole.googleapis.com/webmasters/v3/sites/"
            + urllib.parse.quote(PROPERTY, safe="") + "/searchAnalytics/query")
     body = json.dumps({"startDate": start, "endDate": end,
-                       "dimensions": ["query"], "rowLimit": 1000}).encode()
+                       "dimensions": ["query"], "rowLimit": 5000}).encode()
     req = urllib.request.Request(url, data=body,
           headers={"Authorization": "Bearer " + token, "Content-Type": "application/json"})
     rows = json.load(urllib.request.urlopen(req)).get("rows", [])
@@ -114,6 +114,10 @@ def existing_slug_tokens():
         slug = d.rstrip("/").split("/")[-1]
         sets.append(set(slug.split("-")))
     return sets
+
+# Voice-first positioning (2026-11-22): whenever a voice / assistant / agent topic qualifies,
+# it is ranked ahead of every file topic, so the writer keeps the voice angle after the seeds run out.
+VOICE = re.compile(r"jarvis|assistant|voice|dictat|speech|hands.?free|agent|claude|codex|talk to|control (your |my )?(computer|pc|mac)")
 
 STOP = {"the", "a", "an", "to", "for", "of", "on", "in", "my", "your", "how", "is",
         "best", "and", "with", "without", "that", "do", "i", "me", "it", "2026"}
@@ -150,14 +154,14 @@ def main():
         if any(b in kl for b in BRAND): continue                 # skip branded
         if not any(t in kl for t in TOPIC): continue             # must be on-topic
         if not (8 <= (r["pos"] or 0) <= 40): continue            # striking distance
-        if r["impr"] < 25: continue                              # enough demand
+        if r["impr"] < (5 if VOICE.search(kl) else 25): continue  # voice topics are newer, lower bar                              # enough demand
         if (r["clicks"] / r["impr"]) > 0.02: continue            # shown-not-clicked
         if kl in done: continue                                  # not already targeted
         if has_page(r["kw"], slug_sets): continue                # no existing page
         r["score"] = round(r["impr"] * (41 - r["pos"]) / 33, 1)
         cands.append(r)
 
-    cands.sort(key=lambda x: -x["score"])
+    cands.sort(key=lambda x: (not VOICE.search(x["kw"].lower()), -x["score"]))
     top = cands[:15]
     os.makedirs(SEEDIR, exist_ok=True)
     json.dump({"generated": time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()),
