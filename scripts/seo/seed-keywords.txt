@@ -16,3 +16,26 @@ control computer with voice      # 50 vol, 0.10 comp
 voice control pc                 # 90 vol, 0.10 comp
 ai assistant for pc              # 90 vol, 0.26 comp
 build your own jarvis            # 30 vol — low search, strong YouTube tie-in
+
+# Batch 2 (2026-11-22): voice-assistant angle, in feature-priority order
+# (Assistant first, then agents, then dictation). Picked from Google Search Console:
+# terms Filect already gets impressions for but hasn't written about, plus their
+# closest platform/intent variants. Near-duplicates of existing pages were skipped.
+ai voice assistant for windows           # parent "ai voice assistant": 70 impr, pos 20; audience is Windows-first
+ai assistant that can see your screen    # the Assistant's screen awareness is its differentiator
+cortana replacement for windows 11       # people looking for a Windows voice assistant
+siri alternative for mac
+copilot alternative for windows
+ai voice assistant for mac
+private ai assistant                     # GSC: pos 33; privacy angle
+talk to your computer
+hands free computer control
+jarvis for mac                           # companion to /blog/jarvis-for-pc/
+claude jarvis                            # GSC "jarvis claude": pos 45
+how to use claude code with voice        # AI agents (feature #2), developer audience
+ai agent for your computer               # GSC "ai agent desktop assistant": pos 22
+voice coding                             # developers coding by voice
+voice typing windows 11                  # dictation (supporting feature)
+wispr flow alternative
+dragon naturallyspeaking alternative
+dictation software for mac

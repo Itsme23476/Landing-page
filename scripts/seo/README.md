@@ -17,6 +17,18 @@ human review is needed. If an article can't clear the QA gate, publish nothing.
   hands-free Assistant, agents, file search/organize) works on BOTH Windows and
   Mac. Never say voice is Mac-only. Audience is Windows-first. Do not
   overpromise: say what it does with concrete examples, not "it can do anything".
+- **Lead with the voice angle.** Feature priority, in this order: 1) the hands-free
+  AI voice Assistant (click Start and talk; it can look at your screen and answer
+  out loud), 2) AI agents (Claude Code and Codex doing real work), 3) find and
+  organize files. Dictation and connected apps are supporting features. Even on a
+  file-search topic, present Filect as a voice-first AI assistant, not a file tool.
+- Spoken replies: Basic includes 10,000 characters of spoken replies a day. State it
+  in characters, never minutes. Do not state keyboard shortcuts (they differ between
+  Windows and Mac); write "hold a key and talk".
+- Competitor / "alternative" posts (Siri, Cortana, Copilot, Wispr Flow, Dragon, ...):
+  verify every competitor fact (price, platform, feature, status) on that product's
+  official site with a web search on the day you write. If you cannot verify it,
+  leave it out. Be fair; recommend the competitor where it genuinely fits better.
 - You MAY reference the founder's YouTube channel
   (https://www.youtube.com/@softwaregent7443) for Jarvis/voice-assistant posts,
   but NEVER invent a specific video URL, title, view count, or embed id.
