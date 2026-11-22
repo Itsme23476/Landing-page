@@ -52,6 +52,13 @@ human review is needed. If an article can't clear the QA gate, publish nothing.
    b. ELSE run `python3 scripts/seo/keyword-finder.py` → reads GSC/Bing (env creds)
       and writes `scripts/seo/candidates.json`. Pick the top candidate NOT already in
       `scripts/seo/targeted-keywords.txt`. If nothing qualifies, stop (commit nothing).
+      The finder lists VOICE / assistant / agent topics first (Search Console ones,
+      then `autocomplete` ones = real Google suggestions with no Filect data yet).
+      Take the first voice topic that is genuinely about using an AI voice assistant,
+      AI agent or dictation on a computer; skip unrelated suggestions (other products'
+      bugs, tech support, phone-only, games). Only use a file topic if no voice topic
+      qualifies. If a keyword says "free", say plainly that Filect is a paid app with a
+      10-day free trial (card required).
 2. Choose a clean slug (lowercase, hyphenated, no stop words, no year).
 3. Draft the article as `public/blog/<slug>/index.html`, mirroring the structure,
    `<head>` tags, and JSON-LD of an existing strong post
