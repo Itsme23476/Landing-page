@@ -130,6 +130,36 @@ def has_page(kw, slug_sets):
         if len(toks) >= 3 and len(toks & s) >= len(toks) - 1: return True
     return False
 
+# Google autocomplete stems for new voice topics, in feature-priority order
+# (Assistant, then agents, then dictation). Used so the writer never runs out of voice topics.
+SUGGEST_STEMS = ["ai voice assistant", "voice assistant for", "ai assistant for", "jarvis ai",
+                 "ai that can", "talk to your computer", "voice control windows", "voice control mac",
+                 "ai agent for computer", "ai agent that can use", "claude code voice", "codex voice",
+                 "dictation software", "voice typing"]
+OFF_TOPIC = re.compile(r"android|iphone|\bios\b|phone|\bcalls?\b|call center|\bcar\b|airfoil|github|\bapi\b|"
+                       r"alexa|google home|speaker|device|watch|\btv\b|robot|kids|elderly|game|acrobat|adobe|expert|"
+                       r"technician|support|\bgd\b|geometry|no longer|not working|turn off|disable|uninstall|remove|"
+                       r"helmet|mask|steering|trading|stock|robinhood|crypto|controlla")
+
+def suggest_voice(done, slug_sets):
+    """Voice-topic ideas from Google autocomplete (real searches with no GSC data yet)."""
+    out, seen = [], set()
+    for rank, stem in enumerate(SUGGEST_STEMS):
+        try:
+            url = ("https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q="
+                   + urllib.parse.quote(stem))
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            sugg = json.load(urllib.request.urlopen(req, timeout=15))[1]
+        except Exception as e:
+            print("  (autocomplete %r: %s)" % (stem, e), file=sys.stderr); continue
+        for k in (x.lower().strip() for x in sugg):
+            if k in seen or k in done or not VOICE.search(k) or OFF_TOPIC.search(k): continue
+            if any(b in k for b in BRAND) or has_page(k, slug_sets): continue
+            seen.add(k)
+            out.append({"kw": k, "impr": 0, "clicks": 0, "pos": 0, "src": "autocomplete",
+                        "score": round(1 / (2 + rank), 3)})   # after GSC voice topics, by stem priority
+    return out
+
 def main():
     done = set()
     if os.path.exists(LOG):
@@ -161,6 +191,7 @@ def main():
         r["score"] = round(r["impr"] * (41 - r["pos"]) / 33, 1)
         cands.append(r)
 
+    cands += suggest_voice(done, slug_sets)
     cands.sort(key=lambda x: (not VOICE.search(x["kw"].lower()), -x["score"]))
     top = cands[:15]
     os.makedirs(SEEDIR, exist_ok=True)
@@ -168,9 +199,9 @@ def main():
                "candidates": top}, open(OUT, "w"), indent=1)
 
     print(f"Found {len(cands)} on-topic, no-page, striking-distance gaps. Top 15:\n")
-    print(f"{'score':>6}  {'impr':>5} {'clk':>3} {'pos':>5}  keyword")
+    print(f"{'score':>6}  {'impr':>5} {'clk':>3} {'pos':>5}  {'src':<12} keyword")
     for r in top:
-        print(f"{r['score']:>6}  {r['impr']:>5} {r['clicks']:>3} {r['pos']:>5.1f}  {r['kw']}")
+        print(f"{r['score']:>6}  {r['impr']:>5} {r['clicks']:>3} {r['pos']:>5.1f}  {r['src']:<12} {r['kw']}")
     print(f"\nWritten to {OUT}")
 
 if __name__ == "__main__":
