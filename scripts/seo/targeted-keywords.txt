@@ -27,3 +27,4 @@ cortana replacement for windows 11
 siri alternative for mac
 copilot alternative for windows
 ai voice assistant for mac
+private ai assistant
